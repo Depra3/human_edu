@@ -1,0 +1,21 @@
+package com.human.Study04;
+
+import java.util.ArrayList;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface empDAO {
+	ArrayList<EmpDTO> list(); // 반환값 메소드명(매개변수들)
+	ArrayList<RoomtypeDTO> listRoomtype();
+	ArrayList<RoomInfoDTO> listRoominfo();
+	ArrayList<DepartmentDTO> listDepart();
+	void insertRoomType(String typename); // insert용 메서드
+	void deleteRoomType(int typenum);
+	void updateRoomType(String typename,int typenum);
+//	== void updateRoomType(String tname,int tnum);
+	void insertRoomInfo(String one, int two, int three, int four); // #{param ? } ?는 매개변수 순서
+	//						#{param1},#{param2},#{param3},#{param4}
+	void deleteRoomInfo(int num);
+	void updateRoomInfo(int num, String name, int type, int howmany, int howmuch);
+}

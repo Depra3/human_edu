@@ -1,0 +1,99 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+$(document)
+.ready(function(){
+	$.post('/logincheck',{},function(data){
+		if(data==''){
+			str="<a href='/login'>로그인</a>&nbsp;&nbsp;<a href='/signin'>회원가입</a><br><br>";
+		}else{
+			str="<label>"+data+"</label>&nbsp;&nbsp;<label id=lblSignout>로그아웃</label><br><br>";
+		}
+		$('#dvHead').html(str); // html로 변환해야함
+		if(data!=''){
+			$('body').append("<input type='button' id='btnWrite' value='글 작성'><br><br>");
+		}
+	},'text');
+// 	loadboard();
+})
+.on('click','#btnWrite',function(){
+	document.location="/write";
+})
+.on('click','#lblSignout',function(){
+	$.post('/signout',{},function(data){
+		if(data=='ok'){
+			document.location="/";
+		}else{
+			alert('로그아웃 실패. 다시 시도하십시오.');
+		}
+	},'text');
+})
+.on('click','#btnView',function(){
+	let ndx=$(this).parent().parent().index();
+	let str=$('#tblPost tr:eq('+ndx+') td:eq(0)').text();
+	document.location='/view?post_id='+str;
+	return false;
+})
+.on('click','#btnDel',function(){
+	if(confirm('삭제하시겠습니까?')){
+		let ndx=$(this).parent().parent().index();
+		let str=$('#tblPost tr:eq('+ndx+') td:eq(0)').text();
+		document.location='/delete?post_id='+str;
+	}
+})
+.on('click','#btnUp',function(){
+	let ndx=$(this).parent().parent().index();
+	let str=$('#tblPost tr:eq('+ndx+') td:eq(0)').text();
+	document.location='/boardUp?post_id='+str;
+})
+// function loadboard(){
+// 	$('#tblPost tr:gt(0)').remove();
+// 	$.post('/home',{},function(data){
+// 		for(i=0; i<data.length;i++){
+// 			let str;
+// 			let post=data[i];
+// 			if(post['uDate']==null){ post['uDate']='-'; }
+// 			let cD=post['cDate'].split(',');
+			
+// 			if(${ses==null}){
+// 				str='<tr align=center><td>'+post['post_id']+'</td><td><a>'+post['title']+'</a></td><td>'+post['writer']+
+// 				'</td><td>'+cD[0]+'</td><td>'+cD[1]+'</td><td>'+post['uDate']+'</td></tr>';
+// 			} else{
+// 				str='<tr align=center><td>'+post['post_id']+'</td><td><a>'+post['title']+'</a></td><td>'+post['writer']+
+// 				'</td><td>'+cD[0]+'</td><td>'+cD[1]+'</td><td>'+post['uDate']+
+// 				'</td><td><input type="button" id="btnView" value="보기">	<input type="button" id="btnUp" value="수정">	<input type="button" id="btnDel" value="삭제"></td></tr>';	
+// 			}
+// 			$('#tblPost').append(str);
+// 		}
+// 	},'json');
+// }
+</script>
+<body>
+<div id="dvHead" style="width:100%"></div>
+<table id="tblPost" border=1 align='center'>
+	<tr><th>글 번호</th><th>글 제목</th><th>작성자</th><th>작성 날짜</th><th>수정 날짜</th><th>작업 선택</th></tr>
+	<c:forEach var="post" items="#{pt }">
+		<tr>
+			<td>${post.post_id }</td>
+			<td>${post.title }</td>
+			<td>${post.writer }</td>
+			<td>${post.created }</td>
+			<td>${post.updated }</td>
+			<td><input type="button" id="btnView" value="보기">
+			<c:if test="${gUserid eq post.writer}">
+					<input type="button" id="btnUp" value="수정">	
+					<input type="button" id="btnDel" value="삭제"></td>
+			</c:if>
+		</tr>
+	</c:forEach>
+</table>
+<br><br>
+</body>
+</html>
