@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid gray;
+            margin: 10px;
+        }
+        #child{
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            background-color: red;
+            /* 1. position : static; default값, 위치통제불가 - left,top등 속성 사용 불가 */
+            /* 2. position : relative; left, top이 부모로부터 시작 */
+            /* 3. position : absolute; 부모 위치와 상관없이 left,top 적용됨 */
+            /* 4. position : fixed;  위치가 고정됨.(ex. 배너 광고)*/
+        }
+    </style>
+</head>
+<body>
+    <div>휴먼 교육 센터</div>
+    <div id="parent">PARENT
+        <div id="child">CHILD</div>
+    </div>
+</body>
+</html>

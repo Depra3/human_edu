@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #human1 { 
+            background-color: red;
+        }
+        .human2 { 
+            background-color: green;
+        }
+        h1 {      
+            background-color: yellow;
+        }
+        .c1 {
+            background-color: aqua;
+        }
+        .c2 {
+            background-color: powderblue;
+        }
+        #i1 {
+            background-color: chartreuse;
+        }
+        h2[id] {
+            /* h2 태그중 id가 있는 문서만 적용되는 스타일 */
+            background-color: blue;
+        }
+        h2[id="human02"] {
+            /* h2 태그중 id가 human02인 문서만 적용되는 스타일 */
+            background-color: rgb(79, 176, 214);
+        }
+        h3[dir="a"]{
+            background-color: deeppink;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 1순위 : id - #human1, class - 2순위 .human2, 3순위 h1 -->
+    <!-- id는 개별, class는 묶음-->
+    <h1 id="human1" class="human2">휴먼 교육 센터</h1>
+    <h1 class="human2">휴먼 교육 센터</h1>
+    <br>
+    <h1>휴먼 교육 센터 1</h1>
+    <h1>휴먼 교육 센터 2</h1>
+    <h1 id="human1">휴먼 교육 센터 3</h1>
+    <h1 class="human2">휴먼 교육 센터 4</h1>
+    <h1 class="human2">휴먼 교육 센터 5</h1>
+    <h1 id="human1" class="human2">휴먼 교육 센터6</h1>
+
+    <h1 id="i1" class="c1">휴먼 1</h1>
+    <h1 id="i2" class="c1">휴먼 2</h1>
+    <h1 id="i3" class="c1">휴먼 3</h1>
+    <h1 id="i4" class="c2">휴먼 4</h1>
+    <h1 id="i5" class="c2">휴먼 5</h1>
+    <h1 id="i6" class="c2">휴먼 6</h1>
+    <h1 id="i7" class="c3">휴먼 7</h1>
+
+    <ol>
+        <li>1순위 : 태그 개별적으로 적용하기 위해서는 id 기준으로 style을 처리</li>
+        <li>2순위 : 부분 집합적으로 적용하기 위해서는 class 기준으로 style을 처리</li>
+        <li>3순위 : Tag 전체의 내용을 적용하기 위해서는 Tag 기준으로 style을 처리</li>
+    </ol>
+    <br>
+    <br>
+    <br>
+
+    <h2>휴먼 교육 센터 11</h2>
+    <h2 id="human01">휴먼 교육 센터 12</h2>
+    <h2 id="human02">휴먼 교육 센터 13</h2>
+    <h3 dir="a">휴먼 교육 센터 14</h3>
+</body>
+</html>

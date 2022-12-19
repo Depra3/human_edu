@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인 페이지</title>
+    <style>
+        #container{
+            display: flex;
+            flex-direction: column;
+        }
+        .contents{
+            display: flex;
+            flex-direction: row;
+        }
+        header{
+            border-bottom: 1px solid gray;
+            padding-left: 50px;
+        }
+        footer{
+            border-top: 1px solid gray;
+            padding-left: 50px;
+        }
+        section nav{    /* section>nav : section 아래의 nav */
+            border-right: 1px solid gray;
+        }
+        section aside{  /* section>aside : section 아래의 aside */
+            border-left: 1px solid gray;
+        }
+        section main{
+            padding: 20px;
+        }
+        section nav, section aside{
+            flex-basis: 150px;
+            flex-shrink: 0; /* 감소 0 */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1>휴먼 교육 센터</h1>
+        </header>
+
+        <section class="contents">
+            <nav>
+                <ul>
+                    <li>학원 소개</li>
+                    <li>과정 소개</li>
+                    <li>게시판</li>
+                </ul>
+            </nav>
+            <main>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut deserunt non ab voluptate doloribus, officia facere incidunt necessitatibus! Earum excepturi mollitia tempore nobis accusantium quod nisi, perferendis quas ab. Cum.
+            </main>
+            <aside>
+                AD
+            </aside>
+        </section>
+
+        <footer>
+            <a href="www.human.co.kr">학원 홈페이지</a>
+        </footer>
+    </div>
+</body>
+</html>

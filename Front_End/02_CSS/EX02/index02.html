@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 자손 "하위 전체" : 스타일 적용됨 */
+        ol ul{ 
+            background-color: yellow;
+        }
+        /* 자식 " 바로 밑의 자식" : 스타일 적용 안됨 */
+        /* li는 ul의 자식이므로 ol 기준에서는 미적용 */
+        ol>li{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <ol>
+        <ul>
+            <li>html4</li>
+            <li>html5</li>
+        </ul>
+        <ul>
+            <li>css2.0</li>
+            <li>css3.0</li>
+        </ul>
+    </ol>
+</body>
+</html>

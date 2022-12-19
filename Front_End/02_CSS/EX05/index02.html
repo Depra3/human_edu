@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* https://codepen.io/enxaneta/pen/adLPwv */
+        .container{
+            background-color: yellow;
+            height: 500px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: flex-start;
+            align-content: flex-start;
+        }
+        .items{
+            border: 1px solid black;
+            background-color: greenyellow;
+            width: 100px;
+            height: 20px;
+        }
+        #item1{
+            order: 1;
+            /* order의 default는 0이므로 item1이 가장 늦게 표현됨 */
+        }
+        #item2{
+            order: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="items" id="item1">11</div>
+        <div class="items" id="item2">12</div>
+        <div class="items" id="item3">13</div>
+        <div class="items" id="item4">14</div>
+        <div class="items" id="item5">15</div>
+        <div class="items" id="item6">16</div>
+        <div class="items" id="item7">17</div>
+        <div class="items" id="item8">18</div>
+        <div class="items" id="item9">19</div>
+        <div class="items" id="item10">20</div>
+    </div>
+</body>
+</html>

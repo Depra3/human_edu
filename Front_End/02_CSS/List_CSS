@@ -1,0 +1,21 @@
+EX01 -  1 : tag안의 style 태그
+        2 : style 태그
+        3 : css파일 연동
+EX02    1 : Selector - Basic Selectors
+        ┗ tag, style 태그 연동 순위(1순위 : #id명, 2순위 : .class명, 3순위 tag명(h1))
+        2 : Selector - Combinators 1
+        ┃ 자손 : ul li - ul 하위 모든 Tag 중 li 선택
+        ┗ 자식 : ul>li - ul 하위 Tag 중 li 선택
+        3 : Selector - Combinators 2
+        ┃ 형제 : ul+ol - ul 형제 중 다음 ol 선택
+        ┗ 형제 : ul~ol - ul 모든 형제 중 ol 선택
+EX03    1 : BOX 모델 - 인라인 Tag
+        2 : BOX 모델 - Box sizing, margin 겹쳐서 처리(20+20=40 X, 20+20=20 O)
+EX04    1 : position 1~3
+        2 : position 4
+EX05    1 : Container - flex 1 https://codepen.io/enxaneta/pen/adLPwv
+        2 : Container - flex 2
+        3 : item - flex-grow
+        4 : item - flex-shrink
+        5 : item - flex-basis
+EX06    레이아웃
