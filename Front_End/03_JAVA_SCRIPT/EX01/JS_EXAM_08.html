@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let exam1 = {id : 1, title : "Human"};
+        // key:value의 쌍으로 관리됨.
+        // key는 묵시적으로 문자열로 인식.
+        // key는 일반적으로 쌍따옴표를 붙이는 것을 관례로 함.
+        let exam2 = {"id" : 1, "title" : "Human"};
+        // exam1의 형태보다는 Key를 문자열로 관리하는 exam2의 형태가 권장됨.
+        // 쌍따옴표를 붙이는 순간 Key가 띄어쓰기도 지원됨.
+        let exam3 = {"n id" : 1, "title" : "COMPUTER"};
+        console.log(exam3["n id"]);
+
+        // 다른 사이트에 전달할 때는 양쪽에 ''를 붙여서 문자열 형태로 전달된다고 합니다.
+        let exam4 = '{"id" : 1, "title" : "Human"}';
+        console.log(exam4); // 문자열 그대로 출력됨.
+        
+        let data1 = JSON.parse(exam4);
+        // 문자열인 exam4를 JSON의 형태로 변환처리함.
+        console.log(data1);
+        console.log(data1.id, data1.title);
+
+        // 만약 JSON이 문자열로 들어오지 않을 경우는?
+        // 아래와 같은 방법으로 JSON 처리가 가능함.
+        let exam5 = {"id" : 1, "title" : "Human"};
+        // let data2 = JSON.parse(exam5);  // exam5는 문자열이 아니기 때문에 Pasing 에러 발생
+
+        let data2 = JSON.parse(JSON.stringify(exam5));
+        // JSON.stringify(exam5)는 JSON 파일을 양끝에 ''를 붙이는 역할을 수행.(문자열로 변환)
+        console.log(data2);
+        console.log(data2["id"], data2["title"]);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

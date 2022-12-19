@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let nums4 = new Array(2, 3, "hello", 7);
+        nums4.splice(2);    // 2번째 이후 모두 삭제
+        console.log(nums4); // [2, 3]
+
+        nums4.push("hello");
+        nums4.push(7);
+        // push를 통해서 지운 내용 넣음
+        console.log(nums4); // [2, 3, 'hello', 7]
+
+        nums4.splice(1, 1); // 1번째에 있는 1개만 삭제(자리, 개수)
+        console.log(nums4); // [2, 'hello', 7]
+
+        nums4.splice(1, 1, "HELLO");
+        // 1번째의 위치에 있는 것부터 1개를 선정하여 지운 후. 그 위치에 "HELLO"를 넣어라
+        // ==> 변경처리
+        console.log(nums4);
+
+        nums4.splice(1, 0, "COMPUTER");
+        // 1번째의 위치에 있는 것부터 0개를 선정하여 지운 후.(지울 것 없음.)
+        // 그 위치에 "COMPUTER"를 넣어라.
+        // ==> 데이터 추가.
+        console.log(nums4);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

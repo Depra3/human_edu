@@ -1,0 +1,47 @@
+EX01        1       JS 흐름 순서
+            2       변수 사용
+            3       JS Stack
+            4       배열 특징?(배열 내에 혼합해서 저장 가능)
+            5       배열 splice 기능
+            6       MAP처럼 관리 가능
+            7       배열 관리
+            8       JSON으로 변환
+            9       ===, !== 연산자(주소 비교)
+            10      for - in, (JSON)
+            11      함수 선언 방법
+            12      오버로딩 안됨
+            13      변수 선언 문제
+EX02        1       prompt, parseFLoat,eval()
+            2       confirm() - 메세지창.
+            3       이벤트 - 함수 이용 전
+            4       이벤트 - 함수 이용 후
+            5       이벤트 value, type 변환 - Browser 플랫폼(객체를 활용하여 HTML문서 변경)
+            6       Browser플랫폼 - 여러 스크립트 활용시 문제점
+            7       onload를 이용한 해결
+            8       getElementById 추가
+            9       간편화
+            10      다른 파일로 만들어 연결
+            11      onload는 중복이 되지 않아 addEventListener를 이용
+EX03        1       계산기 +계산
+            2       section 추가
+            3       id가 아닌 class 이용
+            4       querySelector 이용  
+            5       querySelectorAll 이용 ; id : #, class : . 주의
+            6       section.querySelector("input[name='txt*']") 이용
+            7       children 이용
+EX04        1       DOM - 이미지 바꾸기 1
+            2       DOM - 이미지 바꾸기 2 - select
+            3       DOM - 이미지 바꾸기 3 - datalist
+            4       DOM - 이미지 바꾸기 4 + style 바꾸기
+EX05        5       DOM - Text 추가, 삭제 1 - node
+            6       DOM - Text 추가, 삭제 2 - li추가
+            7       DOM - table - tr 추가
+            8       DOM - table - template이용
+            9       DOM - table - tr 위치이동 3.9.5
+            10      DOM - table - checkbox 이용하여 자리바꾸기, 일괄삭제
+EX06        1       EVENT 1
+            2       EVENT 2 - 공통된 것 for문 처리
+            3       EVENT 3 - console.log(e)에서 해당 속성 찾아 이용
+            4       EVENT 4 - trigger
+            5       EVENT 5 - 좌표 파악 및 이동
+            6       EVENT 6 - 실시간 이동

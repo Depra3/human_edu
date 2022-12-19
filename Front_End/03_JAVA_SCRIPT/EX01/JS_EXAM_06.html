@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let exam = new Object();
+        exam.kor = 90;
+        exam.eng = 80;
+        exam.math = 70;
+        
+        console.log(exam);
+        console.log(exam.kor + exam.eng);
+        console.log(exam["kor"] + exam.eng);
+        // exam.kor 와 exam["kor"]는 같은 내용이다.
+
+        let key = "eng";
+        console.log(exam[key]);
+        // key를 이용한 데이터 관리 - MAP
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

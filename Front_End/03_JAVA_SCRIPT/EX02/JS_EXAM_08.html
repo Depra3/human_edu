@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function printResult(){
+            let x,y;
+            x = eval(prompt("x값 입력", 0));
+            y = eval(prompt("y값 입력", 0));
+
+            btnInput.value = x+y;
+            btnInput.type = "text";
+        }
+        
+        function init(){
+            let btn = window.document.getElementById("btnInput");
+            btn.onclick = printResult;
+        }
+
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <input type="button" value="실행 전" id="btnInput" />
+</body>
+</html>

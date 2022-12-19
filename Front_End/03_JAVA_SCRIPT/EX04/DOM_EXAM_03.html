@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="JS/DOM_EXAM_03.js"></script>
+</head>
+<body>
+    <section id="section1">
+        <div>
+            <input id="scr-input" type="text" list="img-list"/>
+            <datalist id="img-list"> <!-- 위의 list에 속함.-->
+                <option value="img1">첫번째 그림</option>
+                <option value="img2">두번째 그림</option>
+                <option value="img3">세번째 그림</option>
+            </datalist>
+            <input type="button" id="change-button" value="변경"/>
+        </div>
+        <br>
+        <div>
+            <img src="IMGS/img1.jpg" class="img" />
+        </div>
+    </section>
+</body>
+</html>

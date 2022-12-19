@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let ar = ["Human", "human", "Computer", "World"];
+
+        for (let i = 0; i < ar.length; i++) {
+            document.write(ar[i] + "<br>");
+        }
+        document.write("<br>");
+        for(a in ar) {   
+            // a는 ar의 값이 들어가는 것이 아니라. index가 들어감.
+            // a는 1,2,3,4 등의 인덱스가 대임됨.(JAVA와는 다른 점.)
+            document.write(a + " : " + ar[a] + "<br>");
+        }
+        document.write("<br>");
+        
+        // JSON은 어떻게 처리할 수 있는지?
+        let ob = {"id" : 1, "title" : "human", "title2" : "Computer"};
+        for(b in ob) {
+            // b에는 key에 해당하는 값이 대입되고, ( b ==> "id", "title", "title2" )
+            // ob[b]는 key에 해당하는 value값이 대입된다.
+            document.write(b + " : " + ob[b] + "<br>");
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

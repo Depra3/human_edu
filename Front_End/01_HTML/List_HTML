@@ -1,10 +1,8 @@
-# 요약 목록
 EX01 : 하이퍼링크로 폴더간 페이지 이동 - 절대 경로
 EX02 : 하이퍼링크로 폴더간 페이지 이동 - 상대 경로
-EX03 : 목록(ul(li), ol(li), dl(dt,dd)), 테이블 표(thead,tbody,tr,td) - 
-        병합(colspan-가로 병합(행), rowspan-세로 병합(열))
+EX03 : 목록(ul(li), ol(li), dl(dt,dd)), 테이블 표(thead,tbody,tr,td) - 병합(colspan-가로 병합(행), rowspan-세로 병합(열))
 EX04  - 1 : input(텍스트필드, 패스워드필드, Submit)  textarea, placeholder(텍스트필드에서 예시로 글쓰기)
-        2 : ComboBox, Radio Button
+        2 : Select, ComboBox, Radio Button
         3 : Submit
         4 : hidden
         5 : for

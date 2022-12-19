@@ -18,4 +18,5 @@ EX05    1 : Container - flex 1 https://codepen.io/enxaneta/pen/adLPwv
         3 : item - flex-grow
         4 : item - flex-shrink
         5 : item - flex-basis
-EX06    레이아웃
+EX06    index.html - 레이아웃
+        vitual.html - 가상요소

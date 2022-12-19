@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // case 1
+        let add1 = new Function("x,y", "return x+y");
+        // 첫번째 인자는 add1 함수의 전달 인자.
+        // 두번째 인자는 return 값
+        document.write(add1(3,4));      // 7
+        document.write("<br>");
+
+        // case 2
+        let add2 = function(x,y){
+            return x+y;
+        }
+        document.write(add2(13,14));    // 27
+        document.write("<br>");
+
+        // case 3
+        function add3(x,y){     // case 1, 2, 3 전부 ()내에 변수 선언 안함.
+            return x+y;
+        }
+        document.write(add3(23,24));    // 47
+        document.write("<br>");
+
+        function add4(x,y){
+            // 함수 호출시 주어지는 인자는 arguments라는 변수에 대입이 되고,
+            // 인자별로 하나씩 대입하면서 처리함.
+            console.log(arguments);
+            return x+y;
+        }
+        // document.write(add4(10,20));
+        // document.write("<br>");
+        document.write(add4(10,20,3,4,5,6,"HUMAN"));    // 30
+        document.write("<br>");
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

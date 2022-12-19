@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let x = 3;
+        let y = 3;
+        document.write(x==y);       // 값을 비교 (true)
+        document.write("<br>");
+        document.write(x===y);      // 주소를 비교 (true)
+
+        document.write("<br>");
+        document.write("<br>");
+        
+        let a = 3;
+        let b = new Number(3);
+        document.write(a==b);       // 값을 비교 (true)
+        document.write("<br>");
+        document.write(a===b);      // 주소를 비교 (false). why? new를 통해서 새로이 생성.
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

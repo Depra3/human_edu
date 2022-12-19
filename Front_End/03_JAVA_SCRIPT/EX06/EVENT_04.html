@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./JS/EVENT_04.js"></script>
+    <style>
+        #file-button{
+            display: none;
+            /* 숨김 처리 */
+        }
+        #file-trigger{
+            background-color: green;
+            border: 1px solid lightgreen;
+            border-radius: 5px;
+            padding: 5px 10px;
+            /* 4개일 경우는 Top/Right/Bottom/Left
+               2개일 경우는 Top-Bottom/Right-Left */
+            color: white;
+            cursor: pointer;
+        }
+        #file-trigger:hover{
+            /* 마우스가 올라갔을 때의 효과 */
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <section id="section1">
+        <input type="file" id="file-button"/>
+        <span id="file-trigger">파일 선택</span>
+    </section>
+</body>
+</html>

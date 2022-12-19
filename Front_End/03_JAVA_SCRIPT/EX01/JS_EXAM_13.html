@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+/*
+        function f1(){
+            let a = 2;  // 지역변수 a
+            console.log("함수 안에서 : ", a);
+        }
+        f1();
+        console.log("함수 밖에서 : ", a);
+*/
+
+/*
+        let a = 100;
+        function f2(){
+            let a = 2;  
+            // a라는 변수를 이중으로 선언함.
+            // JAVA에서는 에러가 나는 상황인데, Java Scirpt에서는 에러 안남
+            console.log("함수 안에서 : ", a);
+        }
+        f2();
+        console.log("함수 밖에서 : ", a);
+*/
+/*
+        let a = 100;
+        function f3(){
+            a = 2;  
+            console.log("함수 안에서 : ", a);
+        }
+        f3();
+        console.log("함수 밖에서 : ", a);
+*/
+/*
+        function f9(){
+            a = 2;      
+            // 변수의 선언이 없다면. window.a라는 전역변수로 선언된 꼴이 됨.
+            // 참고로 window라는 객체는 Browser에 표현되는 모든 객체의 최상위 객체임.
+            // 용어 : 호이스팅.
+            // 권장하는 방법은 늘 let으로 선언한 후 사용할 것.
+            console.log("함수 안에서 : ", a);
+        }
+        f9();
+        console.log("함수 밖에서 : ", a);
+*/
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 가상 요소 */
+        #content1::before{
+            content: "회사소개1 : ";
+        }
+        #content1::after{
+            content: "(서울 영등포구)";
+        }
+        #content2::before{
+            content: "회사소개2 : ";
+        }
+        #content2::after{
+            content: "(경기도 수원시)";
+        }
+    </style>
+</head>
+<body>
+    <div id="content1">human1</div>
+    <div id="content2">human2</div>
+    <br>
+    <div id="content1">
+        human1
+        <div id="content2">human2</div>
+    </div>
+</body>
+</html>

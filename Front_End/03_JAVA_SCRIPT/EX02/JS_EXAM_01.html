@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let x, y, intX, intY, doubleX, doubleY;
+        x = window.prompt("x값 입력 : ", 0);
+        y = window.prompt("y값 입력 : ", 0);
+        // prompt를 통해서 입력받는 데이터는 문자열로 받음.
+        // 정수 및 실수 또는 Boolean의 형태로 변환이 필요함.
+        intX = eval(x); // x의 값을 숫자로 변환.
+        intY = eval(y);
+
+        doubleX = parseFloat(x);    // parseInt, parseFloat 문자열을 숫자로 변환해주는 함수.
+        doubleY = parseFloat(y);
+        // window.alert(x+y);
+        // window.alert(intX+intY);
+        window.alert(doubleX+doubleY);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
