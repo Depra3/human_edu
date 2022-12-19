@@ -20,4 +20,4 @@
     
 - <b>Oracle</b>
     - 2022.11.29 ~ 2022.12.06
-    - 사용 툴 : <img src="https://img.shields.io/badge/Oracle-FFFF33?style=flat&logo=Oracle&logoColor=black"/>
+    - 사용 툴 : <img src="https://img.shields.io/badge/Oracle-000000?style=flat&logo=Oracle&logoColor=red"/>
