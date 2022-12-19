@@ -1,0 +1,727 @@
+재귀함수(recursive 함수)
+function fact(x){  // 팩토리얼
+     if(x==1) {
+          return 1; }
+     else {
+          return x * fact(x); }
+}
+----------------------------------------------
+system(최상위 권한자) / pw : human123
+db 최상위 권한자 supervisor 또는 DBA(DB Administrator)
+
+cmd 오라클 접속
+cmd - sqlplus 입력
+
+접속정보 필수
+orcl ora_user human123
+
+cmd 
+┌
+create tablespace myts datafile 'd:\temp\myts.dbf' size 100m autoextend on next 5m;
+myts라는 이름의 tablespace 생성, 해당 위치, db 사이즈(100m) 및 자동 확장(5m)
+
+create user ora_user identified by human123 default tablespace myts temporary tablespace temp;
+유저 생성
+
+grant dba to ora_user;
+dba 권한 부여
+┘
+
+
+schema
+
+constraint - 규약, 제약조건
+
+row, record, line - 1행 ex) 한사람이 가진 정보들
+
+column, field - 1열 ex) 한 종류의 정보들(이름, 성별,...., 모바일(문자열 - 숫자로하면 02에서 0이 인식이 안됨))
+
+varchar - 문자열, number - 숫자 (정수,실수)
+
+create table person (	--> schema
+	salary	number(5),	-99999~99999
+	mobile	varchar2(8),
+	name	varchar2(20),
+	gender	varchar2(6)
+) ; - sqldeveloper에서는 ;사용- 코드 사용과 동일
+	컬럼명	데이터타입(길이)
+
+desc person;  - describe 서술하다
+
+varchar2에서 2는 오라클 버전에 따른 문구 - mysql에선 varchar로 사용
+char(java String과 유사) - varchar(mysql) - varchar2(orcle)
+
+char(6)	- gender male△△ 2칸 공백(쌓이면 그만큼의 데이터 낭비)
+	gender char(1)로 사용시 낭비없음- gender m/f
+vachar(6)	- gender male / female 공백 없음 대신 효율이 낮음   가변길이시에 넣음
+vachar2(6) - gender male / female 공백 없음 varchar의 효율을 보충,  가변길이시에 넣음
+
+not null - 데이터가 없으면 안되는 field에 사용
+nullable - 데이터를 사후에 넣어야할 field에 사용 - 굳이 코드에 쓰지 않아도 자동으로 입력
+
+drop table ~~~; - 테이블 삭제
+alter		테이블 구조 수정
+select table_name from user_tables;
+
+MetaData(데이터를 보관하는 곳에 대한 정보 데이터)
+DML(Data Manipulation Language)
+DDL(Data Definition Language)
+DCL(Data Control Language)
+			DML	DDL      DCL
+			Data	MetaData
+C (데이터 생성/추가)create	insert	create table
+R (데이터 조회)read	select	select
+U (데이터 수정)update	update	alter
+D (데이터 삭제)delete	delete	drop table
+---------------------------------------------------------------------------------------------------------
+oracle
+insert into 테이블 명 values(값1, ... , 값n);	값이 순서대로 들어감	문자열은 '' 사용
+insert into 테이블 명(컬럼명1, ... , 컬럼명n) values(값1, ... , 값n);	값이 해당 컬럼명 따라 들어감
++
+mysql, Maria DB 
+insert into 테이블 명 set 컬럼명1='값1', 컬럼명2=값2, ...., 컬럼명n=값n
+
+Relation = table ?
+Relational DB - MySQL, Oracle, Maria DB, SQL Server
+HDB - MongDB
+메인메모리를 이용한 DB -Redis 
+
+SELECT * from student;		* - all 모든
+
+insert into student values('(null)','Female','RiverWest', 5,null,null,null,null);
+
+number 타입에 '6'같이 넣어도 입력됨(구버전에선 불가)
+
+'(null)' 은 외부에서 if문같은 방식으로 처리해야함. 내부에서 구별X
+''(빈 문자열)은 null과 같음
+---------------------------------------------------------------------------------------------------------
+delete from 테이블 명 where 컬럼명=값;
+- 특정 컬럼의 값이 특정값인 레코드(row,line)를 지운다. 대소문자 유의
+delete from 테이블 명;
+- 해당 테이블에 있는 레코드 전부 삭제
+delete from 테이블 명 where 컬럼명<값; 으로도 사용 가능(조건 넣어 사용)
+delete from 테이블 명 where 컬럼명 is null;
+- null 삭제하는 방법
+
+되돌리는데 씀
+commit; 1 고정
+rollback; 2 고정시점으로 롤백
+---------------------------------------------------------------------------------------------------------
+update 테이블명 set 컬럼명1='값1', 컬럼명2=값2, ... , 컬럼명n=값n where 컬럼명=값
+- where이 없으면 전체에 적용 => 같은 컬럼명에 동일한 값들로 바뀜
+
+dmp파일 import 방법
+cmd창에서 해당 파일 디렉토리로 이동
+imp ora_user/human123 file=expcust.dmp log=expcust.log ignore=y grants=y rows=y indexes=y full=y
+       userid	pw	    *		*					
+
+create table worker as select * from employees;
+- employees테이블의 내용을 worker라는 테이블을 만들어 삽입.
+
+mysql
+create table worker select * from employees;
+
+기본키 (Primary Key)
+-고유성(Uniqueness) : table전체에서 유일한 값을 갖는 column
+ not null
+1. 테이블 하나당 오직 하나만 존재한다. 두개 이상 불가.
+   기본키 없는 테이블 생성은 가능
+   키값은 전체 컬럼을 통틀어서 유일해야함.(고유성-Uniqueness)
+2. 키값은 null을 넣을 수 없다.(Not Null)
+3. 수정 불가.(unchangeable)
+※단순한 데이터가 들어가는 것을 하는 것이 좋음
+
+Candidata? Key(후보 키)
+기본키(P.K)가 될 가능성이 있는 키
+
+외래 키 (Foreign Key)
+-다른 테이블에서 기본키인 데이터를 칭함. 중복 가능
+constraint 제약 조건 명 foreign key(컬럼명-F.K)	references 참조할 테이블명(해당 테이블 칼럼명-P.K)
+constraint fk_typenum  foreign key(type)	references roomtype(typenum)
+
+on delete cascade - 지우면 따라 지움(데이터 관리 편의성) 사용자 마음에 따라 다름
+- 결과로 테이블을 잃어버린 데이터는 orphan이라고 함.
+
+데이터 베이스 객체(8가지)
+						사용빈도 순위
+테이블(Table) 	- 실물 데이터가 저장되는 공간	1
+뷰(View)		- 테이블 검색용			2
+인덱스(Index)	- 검색 속도 향상			1
+시노님(Synonym)	- 테이블의 별명
+시퀀스(Sequence) 	- 일련번호 생성기(P.K제조용 - 옛날엔 단순 숫자, 현재는 문자와 숫자를 같이 사용)
+					1,2,3,4,...			A12B3,.....
+PL(Programming Language)
+-함수(Function)		- 반환값이 있는 코드	2
+-프로시저(Procedure)	- 반환값이 없는 코드	2
+-패키지(Package)		- 함수/프로시저를 분류해서 모은 묶음
+
+number(소수점 포함 전체 길이, 소수점 이하 길이)
+ex) 12345.123	number(5,3)
+
+DATE	   - 연월일시분초
+Timestamp - 연월일시분초 + millisecond
+- 실제로 잘 사용 안함. DB속도가 느려짐. 대신에 문자열로 20221130103622 같은 방식으로 사용하기도함.
+LOB(Large OBject) - 이미지 저장
+- DB속도가 느려림. 대신에 문자열로 파일 이름을 넣음. 프로그램을 이용하여 특정폴더에서 해당 파일이름을 찾아서 가져옴
+
+Unique p.61
+
+delete from - data only -- 복구 가능(rollback)
+truncate table - data only -- 복구 불가능(rollback 불가)
+drop table - data + schema -- 테이블까지 삭제, 복구 불가능
+
+View p.73 - 검색 조건이 복잡할 경우 사용
+create view under_five as select * from worker where salary<5000;
+
+Index p.75 - 검색(select) 속도를 빠르게 할 경우 사용. 단, insert/update/delete 등 작업시에 속도가 지체될 수 있다.
+create index ndx_emp_name on worker(emp_name);
+
+Synonym p.79 - 테이블 추가가 아닌 별명 생성
+create synonym human_resource for employees;
+
+Sequence p.83
+create sequence seq_id;
+select seq_id.nextval from dual;	.nextval 할때마다 1추가
+desc roomtype;
+select * from roomtype;
+insert into roomtype values(seq_id.nextval,'Corridor',null); - 이와 같은 방식으로 1씩 추가하면서 입력 가능
+//create sequence seg_id
+// start with 100		- 시작값
+// increment by 2/-2	- 증감값
+// 추가 기능은 페이지 참조
+// 현재 시퀀스 번호를 알고 싶은 경우 seg_id.currval 이용
+*.nextval ,  *.currval. => 의사컬럼(가짜컬럼, pseudo-column)
+
+연산자 p.112
+산술 연산자 : +, -, *, /,    ||(문자)
+비교 연산자 : =, !=, <>, >, <, >=, <=, is null, is not null
+논리 연산자 : and, or, not
+집합 연산자 : 교집합(intersect), 합집합(union, union all), 차집합(minus) p.163
+
+다른점
+==  -  =
+
+!=, <>는 같음
+
+표현식 p.113
+select employee_id, salary,
+    case when salary<=5000 then 'C'
+        when salary>5000 and salary <=15000 then 'B'
+        else 'A'
+    end as salary_level
+	  컬럼명    - 없어도 사용 가능
+from worker;
+
+조건식 p.114 - in으로 대체 가능
+자주 사용 : between, in, like
+
+컬럼명 between A and B; => A<= 컬럼명<= B  
+
+in 조건식 p.117 
+컬럼명 in (A,B,C,D); => 컬렴명=A, 컬렴명=B, 컬렴명=C, 컬렴명=D
+
+like p.119
+
+% 0개 이상 문자 - *과 유사
+select emp_name from worker where emp_name like 'J%';
+select emp_name from worker where emp_name like '%son';
+select emp_name from worker where emp_name like '% A%';  - 공백도 글자로 취급
+select emp_name from worker where emp_name like '%ing%'; - 0개 이상 문자
+ex) Janette King, Payam Kaufling, Steven King...
+
+_ 1개의 문자
+select emp_name from worker where emp_name like 'J___ %';
+
+함수 p.126
+
+-내장 함수(Built-in) // 주로 사용 *
+ex) parseInt(x);
+숫자 함수
+ABS(x)
+n=CEIL(실수) : '실수'보다 큰 정수들 중 가장 작은 정수	- 천장*
+n=FLOOR(실수) : '실수'보다 작은 정수들 중 가장 큰 정수	- 바닥*
+ex) CEIL(3.14) => 4, FLOOR(3.14) => 3, 은행에서 주로 사용(돈 계산 등)
+ROUND(n, i) - 반올림*,  TRUNC(n1, n2) - 버림
+POWER(n2,n1) - 제곱(POWER(4,2) => 16), SQRT(n) - 제곱근(SQRT(16)=>4)
+MOD*,REMAINDER - 나머지값 구하기
+EXP,LN - 천문학계열에서 주로 사용
+
+문자 함수
+
+p.130
+INITCAP() - 첫글자를 대문자로 함
+lower()	- 모든 글자를 소문자로 변환
+upper()	- 모든 글자를 대문자로 변환
+concat(n1,n2) - 잘 사용 안함. 3개 이상 불가, 무조건 2개. ||을 많이 사용
+substr(문자열, 시작인덱스[길이]) - 시작 인덱스는 1부터 시작  ㅡ p.131 *
+: oracle은 1부터 시작(Pascal의 영향), mysql은 0부터 시작(C/C++의 영향)
+-substr('Good Morning',5) => 'Morning'
+-select '['||substr('good morning',1,5)||']' from dual; - 공백도 문자 포함.
+-select emp_name from worker where substr(emp_name,-3)='son';
+-select emp_name from worker where emp_name like '%son';
+substrb - byte단위로 자름, 잘 사용 안함.
+LTRIM() - 왼쪽에서부터 자름, 잘 사용 안함.
+RTRIM() - 오른쪽에서부터 자름, 잘 사용 안함.
+Replace * p.134
+select replace ('Good Morning Vietnam', 'Morning', 'Evening') from dual;
+select emp_name from worker where emp_name like 'John%';
+select replace(emp_name,'John ', 'John-') from worker;
+select replace(emp_name,'John ', 'John-') from worker where emp_name like 'John%';
+select replace(emp_name,' ', '') from worker where emp_name like 'John%'; - 공백 제거
+
+INSTR * p.137
+instr(문자열, 찾을 문자열[, 시작 인덱스, 출현횟수]) : 문자열에서 '찾을 문자열'이 나타나는 위치의 인덱스 번호(못 찾으면 0)
+select instr('내가 /"만약"/ 외로울 때면, 내가 만약 괴로울 때면, 내가 만약 즐거울 때면','만약') from dual; --4
+select instr('내가 만약' 외로울 때면, 내가 /"만약"/ 괴로울 때면, 내가 만약 즐거울 때면','만약',5) from dual; --18
+select instr('내가 만약' 외로울 때면, 내가 /만약/1 괴로울 때면, 내가 /"만약"/2 즐거울 때면','만약',5,2) from dual; --32
+select instr('John Wick','Wick') from dual; --6
+select instr('John Wick','Joe') from dual; --0
+인덱스가 0부터 시작하는 경우 못찾으면 -1, 인덱스가 1부터 시작하는 경우 못찾으면 0
+LENGTH() - 공백 포함 p.137 *
+select length('Good Morning Vietnam') from dual;
+select emp_name, length(emp_name) from worker;
+
+문자 javascript ' " , java ", sql(oracle) ', mysql ' " ?
+
+날짜 함수 p.138
+select sysdate, systimestamp from dual; - 현재시간 출력
+p.141*
+to_char(숫자 / 날짜, '형식') : 데이터를 '형식'에 해당하는 문자열로 변환. *
+-select to_char(salary,'99,999') from worker; - 1,000단위
+to_number('문자열') : == parseInt() : 문자열/표현식을 숫자로 변환 *
+=
+nvl(컬럼/데이터, 숫자): 컬럼/데이터가 null이면 숫자로 표시, 아니면 그대로 자체 표시 p.143*
+-select name,gender,school_name,grade_num,mobile,nvl(math_score,-1),nvl(english_score,-1),nvl(korean_score,-1) from student;
+nullif(표현식1, 표현식2) : 표현식1==표현식2이면 null출력, 다르면 표현식1을 출력  p.146^
+-select employee_id, to_char(start_date,'yyyy'),to_char(end_date,'yyyy'),
+    nullif(to_char(start_date,'yyyy'),to_char(end_date,'yyyy')) nullif_year
+from job_history;
+
+greatest	(1,2,3,...,10) => 10 - 가장 큰 값
+least	(1,2,3,...,10) => 1  - 가장 작은 값
+
+decode p.147^  case ~ when ~ then ~ ([[if에 가까움), decode( switch에 가까움)
+-비교연산자등 범위 지정 못함
+
+어플리케이션 sql활용
+String sql ="select emp_name,salary from worker";
+// DB접속
+// sql-?> db전달(method 호출)
+ArrayList rec = getData(sql);
+for(~){ System.out.print(); }
+
+* Select *
+
+or == |
+select * | 컬럼명,...., 컬럼명 | 표현식(컬럼명) | SQL문
+from 테이블명 | SQL문 | dual
+where 비교/논리연산자
+
+* : all,asterisk/star라고 부름 보통 all을 사용
+alias == synonym(테이블 별명) (역할이 다름. alias-컬럼의 별명)
+nickname // 별명은 별명일 뿐 수식이나 함수같은 곳에 활용 X
+사용안하면 에러나는 경우도 있으니 주의
+
+select employee_id eid(->alias),emp_name,salary,commission_pct pct(->alias),
+        to_char(salary*(1+commission_pct/100),'999,999.99') final_salary(->alias)
+		null과 계산하는 모든 값은 null
+from worker
+where commission_pct is not null;
+
+기본 집계 함수 * (순서대로 사용빈도가 높음)
+count()		갯수		- record수, null값은 포함 안됨. 
+sum()		합계		- *불가, 컬럼명을 이용해야함.
+avg()		평균		- *불가, 컬럼명을 이용해야함.
+min()/max()	최소값/최대값	- *불가, 컬럼명을 이용해야함.
+variance()/stddev()	분산도/표준편차	- *불가, 컬럼명을 이용해야함.
+
+Group by
+select 칼럼명1,....,컬럼명n, 집계함수1,...,집계함수n from 테이블 group by 칼럼명1,....,컬럼명n;
+-select manager_id,count(*),sum(salary),to_char(avg(salary),'99,999.99') from worker group by manager_id;
+	C1           Z1	   Z2          Z3				T		C1
+-select department_id,count(*)
+	  C1	      Z1
+	from worker
+		T
+	group by department_id;
+			C1
+--commission_pct별 인원수
+select commission_pct pct,count(*) cnt
+from worker
+where commission_pct is not null
+--null이 아닌 것만
+group by commission_pct
+order by avg(salary);;
+
+*Having :
+select department_id, count(*) cnt
+from worker
+--where department_id is not null
+group by department_id
+having count(*)>1		-- group이후의 조건 (group by의 기준이 정해진 이후에 적용하기 위해 사용)
+--order by count(*);
+order by cnt desc;		-- order by 에서는 alias가 가능함
+
+집합 연산자 p.163
+※ 두 sql문이 하나로 합쳐짐.
+INTERSECT * - 교집합
+-select goods from exp_goods_asia where country='한국'
+-intersect
+-select goods from exp_goods_asia where country='일본';
+
+UNION - 합집합
+-select goods from exp_goods_asia where country='한국'
+-union 
+-union all - 중복되는 것까지 보여줌
+-select goods from exp_goods_asia where country='일본';
+
+MINUS - 차집합
+select goods from exp_goods_asia where country='한국'
+minus
+select goods from exp_goods_asia where country='일본';
+=> 한국에만 있는것, 일본에만 있는 것을 보고 싶을 때는 두 sql문구 위치를 바꾸면 됨.
+------------------------------------------------------------------------------------
+distinct - 각각의, 별개의, => 대표값 하나만 보기 *
+------------------------------------------------------------------------------------
+내부조인 (Inner Join)
+- 동등조인(equi join)	=
+- 안티조인(non-equi join)	!=
+- 세미조인(semi join)	>,<
+- 셀프조인(self join)
+
+외부조인(Outer Join)
+- Left Outer Join
+- Right Outer Join
+- Full Outer Join
+
+내부조인 (Inner Join)
+
+* JOIN * p.176
+- SQL에서 두 개 이상의 테이블을 연결하는 것
+카타시안 곱(조인)(Cartasian Join) - 조건 없이 두 테이블을 조인
+- select * from A,B;
+join
+- select A.이름,A.성별,B.부서명 from A,B where A.부서코드=B.부서코드;
+select 찾아볼 칼럼명들
+from 메인테이블(마스터테이블), 참조할 테이블들
+where P.K선언한 F.K 컬럼이용
+
+select worker.emp_name,departments.department_name
+from worker, departments
+where worker.department_id=departments.department_id;
+
+--alias name 적용(테이블 명을 대체할 때 사용, 컬럼명은 대체 불가)
+select a.employee_id,a.emp_name,b.department_name
+from worker a, departments b
+where a.department_id=b.department_id; <=동등조인(=)
+
+--여러 개 테이블을 Join
+select s.sales_month, p.prod_name, c.cust_name, c.cust_gender, ch.channel_desc, e.emp_name, d.department_name
+--select count(*)
+from sales s, products p, customers c, channels ch, employees e, departments d
+where s.prod_id = p.prod_id 
+  and s.cust_id = c.cust_id 
+  and s.channel_id = ch.channel_id 
+  and s.employee_id = e.employee_id 
+  and e.department_id = d.department_id;
+
+--group by + join
+--상품당 매출액
+select b.prod_name, to_char(sum(a.amount_sold),'999,999,999,999.99')
+from sales a, products b
+where a.prod_id=b.prod_id
+group by b.prod_name
+order by b.prod_name;
+
+셀프조인 * p.180
+- 자기 자신 참조
+select a.employee_id, a.emp_name, b.emp_name manager_name
+from employees a, employees b
+where a.manager_id=b.employee_id
+=> tree구조 표현 가능 (회사 조직도-상사,부하 구분)
+tree = table / 테이블 하나로 
+
+select a.department_id, a.department_name, b.department_name parent_name
+from departments a, departments b
+where a.parent_id = b.department_id 
+상위컬럼의 데이터	  하위컬럼의 데이터
+order by a.department_id;
+
+--@사번, 이름, 매니저이름, 부서명, 부서장명
+select a.employee_id 사번, a.emp_name 이름, b.emp_name 매니저_이름, d.department_name 부서명, c.emp_name 부서장명
+  from employees a, employees b, employees c, departments d
+ where a.manager_id = b.employee_id         -- 1
+   and a.department_id = d.department_id    -- 2
+   and d.manager_id = c.employee_id         -- 3
+--   and d.manager_id = b.employee_id
+--   and d.manager_id = a.employee_id
+-- 같은 테이블이라 하더라도 연결하면 가지고 있는 데이터가 기존의 테이블과 달라 제대로 된 결과가 나오지 않음.
+-- 새로운 테이블로 연결해야 제대로 된 결과가 나옴.
+-- 1로 인해 a와 b가 가지고 있는 데이터가 기존의 테이블과 다름, 때문에 3에서 같은 새로운 테이블을 이용하여 연결
+ order by 이름;
+
+외부조인(Outer Join)
+데이터 누락이 없이 Join
+-select a.employee_id, a.emp_name, b.emp_name manager_name
+from employees a, employees b
+where a.manager_id = b.employee_id(+);
+null이 없는 곳에 (+)을 붙임
+
+A : 이름 성별 부서코드
+B : 부서코드 부서명
+select a.이름, b.부서명
+from A a, B b
+where a.부서코드=b.부서코드
+=> 정보가 다 나오지 않을 경우 =>
+select a.이름, b.부서명
+from A a, B b
+where a.부서코드=b.부서코드(+)
+=> (+)있는 쪽에 null이 있으면 붙어서 나옴. (+)이 없는 쪽이 기준이 됨
+	기준이 되는 쪽에 (+)을 붙이면 정보 왜곡이 생길 수 있음
+
+Left Outer Join
+- 사용빈도가 가장 높음
+select a.이름, b.부서명
+from A a, B b
+where a.부서코드=b.부서코드(+)
+
+Right Outer Join
+select a.이름, b.부서명
+from A a, B b
+where a.부서코드(+)=b.부서코드
+
+Full Outer Join
+-현실성이 떨어져 사용 빈도 낮음
+select a.이름, b.부서명
+from A a, B b
+where a.부서코드(+)=b.부서코드(+)
+
+ANSI 조인
+-기존
+select a.x, b.y
+from A a, B b
+where a.x = b.x;
+=>
+-select a.x, b.y
+from A a inner join B b
+on a.x=b.x;
+
+select a.employee_id, a.emp_name,a.salary, b.department_name
+from employees a, departments b
+where a.department_id=b.department_id
+and a.salary>6000
+order by a.salary;
+=>
+select a.employee_id, a.emp_name,a.salary, b.department_name
+from employees a inner join departments b
+on a.department_id=b.department_id
+where a.salary>6000
+order by a.salary;
+
+*
+	Inner	Outer
+
+Oracle	ANSI	ANSI
+	General	General( (+) )*
+
+MySQL	ANSI	ANSI
+	General			*
+
+
+서브쿼리 *p.191
+- from,where쪽에서 주로 많이 사용
+- 서브
+select a.employee_id, a.emp_name, a.salary, b.department_name
+from (select * from employees where salary>6000) a, departments b
+      서브 쿼리 - salary가 6000초과만 있는 테이블
+	인라인 뷰
+where a.department_id=b.department_id
+order by a.salary;
+
+Normalization
+- 데이터를 효율적으로 관리하기 위해 테이블을 분리하여 관리
+- 단, 이후 원하는 데이터를 얻기 위해 테이블간 Join을 해야 함.
+- 따라서 과한 분리는 그만큼의 Join이 늘어나기 때문에 적정 수준을 유지해야 함.
+- 7단계로 나뉨() 3,4(Boyce Code Normlization Form - BCNF)단계가 적당함.
+
+Denormalization
+- 데이터가 한 눈에 볼 수 있을 정도로 적으면 분리한 테이블을 병합하여 관리
+
+7장은 oracle에만 있는 기능
+
+ERD - Entity Relationship Diagram : 개체 관계도
+Table = Relation = Entity = Object = schema
+
+Pascal -> Oracle PL/SQL, Delphi -> declare begin ~ end;
+C			    -> { ~ }
+
+Code block(익명(anonymous,unnamed)블록)
+
+declare
+   변수 선언
+begin
+   실행 코드
+end;
+/
+
+if for while - Python
+if for while switch do-while - Java / C
+if for while case loop - Pascal
+
+★	배정 연산자	동등 비교
+Pascal	     :=		    =
+Other	     =		   ==
+
+※ if문
+if 비교/논리 then
+   실행 코드
+end if;
+
+※ if-else
+if 비교/논리 then
+   실행 코드
+else
+   실행 코드
+end if;
+
+※ if~elsif
+if 비교/논리 then
+   실행 코드
+elsif 비교/논리 then
+   실행 코드
+else
+   실행 코드
+end if;
+
+※ case 1
+case 표현식		case x+y
+when 결과값1 then		when 3 then
+   실행 코드		   실행 코드
+when 결과값2 then		when 5 then
+   실행 코드	=>	   실행 코드
+else			else
+   실행 코드		   실행 코드
+end case;			end case;
+
+※ case 2
+case 			case 
+when 표현식1 then		when x+y=3 then
+   실행 코드		   실행 코드
+when 표현식2 then		when x+y=5 then
+   실행 코드	=>	   실행 코드
+else			else
+   실행 코드		   실행 코드
+end case;			end case;
+
+while(조건){} 실행 횟수 : 최소 0번
+※ while			※ for
+while 비교/논리		for 변수 in (reverse - 감소) 처음값..최종값	for vn in 0..9
+loop			loop	reverse는 최종값부터 처음값		loop
+   실행 코드		   실행 코드				   dbms_output.put_line(vn);
+end loop;		end loop;				end loop;
+
+do ~ while(조건) {} 실행 횟수 : 최소 1번
+※ loop
+loop
+   exit when 조건;
+   실행 코드
+end loop;
+
+※ continue
+- 반복문 시작지점으로 이동
+continue when 조건;
+
+※ GOTO
+-라벨로 이동
+goto 라벨;
+<<라벨>>
+
+※ NULL
+- 아무 것도 하지 않음.
+Null; - do nothing
+
+-사용자 정의 함수(user-defined)
+
+함수(Function) - 반환값이 있는 코드 블럭 ↑
+
+프로시저(Procedure) - 반환값이 없는 코드 블럭 ↓
+- 컴파일하게 되면 따로 저장됨.
+
+create or replace procedure 프로시저명(매개변수1,...,매개변수n)
+is -- = declare
+   변수/상수 선언
+begin
+   실행 코드
+end;
+/
+
+--호출
+exec(ute) 프로시저명(값1,...,값n)
+
+--문법/철자 오류 - 집중력
+
+create or replace function 함수명(매개변수1,..,매개변수n)
+return 데이터타입
+is -- = declare
+   변수/상수 선언
+begin
+   실행 코드
+   return 변수명/표현식/상수;
+end;
+/
+--호출
+SQL안에서만 호출
+
+OUT, IN OUT p.295
+
+커서 p.342 *
+-SQL문장을 실행한 결과를 보관하고 있는 메모리 공간(변수)
+선언 -> 열기(실행) -> 사용 -> 닫기
+
+num varchar2(20)  A
+num number  B
+데이터 복사 (구조가 같을 시)
+insert into B select * from A [where 절]
+drop table A;
+테이블 이름 바꾸기
+rename B to A;
+
+// 데이터가 많을 시
+alter table A add column num1 number;
+update A set num1=num;
+alter table A drop column num;
+alter table A rename column num1 to num;
+alter table A add primary key (num);
+
+// 테이블에 데이터가 없을 시
+alter table A modify num number;
+
+// 현재 있는 테이블
+select table_name from user_tables;
+
+cmd sqlplus - edit
+create table member(
+   loginid varchar2(20) not null primary key,
+   passcode varchar2(10) not null,
+   name varchar2(16) not null,
+   mobile varchar2(20)
+)
+/
+-=-=-=-=-=-=-=
+create table member(
+   loginid varchar2(20) not null primary key,
+   passcode varchar2(10) not null,
+   name varchar2(16) not null,
+   mobile varchar2(20)
+);
+-=-=-=-=-=-=-=-=
+create table posting(
+   post_id number not null primary key,
+   title varchar2(128) not null,
+   content varchar2(4000) not null,
+   writer varchar2(20) not null,
+   created char(14) not null,
+   updated char(14) 
+);
+2022-12-15,15:39:35
+create sequence seq_post_id; //1부터
