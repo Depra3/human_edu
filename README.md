@@ -20,7 +20,7 @@
     
 - <b>Oracle</b>
     - 2022.11.29 ~ 2022.12.06
-    - 사용 툴 : <img src="https://img.shields.io/badge/Oracle-F80000?style=flat&logo=Oracle&logoColor=red"/>
+    - 사용 툴 : <img src="https://img.shields.io/badge/Oracle-F80000?style=flat&logo=Oracle&logoColor=white"/>
     - DML, DCL을 이용한 CRUD 실습
     - Join, 서브 쿼리를 이용한 데이터 추출 실습
     - PL/SQL을 이용한 데이터 추출 실습
