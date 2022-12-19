@@ -7,4 +7,10 @@
 - JAVA
     - 2022.10.04 ~ 2022.11.03
     - 사용 툴 : <img src="https://img.shields.io/badge/Eclips SE-0066CC?style=flat&logo=Eclips&logoColor=white"/>
-    - 자바를 코딩하기 위한 기본 개념, 객체, 상속, 인터페이스 등 실습
+    - 자바를 코딩하기 위한 기본 개념, 객체, 상속, 인터페이스, 예외 처리 등 실습
+    - 객체(추상 클래스, 인터페이스)를 이용한 데이터 처리 실습
+
+- HTML, JAVA Script/CSS, JQuery
+    - 2022.11.04 ~ 2022.11.28
+    - 사용 툴 : <img src="https://img.shields.io/badge/Visual Studio Code-0000CC?style=flat&logo=Visual Studio Code&logoColor=white"/>
+    -
