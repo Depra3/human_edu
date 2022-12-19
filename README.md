@@ -7,4 +7,4 @@
 - JAVA
     - 2022.10.04 ~ 2022.11.03
     - 사용 툴 : <img src="https://img.shields.io/badge/Eclips SE-0066CC?style=flat&logo=Eclips&logoColor=white"/>
-    - 
+    - 자바를 코딩하기 위한 기본 개념, 객체, 상속, 인터페이스 등 실습
