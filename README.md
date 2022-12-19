@@ -6,7 +6,7 @@
 # 내용
 - <b>JAVA</b>
     - 2022.10.04 ~ 2022.11.03
-    - 사용 툴 : <img src="https://img.shields.io/badge/Eclips SE-0066CC?style=flat&logo=Eclips SE&logoColor=white"/>
+    - 사용 툴 : <img src="https://img.shields.io/badge/Eclipse IDE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
     - 자바를 코딩하기 위한 기본 개념, 객체, 상속, 인터페이스, 예외 처리 등 실습
     - 객체(추상 클래스, 인터페이스)를 이용한 데이터 처리 실습
 
