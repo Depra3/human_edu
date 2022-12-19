@@ -1,0 +1,254 @@
+Function -> Library(package) -> Framework
+Web Framework
+Java -> Spring 3.0, Spring Boot(4.0~)
+Python -> Django, Flask, FastAPI, TensorFlow(인공지능용)
+PHP -> Laravel
+C#, Visual Basic -> .netFramework
+
+Framework p.47*
+
+src - main jsp
+src/main/resources - css~
+
+port
+1524 Oracle
+8081 as
+3306 MySQL
+
+1~1024 system전용
+1025~ 사용 가능
+
+build.gradle
+  dependencies에 추가
+    implementation 'javax.servlet:jstl'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+  F5 새로고침 or 프로젝트-우클릭 gradle refresh
+ src - main 에서 /webapp/WEB-INF/views까지 차례대로 추가
+
+application.properties에서 추가할 것
+# JSP설정
+spring.mvc.view.prefix=/WEB-INF/views
+spring.mvc.view.suffix=.jsp
+저장할 때, Save as UTF-8로 저장
+
+views가 JSP의 home
+
+mvc - 
+Model	 - Class
+View	 - JSP(Front-End)
+Controller - Java(Back-End)
+
+V - data(request) -> C - response - > V
+
+Controller 만들기
+1 project명 우클릭 -> new -> class선택 - class 작명
+2 class내 class명 위에 @Controller
+
+controller 개수는 많이 만들 수 있음. 단, @RequestMapping("/")의 "/"이 중복이 되면 안됨(유일)
+
+RequestMapping 만들기 
+1 Controller class안에 @RequestMapping(URL)을 추가
+2 그 아래에 public String 메소드명 추가
+3 메소드 안에서  프론트엔드에 표시될 JSP파일명을 return한다. ex) return "JSP파일명";
+
+@RequestMapping(URL) == @RequestMapping(value="URL", mehod=RequestMethod.GET) == @GetMapping("URL") )
+@RequestMapping(URL) == @RequestMapping(value="URL", mehod=RequestMethod.POST) == @PostMapping("URL") )
+==> @RequestMapping(URL)
+전달
+<input> 단, submit은 예외
+<select>
+<textarea>
+
+form태그는 id 태그를 인식 못함 -> name 태그 이용
+
+return "login"; // JSP파일만 실행 - login.jsp를 web browser로 보냄
+return "redirect:/login"; // /login으로 이동 doLogin()클래스로 이동해서 코드실행
+
+${ } - Expression Language
+<%@ , <% , ${ }, <c:if - server쪽에서 실행 (변수 등 전부 대입 후 보냄)
+
+session - 프로젝트 전체에서 [변수]를 공유할 수 있도록 [서버]가 관리 - 서버쪽의 변수
+- 내용 : 개인정보, 보관 형식: 객체(변수), 관리 주체 : 웹서버, 보관 위치: 웹서버측, 프로그램 : 서버프로그램, LIfeCycle: 웹사이트 벗어나면 소멸
+1. session 선언 
+-[HttpServletRequest req ]
+-HttpSession session = req.getSession();
+2. session 값 설정 
+-sesstion.setAttribute("세션 변수명", "값/변수/표현식");
+3. session 값 조회 
+-String str = (String) session.getAttribute("세션 변수명");
+4. session 값 삭제 
+-session.invalidate(); // 모든 세션 변수를 제거
+-session.setAttribute("세션 변수명",null);
+
+Cookie - 클라이언트가 관리
+- 내용 : 개인정보 보관 형식: 로컬파일(문자열), 관리 주체 : 웹브라우저, 보관 위치: 클라이언트측, 프로그램 : 서버프로그램(Javascript), LIfeCycle: 최장 365일(영구)
+생성
+Cookie c1;
+c1.setCookie("first","값",365*24*60*60);
+let str = c1.getCookie("first");
+
+MyBatis 설정
+1. Projects 생성시 "MyBatis Framework"를 check해서 등록
+2. application.properties에 아래 내용을 추가
+
+mybatis.mapper-locations=classpath:mybatis/mapper/**/**.xml
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521/orcl
+spring.datasource.username=ora_user
+spring.datasource.password=human123
+
+3. project - properties - Libraries - Classpath - Add External JARs - ojdbc6.jar파일(버전에 따라 다름) 검색해서 찾기
+
+DAO - Data Access Object (Data 접근 객체 CRUD)**    / 객체 =  class
+DTO - Data Transfer Object(Data 전달 객체)
+
+Spring Framework -> DAO -> Database -> DAO -> DTO(select ....) -> Spring Framework
+
+DAO(interface), DTO, XML for select SQL
+DAO(interface), XML for insert/update/delete SQL
+
+Mapper XML
+1. 무조건 있어야 하는 헤더 정보
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd//mybatis-3-mapper.dtd">
+2. DAO와의 mapping 정보
+<mapper namespace="DAO class의 위치">
+==>
+<mapper namespace="com.human.pringboot.jdbc.empDAO">
+</mapper>
+
+3. select SQL 실행정보
+<select id="메소드명 in 인터페이스" resultType="DTO class의 위치">
+
+4. SQL문 추가
+ select employee_id, emp_name, salary, manager_id from employees order by emp_name
+/*
+create sequence seq_roomtype start with 8;
+insert into roomtype values(seq_roomtype.nextval,'')
+create sequence seq_roominfo start with 101;
+*/
+-insert SQL 실행 정보
+<insert id="메소드명 in 인터페이스">
+   insert into ~ values(...,#{param1},...,#{paramN}) // method의 파라미터 순서대로 작성
+/*
+let typenum = $(this).find('td:eq(0)').text(); 에서 td.eq는 오류 코드
+.on('click','#btnDelete',function(){
+	if($('#typenum').val()==''||$('#typename').val()=='') {return false;} else { return true;} 
+	// return을하면 밑의 코드 실행 안됨. =>  else { return true;} 삭제
+	$('#optype').val('delete');
+	$('#frmControl').submit();
+})
+*/
+
+AJAX ( Asynchronous Javascript And XML)*
+- Javascript가 서버프로그램과 직접 통신해서, screen refresh할 때 발생하는 blacking현상을 없애는 technique
+
+Text(String)	- 최소 용량
+JSON		- 중	- 대부분의 경우에 사용
+(JavaScript Object Notation)
+XML		- 대용량
+$.get('/doPlus' , {first:$('#va').val(), second:$('#vb').val()} , function(data){ $('#lblResult').text(data); } , 'text');
+$.get('action' , {객체 : key-value} , function(data) , 데이터 이동형식)
+$.get(URL , SendData, function(ReceiveData) , datatype)
+※ ajax 문법
+$.ajax(  {	url:'url문자열(@Requsetmapping)',
+	data : javascript객체(서버 프로그램에 전달된 값들),
+	method/type : 'get'/'post',	// 서버로 보내는 값의 타입?
+	dataType : 'text'/'json'/'xml',	// 서버에서 받는 값의 타입?
+	beforSend:function(){
+		//ajax 호출 전에 할 작업들
+	}
+	success:function(data){
+		....
+	},
+	error:function(data){
+		....
+	},
+	complete:function(data){	// sucess나 error가 끝난 후 동작 
+		....
+	}
+ }),
+//////////////////
+$.get('/getEmpList',{},function(data){  - 간략형. error시 대처가 힘듬.
+		// 들어오는 데이터 모양 { 'employee_id':100, 'emp_name':'Steven King', 'salary':24000, 'mname':''}
+		for(i=0; i<data.length;i++){
+			let person=data[i];
+			let str='<tr><td>'+person['eid']+'</td><td>'+person['emp_name']+'</td><td>'+person['salary']+
+					'</td><td>'+person['mname']+'</td></tr>';
+			$('#tblList').append(str);
+		}
+		},'json')
+=Standard=>
+
+$.ajax({ url:'/getEmpList', data: {}, method:'get', dataType:'json',
+	success:function(data){
+		for(i=0; i<data.length;i++){
+			let person=data[i];
+			let str='<tr><td>'+person['eid']+'</td><td>'+person['emp_name']+'</td><td>'+person['salary']+
+					'</td><td>'+person['mname']+'</td></tr>';
+			$('#tblList').append(str);
+		}
+	}
+});
+////////////
+html
+&nbsp;	
+&gt;	>
+&lt;	<
+&amp;	&
+//////
+create table member(
+   loginid varchar2(20) not null primary key,
+   passcode varchar2(10) not null,
+   name varchar2(16) not null,
+   mobile varchar2(20)
+);
+
+select count(*) from member where loginid=? and passcode=?
+//////////
+spring 프로젝트 준비
+1. spring web/MyBatis Framework check
+2. build.gradle -세팅-> refresh gradle project
+3. application properties
+4. src/main/resources -> mybatis.mapper패키지 생성 후 그 안에 xml file 추가
+5. 폴더 생성 : main -> webapp/WEB-INF/views,lib 
+6. lib 폴더 안에 jar file 3개 추가
+7. 쓰던 jsp파일 views 폴더안에 넣기
+8. 해당 Controller, DAO, DTO 만들기
+
+///
+AJAX 사용 시 불필요한 것들(javascript 필수)
+- form태그(submit버튼, name property)
+- TagLibrary
+- Model(많은 데이터 사용시 Model이 편함)
+
+/////
+
+<table>
+	<tr><th>게시물 번호</th><th>글 제목</th><th>작성자</th><th>작성일</th><th>수정일</th></tr>
+	<c:forEach var="post" items="${postlist }">
+		<tr><td>${post.post_id}</td><td></td><td></td><td></td><td></td></tr>
+	</c:forEach>
+</table>
+
+//////
+$.post(~~,{~~},function(data){  },'text');
+document.location="/"; <- Asynchronous
+
+Asynchronous - 비동기
+/////
+
+post_id   title   content   writer   created   updated   par_rowid
+   5						null   -> 일반 게시글
+
+  160	null					5     -> 5번 게시글에 딸린 댓글
+
+////
+게시글 테이블 / 댓글 테이블 따로
+게시글 테이블
+post_id   title   content   writer   created   updated
+    5
+댓글 테이블
+post_id  par_rowid   content writer  created   updated
+    1           5
