@@ -15,7 +15,7 @@
     - 사용 툴 : <img src="https://img.shields.io/badge/Visual Studio Code-5C2D91?style=flat&logo=Visual Studio Code&logoColor=white"/>
     - HTML : a, input, button, select 등의 태그 실습
     - CSS : CSS 태그 실습
-    - JAVA Script : 이벤트 이용한 태그 설정 변환 및 데이터 관리 실습
+    - JAVA Script : 이벤트를 이용한 태그 설정 변환 및 데이터 관리 실습
     - JQuery : 이벤트를 이용한 테이터 관리 시스템 구축 실습
     
 - <b>Oracle</b>
@@ -28,4 +28,7 @@
 - <b>Spring</b>
     - 2022.12.07 ~ 2022.12.16
     - 사용 툴 : <img src="https://img.shields.io/badge/Eclipse IDE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
-    - 
+    - MVC구조 학습
+    - 회원가입 및 로그인 실습
+    - DB와의 연동 및 데이터 CRUD 실습
+    - AJAX를 이용하여 게시판 만들기 실습
