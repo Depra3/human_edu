@@ -6,5 +6,5 @@
 # 내용
 - JAVA
     - 2022.10.04 ~ 2022.11.03
-    - 사용 툴 : <img src="https://img.shields.io/badge/Eclips SE-61DAFB?style=flat&logo=React&logoColor=white"/>
+    - 사용 툴 : <img src="https://img.shields.io/badge/Eclips SE-3333FB?style=flat&logo=Eclips&logoColor=white"/>
     - 
