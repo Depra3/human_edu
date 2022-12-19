@@ -35,4 +35,4 @@
 
 - <b>R</b>
     - 2022.12.19 ~
-    - 사용 툴 : <img src="https://img.shields.io/badge/R-276DC3?style=flat&logo=R&logoColor=white"/>
+    - 사용 툴 : <img src="https://img.shields.io/badge/R-276DC3?style=flat&logo=R&logoColor=white"/><img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/>
