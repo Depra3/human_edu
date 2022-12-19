@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+</head>
+<body>
+    <form action="./login_ok.html"><!-- /> 와 </~~>와 같음-->
+        <p>ID : <input type="text" name="id"/>  </p>
+        <p>PW : <input type="password" name="pw"> </input> </p>
+        <p>LOCATION : <input type="text" name="location" placeholder="ex) 위치를 넣으세요."/></p>
+        <p>
+            <textarea name="textarea" cols="100" rows="30" placeholder="ex) 자세한 설명 적기"></textarea>
+        </p>
+        <p>
+            <input type="submit" value="보내기"/>
+            <input type="reset" value="취소"/>
+            <!-- form안의 모든 내용 취소(재시작) -->
+        </p>
+    </form>
+    <a href="./login_ok.html">로그인 완성으로 이동.</a>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 컨텐츠 2단계</title>
+</head>
+<body>
+    <!-- 목록 -->
+    <ul>
+        <li>강현준</li>
+        <li>강우혁</li>
+        <li>강주혁</li>
+    </ul>
+    <ol>
+        <li>영등포 학원</li>
+        <li>수원 학원</li>
+        <li>천안 학원</li>
+    </ol>
+    <dl>
+        <dt>전화 번호</dt>
+        <dd>032-000-0000</dd>
+        <dt>주소</dt>
+        <dd>경기도 부천시</dd>
+    </dl>
+
+    <!-- 문장 -->
+    <div>강현준</div>
+    <div>강우혁</div>
+    <p>강주혁</p>
+    <br>    <!-- 한줄 띄우기-->
+    <!-- 테이블(칼럼명이 없는 테이블) -->
+    <table border="1">
+        <tr>
+            <td>섹션1</td>
+            <td>섹션2</td>
+        </tr>
+        <tr>
+            <td>섹션3</td>
+            <td>섹션4</td>
+        </tr>
+        <tr>
+            <td>섹션5</td>
+            <td>섹션6</td>
+        </tr>
+    </table>
+    <br>
+    <!-- 테이블(칼럼명이 있는 테이블)-->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>칼럼명 1</th>
+                <th>칼럼명 2</th>
+                <th>칼럼명 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>데이터1</td>
+                <td>데이터2</td>
+                <td>데이터3</td>
+            </tr>
+            <tr>
+                <td>데이터4</td>
+                <td>데이터5</td>
+                <td>데이터6</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <!-- 테이블(2개의 행 합침)-->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>칼럼명 1</th>
+                <th>칼럼명 2</th>
+                <th>칼럼명 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>데이터1</td>
+                <td>데이터2</td>
+                <td>데이터3</td>
+            </tr>
+            <tr>
+                <td colspan="2">데이터4</td>
+                <td>데이터6</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <!-- 테이블(2개의 행 합침)-->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>칼럼명 1</th>
+                <th>칼럼명 2</th>
+                <th>칼럼명 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">데이터1</td>
+                <td>데이터2</td>
+                <td>데이터3</td>
+            </tr>
+            <tr>
+                <td>데이터5</td>
+                <td>데이터6</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
