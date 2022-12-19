@@ -32,3 +32,7 @@
     - 회원가입 및 로그인 실습
     - DB와의 연동 및 데이터 CRUD 실습
     - AJAX를 이용하여 게시판 만들기 실습
+
+- <b>R</b>
+    - 2022.12.19 ~
+    - 사용 툴 : <img src="https://img.shields.io/badge/R-276DC3?style=flat&logo=R&logoColor=white"/>
