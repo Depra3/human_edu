@@ -12,7 +12,7 @@
 
 - <b>HTML, JAVA Script/CSS, JQuery</b>
     - 2022.11.04 ~ 2022.11.28
-    - 사용 툴 : <img src="https://img.shields.io/badge/Visual Studio Code-0000CC?style=flat&logo=Visual Studio Code&logoColor=white"/>
+    - 사용 툴 : <img src="https://img.shields.io/badge/Visual Studio Code-5C2D91?style=flat&logo=Visual Studio Code&logoColor=white"/>
     - HTML : a, input, button, select 등의 태그 실습
     - CSS : CSS 태그 실습
     - JAVA Script : 이벤트 이용한 태그 설정 변환 및 데이터 관리 실습
@@ -20,7 +20,7 @@
     
 - <b>Oracle</b>
     - 2022.11.29 ~ 2022.12.06
-    - 사용 툴 : <img src="https://img.shields.io/badge/Oracle-000000?style=flat&logo=Oracle&logoColor=red"/>
+    - 사용 툴 : <img src="https://img.shields.io/badge/Oracle-F80000?style=flat&logo=Oracle&logoColor=red"/>
     - DML, DCL을 이용한 CRUD 실습
     - Join, 서브 쿼리를 이용한 데이터 추출 실습
     - PL/SQL을 이용한 데이터 추출 실습
