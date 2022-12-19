@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane fx:id="root" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx05.RootController018">
+   <children>
+       
+      <Rectangle fx:id="rec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" layoutX="-50.0" layoutY="-50.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Polygon fx:id="tri" fill="#ff1f1f" stroke="BLACK" strokeType="INSIDE">
+        <points>
+          <Double fx:value="-50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="0.0" />
+          <Double fx:value="-60.0" />
+        </points>
+      </Polygon> 
+      <Circle fx:id="circle" fill="skyblue"  radius="50.0" stroke="BLACK" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,37 @@
+package human0;
+
+public class List_Ex02 {
+/*	
+	EX02
+		1		객체 사용 1
+		2		객체 사용 2
+		3		생성자
+		4		생성자(입력 방식의 차이) 1
+		5		생성자(입력 방식의 차이) 2
+		6		객체 메서드 사용
+		7		객체 메서드 사용(제약)
+		8		객체를 이용한 총점 평균
+		9		점과 점사이의 거리
+		10		교통이용 프로그램
+		11		static(정적변수)	// 생성자마다 생기는것이 아닌 밖에서 생성자가 그 변수를 참조
+		12		static 문자열
+		13		static int
+		14		싱글톤
+		15		final	// 값 변경 불가, 상속 불가
+		16		static final (원의 넓이)//Math.PI(자바에서 제공함)
+		17		static final (구의 표면적)
+		18		import (다른 클래스)
+		19		public, default (다른 패키지,다른 클래스)
+		20		public, default, private(다른 패키지, 다른 클래스)
+		21		public, default, private 필드
+		22		public, default, private 메서드
+		23		getter setter 1
+		24		getter setter 2
+		25		참조 자료형 기반 설명 (최대값)
+		26		참조 자료형 1
+		27		참조 자료형 2 *
+		28		쉬어가는 예제
+		29		6장 연슴문제 19번
+		30		6장 연습문제 20번  *
+*/
+}

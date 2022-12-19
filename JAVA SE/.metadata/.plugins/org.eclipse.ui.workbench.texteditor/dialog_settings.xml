@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="mdM"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="modM"/>
+			<item value="Scanner sc"/>
+			<item value="Stage"/>
+			<item value="c)"/>
+			<item value="c"/>
+			<item value="iterator"/>
+			<item value="C_View"/>
+			<item value="L1"/>
+			<item value="com"/>
+			<item value="Mouse"/>
+			<item value="name"/>
+			<item value="smartPh"/>
+			<item value="fade"/>
+			<item value="slide"/>
+			<item value="btn"/>
+		</list>
+		<list key="replacehistory">
+			<item value="mdM"/>
+			<item value="sc"/>
+			<item value="B_chart"/>
+			<item value="M"/>
+			<item value="sub"/>
+			<item value="println(key"/>
+			<item value="pirntln(key"/>
+			<item value="&quot;1"/>
+			<item value="&quot;2"/>
+			<item value="(key"/>
+			<item value="&quot; 1"/>
+			<item value="&quot; 2"/>
+			<item value="20"/>
+			<item value="du2"/>
+			<item value="du"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="846"/>
+		<item key="DIALOG_Y_ORIGIN" value="256"/>
+		<item key="DIALOG_WIDTH" value="322"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+</section>

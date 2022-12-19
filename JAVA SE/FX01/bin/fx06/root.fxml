@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane prefHeight="200.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <top>
+      <ToolBar>
+        <items>
+			<Button text="파일 열기" />
+			<Button text="인터넷 연결" />
+        </items>
+      </ToolBar>
+   </top>
+   <center>
+      <TextArea promptText="aaaaaaaaaaaaaaa" />
+   </center>
+   <bottom>
+      <BorderPane>
+         <center>
+            <TextField text="KANG" />
+         </center>
+         <right>
+            <Button text="Button" />
+         </right>
+      </BorderPane>
+   </bottom>
+</BorderPane>

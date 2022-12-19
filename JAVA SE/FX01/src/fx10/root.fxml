@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx10.Controller">
+   <children>
+      <ImageView fitHeight="300.0" fitWidth="500.0">
+         <image>
+            <Image url="@images/snow.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="du2" focusTraversable="true" onKeyPressed="#handleImage" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
+         <image>
+            <Image url="@images/duke.gif" />
+         </image>
+         <StackPane.margin>
+            <Insets right="30.0" />
+         </StackPane.margin>
+      </ImageView>
+      <ImageView fx:id="du1" focusTraversable="true" pickOnBounds="true" preserveRatio="true" rotate="-180.0" StackPane.alignment="CENTER_LEFT">
+         <StackPane.margin>
+            <Insets left="30.0" />
+         </StackPane.margin>
+         <image>
+            <Image url="@images/duke.gif" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+         <rotationAxis>
+            <Point3D y="-180.0" z="1.0" />
+         </rotationAxis>
+      </ImageView>      
+   </children>
+</StackPane>

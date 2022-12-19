@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.input.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="350.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxExam.RootController">
+   <children>
+      <Label layoutX="55.0" layoutY="42.0" text="학생 목록" />
+      <ListView fx:id="L_View" layoutX="31.0" layoutY="70.0" prefHeight="250.0" prefWidth="100.0" />
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="700.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="파일">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleOpen" text="열기">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#handleExit" text="종료">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="W" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label layoutX="192.0" layoutY="42.0" text="학생 과목 정보" />
+      <TableView fx:id="T_View" layoutX="156.0" layoutY="70.0" prefHeight="250.0" prefWidth="151.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="과목" />
+          <TableColumn prefWidth="75.0" text="점수" />
+        </columns>
+      </TableView>
+      <Label layoutX="453.0" layoutY="42.0" text="학생 점수 그래프" />
+      <BarChart fx:id="C_View" layoutX="315.0" layoutY="70.0" prefHeight="250.0" prefWidth="350.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </children>
+</AnchorPane>

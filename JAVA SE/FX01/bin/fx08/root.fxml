@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<TilePane prefTileHeight="100" prefTileWidth="100" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <ImageView>
+         <image><Image url="@images/fruit9.jpg" /></image>
+      </ImageView>
+      <ImageView>
+         <image><Image url="@images/fruit2.jpg" /></image>
+      </ImageView>
+      <ImageView>
+         <image><Image url="@images/fruit3.jpg" /></image>
+      </ImageView>
+      <ImageView>
+         <image><Image url="@images/fruit8.jpg" /></image>
+      </ImageView>
+      <ImageView>
+         <image><Image url="@images/fruit5.jpg" /></image>
+      </ImageView>                        
+   </children>
+</TilePane>

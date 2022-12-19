@@ -1,0 +1,77 @@
+package fxExam;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+
+public class ModifyController implements Initializable {
+	
+	@FXML private Label stu_ID;
+	@FXML private TextField sub_Field;
+	@FXML private TextField sc_Field;
+	@FXML private TableView T_ModView;
+	@FXML private Button btn_Add;
+	@FXML private Button btn_Mod;
+	@FXML private Button btn_Del;
+	
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+//		String key;
+//		stu_ID.setText();
+		try(
+			FileReader fr = new FileReader("sv.txt");
+			BufferedReader br = new BufferedReader(fr);
+//			key = br.readLine();
+		)
+		{
+		
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		List T_L = new ArrayList();
+//		T_L = (List) 
+		ObservableList obList = FXCollections.observableArrayList(T_L);
+		T_ModView.setItems(obList);
+	}
+	
+	public void handleAdd() {
+
+	}
+	public void handleMod() {
+
+	}
+	public void handleDel() {
+//		ObservableList<TableData> tableSelected, tableList;
+//		tableList = T_View.getItems();
+//		tableSelected = T_View.getSelectionModel().getSelectedItems();
+//		
+//		tableSelected.forEach(tableList::remove);
+//		
+//		OutputStream output = new FileOutputStream(null)
+	}
+	
+	public Label getStu_ID() {
+		return stu_ID;
+	}
+
+	public void setStu_ID(String stu_ID) {
+		this.stu_ID.setText(stu_ID);
+	}
+	
+}

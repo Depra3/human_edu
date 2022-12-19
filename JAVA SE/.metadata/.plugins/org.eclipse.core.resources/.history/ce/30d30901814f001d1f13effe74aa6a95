@@ -1,0 +1,20 @@
+package human05;
+
+public class FinalizeExam {
+
+	public static void main(String[] args) {
+		Counter cnt = null;
+		
+		for (int i = 0; i <= 50; i++) {
+			cnt = new Counter(i);
+			
+			cnt = null;
+			
+			System.gc(); //gc() 안에 finalize()가 있음
+		}
+		
+		
+
+	}
+
+}

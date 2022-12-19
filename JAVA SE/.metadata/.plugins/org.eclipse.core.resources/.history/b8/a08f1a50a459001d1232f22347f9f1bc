@@ -1,0 +1,22 @@
+package exam;
+
+import javax.swing.JFrame;
+
+public class Tmain extends JFrame {
+	public Tmain() {
+		this("2");
+	}
+
+	public Tmain(String title) {
+		setTitle(title);
+		setBounds(800, 400, 400, 400);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		
+	}
+	
+	public static void main(String[] args) {
+		Tmain a = new Tmain();
+		new Tmain("3");
+	}
+}

@@ -1,0 +1,14 @@
+package human05;
+
+public class FinalizeExam {
+
+	public static void main(String[] args) {
+		Counter cnt = null;
+		
+		for (int i = 0; i <= 50; i++) {
+			
+		}
+
+	}
+
+}

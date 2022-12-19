@@ -1,0 +1,124 @@
+package fxExam;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.Scanner;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+public class ModifyController implements Initializable {
+	
+	@FXML private Label stu_ID;
+	@FXML private TextField sub_Field;
+	@FXML private TextField sc_Field;
+	@FXML private TableView<TableData> T_ModView;
+	@FXML private Button btn_Add;
+	@FXML private Button btn_Mod;
+	@FXML private Button btn_Del;
+	
+	FileReader fr;
+	BufferedReader br = null;
+	String key;
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		List S = null;
+		
+		
+//		stu_ID.setText();
+		try{
+			fr = new FileReader("sv.txt");
+			br = new BufferedReader(fr);
+			key = br.readLine();
+			
+		
+		
+			File file = new File("D:\\AI_Class\\J2SE_File\\FX02/" + key + ".txt");
+			Scanner sc = new Scanner(file);
+			S = new ArrayList();
+			
+			String a = null;
+			int b = 0;
+			while (sc.hasNext()) {
+				a = sc.next();
+				b = sc.nextInt();
+				
+				S.add(new TableData(a, b));
+			}
+//			System.out.println(S);
+			stu_ID.setText(key);
+			PrintWriter pw = new PrintWriter("sv.txt");
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		List T_L = new ArrayList();
+//		T_L = (List) 
+		ObservableList obList = FXCollections.observableArrayList(S);
+		TableColumn suj = T_ModView.getColumns().get(0);
+		suj.setCellValueFactory(new PropertyValueFactory("sub"));
+		suj.setStyle("-fx-alignment: CENTER;");
+		TableColumn sco = T_ModView.getColumns().get(1);
+		sco.setCellValueFactory(new PropertyValueFactory("score"));
+		sco.setStyle("-fx-alignment: CENTER;");
+		
+		T_ModView.setItems(obList);
+		
+		T_ModView.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+		@Override
+		public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue)  {
+//			System.out.println(T_ModView.getSelectionModel().getSelectedItem().getSub());
+//			System.out.println(T_ModView.getSelectionModel().getSelectedItem().getScore());
+			String sub = T_ModView.getSelectionModel().getSelectedItem().getSub();
+			Integer sc = T_ModView.getSelectionModel().getSelectedItem().getScore();
+			String s_Sc = String.valueOf(sc); 
+			sub_Field.setText(sub);
+			sc_Field.setText(s_Sc);
+		}
+	});
+	}
+	
+	public void handleAdd() {
+		
+	}
+	public void handleMod() {
+
+	}
+	public void handleDel() {
+//		ObservableList<TableData> tableSelected, tableList;
+//		tableList = T_View.getItems();
+//		tableSelected = T_View.getSelectionModel().getSelectedItems();
+//		
+//		tableSelected.forEach(tableList::remove);
+//		
+//		OutputStream output = new FileOutputStream(null)
+	}
+	
+	public Label getStu_ID() {
+		return stu_ID;
+	}
+
+	public void setStu_ID(String stu_ID) {
+		this.stu_ID.setText(stu_ID);
+	}
+	
+}

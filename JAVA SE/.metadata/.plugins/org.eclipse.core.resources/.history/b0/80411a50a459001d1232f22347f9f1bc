@@ -1,0 +1,22 @@
+package exam;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+
+public class Main {
+	public static void main(String[] args) {
+		JFrame a = new JFrame("Main");
+		a.setTitle("1");
+		a.setBounds(800, 100, 400, 200);
+		
+		Container con = a.getContentPane();
+		con.setBackground(Color.CYAN);
+		
+		a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		a.setVisible(true);
+		
+	}
+
+}
