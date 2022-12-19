@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <style>
+        
+        td{
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+        .bgRed{ background-color: red;}
+        .bgBlue{background-color: blue;}
+    </style>
+    <!--                    alert   : Ok / Cancel
+        boolean(T/F)    -   confirm('~~~') : Yes / No
+            문자열      -   prompt('~~') : 입력-->
+            
+    <!-- .addClass(), .removeClass(), hasClass() - 해당 클래스가 있으면 true
+        .css({속성:값, ... , 속성:값}), .css(속성,값) -->
+    <script>
+        // N x N의 테이블을 그리기
+        let P;
+        $(document).ready()
+        .on('click','td',function(){
+            // 좌표찍기
+            let n = $(this).parent().index();
+            let m = $(this).index();
+            $('#lblIndex').text(n+", "+m);
+
+            if ($(this).hasClass('bgRed')) {
+                $(this).removeClass('bgRed');
+                $(this).addClass('bgBlue');
+            }else{
+                $(this).removeClass('bgBlue');
+                $(this).addClass('bgRed');
+            }
+            return false;
+        })
+        .on('click','#btnDraw',function(){
+            
+            let str = prompt('숫자을 입력하시오.');
+            P = parseInt(str);
+            
+            $('#btnDraw').before('<table border=1></table>');
+            // $('body').append('<table border=1></table>');
+            // for (let i = 0; i < N; i++) {
+            //     $('table').append('<tr></tr>');
+            //     // for (let j = 0; j < N; j++) {
+            //     //     $('table tr.eq('+i+')').append('<td></td>');
+            //     // }
+            // }
+            // for (let j = 0; j < N; j++) {
+            //     $('table tr').append('<td></td>');
+            // }
+            // ==
+            // for (let i = 0; i < N; i++) {
+            //     for (let j = 0; j < N; j++) {
+            //         $('table tr:eq('+i+')').append('<td></td>');
+            //     }
+            // }
+            let str1 = '';
+            for(i=0;i<P;i++){
+                str1 += '<tr>';
+                for(j=0;j<P;j++){
+                    str1 += '<td></td>';
+                }
+                str1 += '</tr>';
+            }
+            $('table').append(str1);
+
+            
+            
+            let a=1;
+            // for (let i = 0; i < N; i++) {
+            //     if ( (i%2) == 0) {
+            //         for (let j = 0; j < N; j++) {
+            //             $('table tr:eq('+i+') td:eq('+j+')').text(a++);
+            //         }
+            //     } else {                    
+            //         for (let j = N-1; j >= 0; j--) {
+            //             $('table tr:eq('+i+') td:eq('+j+')').text(a++);
+            //         }
+            //     }
+            // }
+
+            // $('table tr:eq('+ㄱ+') td:eq('+ㅅ+')').text(i+1); 1
+            // $('table tr:eq('+ㅅ+') td:eq('+ㄱ+')').text(i+1); 2
+            // $('table tr:eq('+ㄱ+') td:eq('+ㅇㅅ+')').text(i+1); 3
+            // $('table tr:eq('+ㅇㅅ+') td:eq('+ㄱ+')').text(i+1); 4
+            
+            // let g=1;
+            // let Num = 1;
+            // let st = 0;
+            // let q = 0;
+            // let w = 1;
+            // let e = 1;
+            // let r = 0;
+            // for (let z = 0; z < N*N; z++) {
+            //     switch(Num) {
+            //         case 1:
+            //             for (let i = 0; i < (N-(st*2)); i++) {
+                            
+            //                 if ($('table tr:eq('+ q +') td:eq('+i+')').val() <= 0) {
+            //                     $('table tr:eq('+ q +') td:eq('+i+')').text(g++);
+            //                 }
+            //             }
+            //             // $('table tr:eq(0) td:eq('+i+')').text(z+1);
+            //             // $('table tr:eq(1) td:eq('+(i-2)+')').text(z+1);
+            //             // $('table tr:eq(2) td:eq('+(i-4)+')').text(z+1);
+            //             // $('table tr:eq(3) td:eq('+(i-6)+')').text(z+1);
+            //             ++q;
+            //             Num++;
+            //             break;
+            //         case 2:
+            //             for (let i = 0; i < (N-(st*2)-1); i++) {
+            //                 if ($('table tr:eq('+i+') td:eq('+(N-w)+')').val()<=0) {
+            //                     $('table tr:eq('+i+') td:eq('+(N-w)+')').text(g++);    
+            //                 }
+            //             }
+            //             w++;
+            //             Num++;
+            //             break;
+            //         case 3:
+            //             for (let i = 0; i < (N-(st*2)-2); i++) {
+            //                 $('table tr:eq('+(N-e)+') td:eq('+(N-(e))+')').text(g++);
+            //             }
+            //             e++;
+            //             Num++;
+            //             break;
+            //         case 4:
+            //             for (let i = 0; i < (N-(st*2)-2); i++) {
+            //                 $('table tr:eq('+(N-(2+i))+') td:eq('+(r)+')').text(g++);
+            //             }
+            //             r++;
+            //             Num = 1;
+            //             st++;
+            //             break;
+            //     }
+            // }
+        })
+    </script>
+    
+</head>
+<body>
+    <button id="btnDraw">테이블 그리기</button>
+    <label id="lblIndex"></label>
+</body>
+</html>

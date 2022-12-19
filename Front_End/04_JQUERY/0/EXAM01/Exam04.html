@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        // $(function(){});
+        // document
+        $(document).ready(function(){
+            // 직접 선택자
+            $(".wrap-1").css("border","1px dotted orange");
+            $(".wrap-1 p").css("background-color","yellow");
+
+            // 근접 선택자
+            $(".active").next("p").css("background-color","aqua");
+            
+            // 위치 선택자 eq = equal, gt = great than
+            $(".wrap-1 p").eq(1).css("font-size","5px");
+            // $(".wrap-1 p").gt(2).css("font-size","20px");
+            
+            // 속성 선택자
+            $("input[type='text']").css("background-color", "orange");
+
+            // 객체 조작 : 신규등록, 변경, 삭제
+            // 아래 시점에 active라는 클래스를 삭제하였기에 blue색상은 미적용
+            // <p class="active"> 가 <p>로 변함
+            $(".wrap-1 p").eq(1).removeClass("active");
+            $(".active").next("p").css("background-color","blue");
+            // 아래 코드로 인해서
+            // <p class="active-insert">로 바뀜
+            $(".wrap-1 p").eq(1).addClass("active-insert");
+            $(".active-insert").next("p").css("background-color","green");
+            // 강제로 Tag를 포함한 문서를 추가하고자 할 때. (객체 조작 생성)
+            $(".wrap-2").append("<p>휴먼 교육 센터</p>");
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap-1">
+        <p>텍스트1</p>
+        <p class="active">내용</p>  <!-- eq(1)의 위치(배열) -->
+        <p>
+            <a href="www.naver.com">네이버</a>
+        </p>
+        <p>
+            <input type="text" value="HELLO"/>
+        </p>
+    </div>
+    <div class="wrap-2">
+        <p>내용5</p>
+        <p>내용6</p>
+    </div>
+</body>
+</html>

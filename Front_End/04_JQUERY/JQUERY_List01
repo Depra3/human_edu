@@ -1,0 +1,23 @@
+0       EX01        1       JQuery 이용 전
+                    2       JQuery 시작
+                    3       내용 분리 - JS
+                    4       선택자 (직접, 근접, 위치, 속성, 객체 조작)
+                    5       단독 이벤트 처리
+                    6       그룹 이벤트 처리
+                    7       애니메이션 - slideUp, slideDown
+                    8       애니메이션 - animate
+1       exSum           1~100합, 피보나치 수열 합, 이벤트, 기본코드 / val()
+        Exam01          setTimeout, setInterval, clearTimeout, clearInterval
+        Exam02          문자열과 숫자의 연산, NaN, isNaN
+        exInterval      1~10까지 TextBox에 표시 후 Interval 멈춤
+2       Exam01          event를 이용한 table에 데이터 삽입
+        Exam02          4x4 테이블에 1~16숫자 배치
+        Exam03          숫자를 입력받아서 NxN 테이블 생성 및 숫자 배치 /
+                        alert(), confirm(), prompt() / .addClass(), .removeClass(), .hasClass()/
+                        테이블 snake, snail 배치
+3       Exam01          selectd, textarea, label // input, textarea는 val()로 추가, select는 append()로 추가.
+        Exam02          radio, checkbox // attr-속성
+        subExam         1,2 총합
+4       Exam01          정렬
+5       menu            메뉴 관리 시스템
+6       Exam02          호텔 관리 시스템

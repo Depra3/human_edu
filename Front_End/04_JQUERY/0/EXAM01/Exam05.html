@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // click이벤트와 mouseout이벤트
+            $(".btn1 a").on("click mouseout", function(){
+                // ul 태그 모두 숨김
+                $(".btn1").next("ul").hide();
+                // $(".btn1").next("ul").filter(":visible").hide();
+                // ":visible"이라고 되어 있는 ul태그를 찾아서 숨겨라
+
+                // this는 선택되어진 객체. 즉, 선택되어진 a태그
+                let ts = $(this);
+                // ts.css("background-color","yellow");
+                ts.parent().next().show();
+            });
+        });
+    </script>
+</head>
+<body>
+    <p class="btn1">
+        <a href="#">이벤트 대상1</a>
+    </p>
+    <ul style="display: none">
+        <li>리스트1</li>
+        <li>리스트2</li>
+        <li>리스트3</li>
+    </ul>
+    <p class="btn1">
+        <a href="#">이벤트 대상2</a>
+    </p>
+    <ul>
+        <li>리스트4</li>
+        <li>리스트5</li>
+        <li>리스트6</li>
+    </ul>
+    
+</body>
+</html>

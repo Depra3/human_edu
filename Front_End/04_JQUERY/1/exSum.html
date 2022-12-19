@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        // // 1~100합
+        let a = 0;
+        for (let i = 1; i <= 100; i++) {
+            a = a + i;
+        }
+        document.write(a + "<br>");
+        document.write("-------<br>");
+
+        // // 피보나치 수열 합(1000이하).
+        let b = 0;
+        let c = 1;
+        let d = 0;
+        // while (true) {
+        //     // for (let i = 0; i < 100; i++) {
+        //     if (d<1000) {
+        //         document.write(d + "<br>");
+        //         b = c;
+        //         c = d;
+        //         d = b + c;
+        //     }else{
+        //         break;
+        //     }
+        //     // }    
+        // }
+        while (true) {
+            document.write(d + "<br>");
+            b = c;
+            c = d;
+            d = b + c;
+            if (d > 1000) {
+                break;
+            }
+        }
+        document.write("-------<br>");
+    </script>
+</head>
+<body>
+    <!-- <input type="text" id="name" class="home" name="firstText"><br> -->
+    <!-- <input type="button" value="이동" id="btnGo"><br> -->
+    <!-- <input type="text" id="name1" class="house"><br> -->
+    <script>
+        // JQuery
+        // $(document).ready(function(){
+        // //     $("#btnGo").on("click", function(){
+        // //             $("#name1").val($("#name").val());
+        // //     });
+        // })
+        // .on("click", "#btnGo", function(){
+        //     // let str = $("#name").val();
+        //     // $("#name1").val(str);
+        //     $("#name,#name1").val("Hello World!");
+        //     return false;
+        // }) //;
+        // .on("focus","#name", function(){
+        //     alert("focus into the name");
+        //     return false;
+        // })
+        // .on("blur", "#name", function(){
+        //     alert("focus out from the name");
+        //     return false;
+        // })
+        // .on("click",".home",function(){
+        //     alert("click home");
+        //     return false;
+        // })
+        // .on("click","input[name='firstText']",function(){
+        // // .on("click","[name='firstText']",function(){
+        // // .on("click","[name=firstText]",function(){
+        //     alert("click home");
+        //     return false;
+        // })
+        /*
+        1.9?버전 이전
+        $('선택자').evnet명(function(){
+
+        })
+        1.9?버전 이후
+        $(document).ready(function(){
+            webpage loading 직후 실행되는 부분
+        })
+        .on('event명', '선택자', function(){
+            '선택자'에서 event가 발생했을 때
+            실행되는 코드
+        })
+
+        click, change, dblclick, focus, blur
+        focus : 커서를 찍었을 때
+        blur : 커서가 벗어났을 때
+        */
+        // window.addEventListener("load",function(){
+        //     let btnGo = document.querySelector("#btnGo");
+        //     let txt1 = document.querySelector("#name");
+        //     let txt2 = document.querySelector("#name1");
+        //     btnGo.onclick = function(){
+        //         txt2.value = txt1.value;
+        //     }
+        // });
+    </script>
+    <input type="button" value="do something" id="btnGo"><br>
+    <div id="dvSample"></div>
+    <script>
+        $(document).ready(function(){
+        })
+        .on("click","#btnGo",function(){
+            $("#dvSample").css({width: '200px', height:'200px', backgroundColor:'red'});
+            // 여러개 설정
+            $("#dvSample").css('color', 'yellow');
+            // 하나 설정
+            // $("#dvSample").text('<input type=button value=btnRun>');
+            $("#dvSample").html('<input type=button value=btnRun>');
+            return false;
+        })
+    </script>
+</body>
+</html>

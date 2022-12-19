@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".btn").on("click",function(){
+                let ts = $(this);   // 무엇이 되었든 간 내가 선택한 것.
+                if (ts.text() == "숨김") {
+                    // 순간적으로 숨기는 기능
+                    // $(".wrap").css("display","none");
+
+                    // 시간은 ms 단위로 정의.
+                    // 두번째 인자인 function은 callBack함수.
+                    // callBack함수란. 동작(slideUp)을 처리하고 난 후에 처리할 내용
+                    // slideUp / slideDown은 주어진 시간만큼의 애니메이션 효과
+                    $(".wrap").slideUp(1000, function(){
+                        $(".btn").text("노출");
+                    });
+                } else {
+                    $(".wrap").slideDown(2000, function(){
+                        $(".btn").text("숨김");
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <p class="btnWrap">
+        <button class="btn">숨김</button>
+
+    </p>
+    <div class="wrap" style="background-color: red;">
+        <p>내용 1</p>
+        <p>내용 2</p>
+    </div>
+</body>
+</html>

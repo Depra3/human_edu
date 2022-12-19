@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        // $(document).ready(function(){
+        //     // 단독 이벤트 처리
+        //     $(".btn1 a").click(function(){
+        //         alert("휴먼 교육 센터 1");
+        //     });
+        //     $(".btn1 a").mouseout(function(){
+        //         alert("휴먼 교육 센터 2");
+        //     });
+        // });
+/*      자바 스크립트
+        window.addEventListener("load",function(){
+            let btn1A = document.querySelector(".btn1 a");
+            btn1A.onclick = function(){
+                alert("휴먼 교육 센터 1");
+            }
+            btn1A.onmouseout = function(){
+                alert("휴먼 교육 센터 2");
+            }
+        });
+*/
+        // ".btn1 a" 이것이 2개가 있으므로 복수 개를 선택해야함.
+        window.addEventListener("load",function(){
+            let btn1A = document.querySelectorAll(".btn1 a");
+            btn1A[0].onclick = function(){
+                alert("휴먼 교육 센터 1");
+            }
+            btn1A[0].onmouseout = function(){
+                alert("휴먼 교육 센터 2");
+            }
+            btn1A[1].onclick = function(){
+                alert("휴먼 교육 센터 1");
+            }
+            btn1A[1].onmouseout = function(){
+                alert("휴먼 교육 센터 2");
+            }
+        });
+    </script>
+</head>
+<body>
+    <p class="btn1">
+        <a href="#">이벤트 대상1</a>
+    </p>
+    <ul style="display: none">
+        <li>리스트1</li>
+        <li>리스트2</li>
+        <li>리스트3</li>
+    </ul>
+    <p class="btn1">
+        <a href="#">이벤트 대상2</a>
+    </p>
+    <ul>
+        <li>리스트4</li>
+        <li>리스트5</li>
+        <li>리스트6</li>
+    </ul>
+
+    
+</body>
+</html>

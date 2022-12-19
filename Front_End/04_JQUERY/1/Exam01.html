@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- 없으면 $ is not defined 오류 발생 -->
+    <script>
+        // setTimeout(함수 or 시간) - 일정 시간 후에 실행(지연)
+        // clearTimeout() - 예약된 작업 취소
+        // setInterval(함수 or 시간) - 일정 시간마다 실행(반복)
+        // clearInterval() - 예약된 작업 취소
+        let g;
+        $(document)
+        .on('click', '#btnRun', function(){
+            // setTimeout(function(){
+            g = setInterval(function(){ // 무명함수(이름없음) -unnamed function
+                $('#txtstr').val(new Date());
+            }, 1000);
+        })
+        .on('click', '#btnStop', function(){
+            clearInterval(g);
+            $('#txtstr').val('');
+        })
+    </script>
+</head>
+<body>
+    <input type="text" id="txtstr" size="80"><br><br><br>
+    <button id="btnRun">Run</button>&nbsp;&nbsp;&nbsp;<button id="btnStop">Stop</button>
+</body>
+</html>

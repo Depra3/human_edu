@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!-- 잘 안되면 https추가 -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <style>
+        table tr td{
+            border: 1px solid red;
+        }
+        input{
+            width: 150px;
+        }
+        button{
+            margin: 20px;
+            width: 50px;
+        }
+        #dvHotel{
+            width: 760px; height: 700px;
+            margin: auto;
+        }
+        #hotel0{
+            width: 700px; height: 620px; background-color: greenyellow;
+        }
+        #hotel1{
+            width: 700px; height: 620px; background-color: yellow;
+        }
+        #hotel2{
+            width: 700px; height: 620px; background-color: aqua;
+            border: 3px solid blue;
+        }
+        #rm_li,#rm_ki{
+            width: 300px; height: 400px;
+        }
+        #rm_type1{
+            width: 157px;
+        }
+        #rm_bi{
+            width: 154px;
+            resize: none;
+        }
+        #rmrv_li,#rmc_li{
+            width: 200px; height: 300px;
+        }
+        .rv{
+            /* border: 5px solid red; */
+            width: 240px;
+        }
+        .rv_ti{
+            width: 65px;
+        }
+        .rv_cnt{
+            width: 60px;
+        }
+        .btn{
+            margin-left: 5px; margin-right: 5px;
+            /* margin: auto; */
+            width: 60px;
+        }
+    </style>
+    <script>
+        let rmtype1 = {};       // 객실 종류 관리
+        let rmtype2 = {};       // 객실 목록 관리
+        let rmNum0, rmType0, rmrm;
+        let rmInfo = {};    let arRm = [];
+        let rmCInfo = {};   let arCRm = [];
+        
+        
+        $(document)
+        .ready(function(){
+            $('#dvHotel').tabs();
+        })
+        .on('change','#rm_ki',function(){        // 객실 종류 관리
+            rmrm = $(this).val();
+            // for(key in rmtype1){
+            //     console.log(key);
+            //     console.log(rmtype1[key]);
+            // }
+            let num = $('#rm_ki option:selected').val();
+            let name = $('#rm_ki option:selected').text();
+            $('#rm_num0').val(num);
+            $('#rm_type0').val(name);
+        })
+        .on('click','#btn_en0',function(){
+            let rmNum0 = $('#rm_num0').val();
+            let rmType0 = $('#rm_type0').val();
+            let a = 0;
+            let kiOp = $('#rm_ki option');
+            if (rmNum0 && rmType0) {
+                rmtype1[rmNum0] = rmType0;
+                for (let i = 0; i < kiOp.length; i++) {
+                    if (kiOp.eq(i).val() == rmNum0) {
+                        $('#rm_ki option[value='+rmNum0+']').text(rmType0);
+                        $('#rm_num0').val('');
+                        $('#rm_type0').val('');
+                        a = 1;
+                    }
+                }
+                if (a == 0) {
+                    $('#rm_ki').append('<option value='+rmNum0+'>'+rmType0+'</option>');
+                    $('#rm_num0').val('');
+                    $('#rm_type0').val('');
+                }
+            }
+            // console.log(rmtype1);
+        })
+        .on('click','#btn_del0',function(){
+            delete rmtype1[rmrm];
+            let con = confirm('삭제하시겠습니까?');
+            if (con) {
+                $('#rm_ki option[value='+rmrm+']').remove();    
+            }
+            // console.log(rmtype1);
+        })
+        .on('click','#rmg',function(){
+            // $('#rm_type1 option').remove(); //empty와 같음
+            $('#rm_type1').empty();
+            for(key in rmtype1){     // 키값
+                $('#rm_type1').append('<option value='+key+'>'+rmtype1[key]+'</option>')
+            }
+        })
+        .on('click','#rm_li',function(){        // 객실 목록 관리
+            rmrm = $(this).val();
+            let str = $('#rm_li option[value='+rmrm+']').text();
+            let ar = str.split(' ');
+            let cnt = ar[2].substr(1);
+            let a = ar[3].split('원');
+            let price = a[0]/ parseInt(cnt);
+            
+            $('#rm_num1').val(rmrm);
+            $('#rm_type1 option').filter(function(){
+                return $(this).text() == ar[1];
+            }).prop('selected',true);
+            $('#rm_Na1').val(ar[0]);
+            $('#rm_Cnt1').val(cnt);
+            $('#rm_Pri').val(price);
+        })
+        .on('click','#btn_en1',function(){
+            let cStr, uStr;
+            let a = 0;
+            let rmNum1 = $('#rm_num1').val();
+            let rmType1 = $('#rm_type1 option:selected').text();
+            let rmNa = $('#rm_Na1').val();
+            let rmCnt = $('#rm_Cnt1').val();
+            let rmPri = $('#rm_Pri').val();
+            let rmBi = $('#rm_bi').val();
+            let sum = rmCnt * parseInt(rmPri);
+            let liOp = $('#rm_li option');
+            let flag = false;
+
+            for (let i = 0; i < arRm.length; i++) {     // rmInfo 업데이트
+                rmInfo = arRm[i];
+                if (rmInfo['num']==rmNum1) {
+                    arRm[i]['type'] = rmType1;
+                    arRm[i]['name'] = rmNa;
+                    arRm[i]['uCnt'] = parseInt(rmCnt);
+                    arRm[i]['price'] = parseInt(rmPri);
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag==false) {
+                rmInfo = {}; // 초기화
+                rmInfo['num'] = rmNum1;     // 객체 생성
+                rmInfo['type'] = rmType1;
+                rmInfo['name'] = rmNa;
+                rmInfo['uCnt'] = parseInt(rmCnt);
+                rmInfo['price'] = parseInt(rmPri);
+                arRm.push(rmInfo);          // 배열에 객체 삽입
+            }
+            if (rmNum1 && rmNa && rmCnt && rmPri) {
+                cStr = '<option value='+rmNum1+'>'+rmNa+ ' ' + rmType1 + ' x'+ rmCnt + ' ' + sum +'원'+'</option>';
+                uStr = rmNa + ' ' + rmType1 + ' x' + rmCnt + ' ' + sum + '원';
+                for (let i = 0; i < liOp.length; i++) {
+                    if (liOp.eq(i).val() == rmNum1) {
+                        $('#rm_li option[value='+ rmNum1 +']').text(uStr);
+                        rm1();
+                        $('#rm_type1 option:eq(0)').prop('selected',true);
+                        a = 1;
+                    }
+                }
+                if (a == 0) {
+                    $('#rm_li').append(cStr);
+                    rm1();
+                    $('#rm_type1 option:eq(0)').prop('selected',true);
+                    // $('#rm_type1 option').eq(0).attr('selected',true); // 버전문제?
+                }
+                // let found;               // 중복 검사
+                // $('#rm_li option').each(function() {
+                //     if($(this).val() == rmNum1){
+                //         found = true;
+                //         return false;
+                //     }
+                // });
+                // if (found) {
+                //     $('#rm_li option[value='+ rmNum1 +']').text(uStr);
+                //     rm1();
+                //     $('#rm_type1 option:eq(0)').prop('selected',true);
+                // } else{
+                //     $('#rm_li').append(cStr);
+                //     rm1();
+                //     $('#rm_type1 option:eq(0)').prop('selected',true);
+                // }
+                console.log(arRm);
+            }
+        })
+        .on('click','#btn_del1',function(){
+            let con = confirm('삭제하시겠습니까?');
+            for (let i = 0; i < arRm.length; i++) {
+                rmInfo = arRm[i];
+                if (rmInfo['num']==rmrm) {
+                    delete arRm[i];
+                    arRm[i] = {};
+                }
+            }
+            if (con) {
+                $('#rm_li option[value='+rmrm+']').remove();    
+            }
+            console.log(arRm);
+        })
+        .on('click','#btn_srh',function(){
+            $('#rmrv_li option').remove();
+            let cnt = parseInt($('#rm_Cnt2').val());
+            for (let i = 0; i < arRm.length; i++) {
+                rmInfo = arRm[i];
+                if (rmInfo['uCnt'] >= cnt) {
+                    let str = '<option value='+rmInfo['num']+'>'+rmInfo['name']+', '+rmInfo['type']+', x'
+                                +rmInfo['uCnt']+', '+rmInfo['price']+'</option>';
+                        $('#rmrv_li').append(str);
+                }
+            }
+        })
+        .on('click','#rmrv_li',function(){
+            // $('#btn_em').trigger('click');
+            rmrm = $(this).val();
+            for (let i = 0; i < arRm.length; i++) {
+                rmInfo = arRm[i];
+                if (rmInfo['num']==rmrm) {
+                    $('#rm_num2').val(rmrm);
+                    $('#rm_type2').val(rmInfo['type']);
+                    $('#rm_Na2').val(rmInfo['name']);
+                    $('#rm_Cntrv').val($('#rm_Cnt2').val());
+                    $('#rm_sti1').val($('#rm_sti0').val());
+                    $('#rm_eti1').val($('#rm_eti0').val());
+                    let sum = $('#rm_Cnt2').val() * parseInt(rmInfo['price']);
+                    $('#rm_sum').val(sum);
+                    $('#rm_Cntrv').attr('max',rmInfo['uCnt']);
+                    break;
+                }
+            }
+            $('#rmrv_na').val('');
+            $('#rm_mo').val('');
+        })
+        .on('change','#rm_Cntrv',function(){
+            rmrm = $('#rm_num2').val();
+            let str = $('#rmrv_li option[value='+rmrm+']').text();
+            let ar = str.split(', ');
+            let pri = ar[3];
+            let cnt = $('#rm_Cntrv').val();
+
+            let sum = cnt * parseInt(pri);
+            $('#rm_sum').val(sum);
+        })
+        .on('click','#rmc_li',function(){
+            rmrm = $(this).val();
+            console.log(rmrm);
+            for (let i = 0; i < arCRm.length; i++) {
+                rmCInfo = arCRm[i];
+                if (rmCInfo['num']==rmrm) {
+                    $('#rm_num2').val(rmrm);
+                    $('#rm_type2').val(rmCInfo['type']);
+                    $('#rm_Na2').val(rmCInfo['name']);
+                    $('#rm_Cntrv').val(rmCInfo['uCnt']);
+                    $('#rm_sti1').val(rmCInfo['Sdt']);
+                    $('#rm_eti1').val(rmCInfo['Edt']);
+                    $('#rm_sum').val(rmCInfo['price']);
+                    $('#rmrv_na').val(rmCInfo['Cname']);
+                    $('#rm_mo').val(rmCInfo['mobile']);
+                    break;
+                }
+            }
+        })
+        .on('click','#btn_rve', function(){
+            let rvNum = $('#rm_num2').val();
+            let rvType = $('#rm_type2').val();
+            let rvRName = $('#rm_Na2').val();
+            let rvCnt = $('#rm_Cntrv').val();
+            let rvSti = $('#rm_sti1').val();
+            let rvEti = $('#rm_eti1').val();
+            let rvSum = $('#rm_sum').val();
+            let rvName = $('#rmrv_na').val();
+            let rvMo = $('#rm_mo').val();
+            let flag = false;   let found = false;
+
+            
+            for (let i = 0; i < arCRm.length; i++) {     // rmInfo 업데이트
+                rmCInfo = arCRm[i];
+                if (rmCInfo['num']==rvNum) {
+                    arCRm[i]['type'] = rvType;
+                    arCRm[i]['name'] = rvRName;
+                    arCRm[i]['uCnt'] = parseInt(rvCnt);
+                    arCRm[i]['price'] = parseInt(rvSum);
+                    arCRm[i]['Sdt'] = rvSti;
+                    arCRm[i]['Edt'] = rvEti;
+                    arCRm[i]['Cname'] = rvName;
+                    arCRm[i]['mobile'] = rvMo;
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag==false) {
+                rmCInfo = {}; // 초기화
+                rmCInfo['num'] = rvNum;     // 객체 생성
+                rmCInfo['type'] = rvType;
+                rmCInfo['name'] = rvName;
+                rmCInfo['uCnt'] = parseInt(rvCnt);
+                rmCInfo['price'] = parseInt(rvSum);
+                rmCInfo['Sdt'] = rvSti;
+                rmCInfo['Edt'] = rvEti;
+                rmCInfo['Cname'] = rvName;
+                rmCInfo['mobile'] = rvMo;
+                arCRm.push(rmCInfo);          // 배열에 객체 삽입
+            }
+            let cStr = '<option [value='+rvNum+'] [name='+rvMo+']>'+rvSti+'~'+rvEti+', '+rvRName+', '+rvCnt+', '
+                        +rvSum+', '+rvName+', '+rvMo+'</option>';
+            let uStr = rvSti+'~'+rvEti+', '+rvRName+', '+rvCnt+', '+rvSum+', '+rvName+', '+rvMo;
+            
+
+            let liMo=[], a, b = [], c = []; d=0;            // 날짜 c[0], c[1]
+            for (let i = 0; i < $('#rmc_li option').length; i++) {
+                if ($('#rmc_li option').val() == rvNum) {
+                    a = $('#rmc_li option').text();
+                    b = a.split(',');
+                    c = b[0].split('~');
+                }
+            }
+            // 예약된 방 목록에서 빼기
+            if (rvNum && rvType && rvRName && rvCnt && rvSti && rvEti && rvSum && rvName && rvMo) {
+                $('#rmc_li option').each(function() {
+                    if($('#rmc_li option').name() == rvMo){
+                        found = true;
+                        return false;
+                    }
+                });
+                if (found) {
+                    if (c[0]==rvSti && c[1]==rvEti) {
+                        $('#rmc_li option[value='+ rvNum +']').text(uStr);
+                    }else if (c[0]>rvEti) {
+                        $('#rmc_li').append(cStr);
+                        console.log('a');
+                        console.log(c[0]);
+                        console.log(rvEti);
+                    }else if (c[1]<rvSti) {
+                        $('#rmc_li').append(cStr);
+                        console.log('b');
+                        console.log(c[1]);
+                        console.log(rvSti);
+                    }
+                } else {
+                    $('#rmc_li').append(cStr);
+                }
+                // if (c[0]>rvEti && c[0]>rvSti && c[1]<rvSti && c[1]<rvEti) {
+                    
+                // }
+                $('#btn_em').trigger('click');
+            }
+            
+            
+        })
+        .on('click','#btn_em',function(){
+            $('#rm_num2').val('');
+            $('#rm_type2').val('');
+            $('#rm_Na2').val('');
+            $('#rm_Cntrv').val('');
+            $('#rm_sti1').val('');
+            $('#rm_eti1').val('');
+            $('#rm_sum').val('');
+            $('#rmrv_na').val('');
+            $('#rm_mo').val('');
+        })
+        .on('click','#btn_rvc', function(){
+            let con = confirm('삭제하시겠습니까?');
+            for (let i = 0; i < arCRm.length; i++) {
+                rmCInfo = arCRm[i];
+                // if (rmCInfo['num']==rmrm) {
+                //     delete arCRm[i];
+                //     arCRm[i] = {};
+                // }
+                if (rmCInfo['mobile']==rvMo) {
+                    delete arCRm[i];
+                    arCRm[i] = {};
+                }
+            }
+            if (con) {
+                $('#rmc_li option[name='+rvMo+']').remove();    
+            }
+        })
+        function rm1(){
+            $('#rm_num1').val('');
+            $('#rm_Na1').val('');
+            $('#rm_Cnt1').val('');
+            $('#rm_Pri').val('');
+            $('#rm_bi').val('');
+        }
+        // rmtype2[rmNum1] = str;
+        // chk = Object.keys(rmtype2);
+        // x = roomtype[q];
+        // if(x==null);
+        
+        // console.log(chk);
+        // let b = $('#rm_li option').each
+
+        // let st = '100';
+        // let found = false;
+        // $('#selType option').each(function(){    // 중복
+        //     if ($(this).val()==st) {
+        //         found = true;
+        //         return false;
+        //     }
+        // });
+        // if (found) {
+        //     $('#rm_li option[value='+ rmNum1 +']').text(uStr);
+        // }else{
+        //     addNew();
+        // }
+    </script>
+</head>
+<body>
+    <h1 align="center">호텔 관리 시스템</h1>
+    <div id="dvHotel" align="center">
+        <ul>
+            <li><a href="#hotel0">객실 종류 관리</a></li>
+            <li id="rmg"><a href="#hotel1">객실 목록 관리</a></li>
+            <li><a href="#hotel2">예약 관리</a></li>
+        </ul>
+        <div id="hotel0">
+            <table>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>객실 종류</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="rm_ki" size="12">
+
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>객실 종류 번호</td>
+                                <td colspan="2"><input type="text" id="rm_num0"></td>
+                            </tr>
+                            <tr>
+                                <td>객실 종류명</td>
+                                <td colspan="2"><input type="text" id="rm_type0"></td>
+                            </tr>
+                            
+                            <tr>
+                                <td colspan="3" align="center">
+                                    <button id="btn_en0">등록</button>
+                                    <button id="btn_del0">삭제</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="hotel1">
+            <table>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>객실 목록</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="rm_li" size="12">
+
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>객실 번호</td>
+                                <td colspan="2"><input type="text" id="rm_num1"></td>
+                            </tr>
+                            <tr>
+                                <td>객실 종류명</td>
+                                <td colspan="2"><select id="rm_type1"></select></td>
+                            </tr>
+                            <tr>
+                                <td>객실명</td>
+                                <td colspan="2"><input type="text" id="rm_Na1"></td>
+                            </tr>
+                            <tr>
+                                <td>숙박 가능 인원</td>
+                                <td colspan="2"><input type="number" id="rm_Cnt1" min="0" max="10">명</td>
+                            </tr>
+                            <tr>
+                                <td>1박 요금</td>
+                                <td colspan="2"><input type="text" id="rm_Pri">원</td>
+                            </tr>
+                            <tr>
+                                <td>비고</td>
+                                <td colspan="2"><textarea id="rm_bi" rows="5"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" align="center">
+                                    <button id="btn_en1">등록</button>
+                                    <button id="btn_del1">삭제</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="hotel2">
+            <table>
+                <tr>
+                    <td>
+                        <table class="rv">
+                            <tr>
+                                <td colspan="3">예약 가능 목록</td>
+                            </tr>
+                            <tr>
+                                <td>숙박 기간</td>
+                                <td colspan="2"><input type="date" class="rv_ti" id="rm_sti0">~<input type="date" class="rv_ti" id="rm_eti0"></td>
+                            </tr>
+                            <tr>
+                                <td>숙박 인원</td>
+                                <td style="width: 100px;"><input type="number" class="rv_cnt" id="rm_Cnt2" min="0">명</td>  <!-- 숙박 가능 인원보다 작거나 같아야함. -->
+                                <td><button class="btn" id="btn_srh">찾기</button></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <select id="rmrv_li" size="12">
+
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="rv">
+                            <tr>
+                                <td colspan="3">세부 내역</td>
+                            </tr>
+                            <tr>
+                                <td>객실 번호</td>
+                                <td colspan="2"><input type="text" id="rm_num2" readonly></td> <!--readonly-->
+                            </tr>
+                            <tr>
+                                <td>객실 종류</td>
+                                <td colspan="2"><input type="text" id="rm_type2" readonly></td> <!--readonly-->
+                            </tr>
+                            <tr>
+                                <td>객실 명</td>
+                                <td colspan="2"><input type="text" id="rm_Na2" readonly></td> <!--readonly-->
+                            </tr>
+                            <tr>
+                                <td>숙박 예정 인원</td>
+                                <td colspan="2"><input type="number" class="rv_cnt" id="rm_Cntrv" min="0">명</td>
+                            </tr>
+                            <tr>
+                                <td>숙박 기간</td>
+                                <td colspan="2"><input type="date" class="rv_ti" id="rm_sti1">~<input type="date" class="rv_ti" id="rm_eti1"></td>
+                            </tr>
+                            <tr>
+                                <td>총 비용</td>
+                                <td colspan="2"><input type="text" class="rv_cnt" id="rm_sum">원</td> <!--계산-->
+                            </tr>
+                            <tr>
+                                <td>예약자 명</td>
+                                <td colspan="2"><input type="text" id="rmrv_na"></td> <!--입력-->
+                            </tr>
+                            <tr>
+                                <td>모바일 번호</td>
+                                <td colspan="2"><input type="text" id="rm_mo"></td> <!--입력-->
+                            </tr>
+                            <tr>
+                                <td colspan="3"><button class="btn" id="btn_rve">예약 등록</button>
+                                                <button class="btn" id="btn_em">비우기</button>
+                                                <button class="btn" id="btn_rvc">예약 취소</button></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="rv">
+                            <tr>
+                                <td colspan="3">예약 완료 목록</td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td colspan="3">예약 객실 목록</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <select id="rmc_li" size="20">
+
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

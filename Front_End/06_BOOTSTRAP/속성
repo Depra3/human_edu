@@ -1,0 +1,223 @@
+중단점
+Breakpoint	        Class	    Dimensions
+X-Small	            None	    <576px
+Small	            sm	        ≥576px
+Medium	            md	        ≥768px
+Large	            lg	        ≥992px
+Extra       large	xl	        ≥1200px
+Extra extra large	xxl	        ≥1400px
+
+w - width, h - height
+
+// 가로 정렬
+.text-start, end, center
+ 
+// 반응형 정렬
+text-sm-start, ...
+
+// 강제 줄바꿈
+.text-wrap
+ 
+// 오버플로우 (텍스트 박스보다 내용물이 넘쳐도 그대로 출력)
+.text-nowrap
+ 
+// 자동 줄바꿈 (텍스트 박스보다 내용물이 넘치면 자동 개행)
+.text-break
+
+// 텍스트 대소문자
+.text-lowercase, uppercase, capitalize
+
+// 폰트 크기
+.fs-1 ~ 6
+
+// 폰트 속성
+fw-bold, fw-bolder, fw-normal, fw-light, fw-lighter, fst-italic, fst-normal
+
+// 폰트 줄긋기
+text-decoration-underline, text-decoration-line-through, text-decoration-none
+
+텍스트 행 사이 간격 (행간)
+// line-height
+.lh-1
+.lh-sm
+.lh-base
+.lh-lg
+
+// property
+m - margin
+p - padding
+
+// sides
+t       - mt = margin-top / pt = padding-top
+b       - mb = margin-bottom / pb = padding-bottom
+s       - ms = margin-left / ps = padding-left (RTL에서는 반대)
+e       - me = margin-right / ps = padding-right (RTL에서는 반대) (아니 l이나 r로 하면되지 왜 s,e로 했대...)
+x       - *-left and *-right. 즉 가로 부분
+y       - *-top and *-bottom. 즉 세로 부분
+blank   - 그냥 m또는 p만 쓰면 4방향 지정
+
+// size
+0 - for classes that eliminate the margin or padding by setting it to 0
+1 - (by default) for classes that set the margin or padding to $spacer * .25
+2 - (by default) for classes that set the margin or padding to $spacer * .5
+3 - (by default) for classes that set the margin or padding to $spacer
+4 - (by default) for classes that set the margin or padding to $spacer * 1.5
+5 - (by default) for classes that set the margin or padding to $spacer * 3
+auto - margin to auto
+
+m-1 => top, bottom, left, right에 .25rem 만큼 margin
+m-3 => top, bottom, left, right에 1rem 만큼 margin
+m-5 => top, bottom, left, right에 3rem 만큼 margin
+
+mx-3 => left, right에 1rem 만큼 margin
+my-3 => top, bottom에 1rem 만큼 margin
+
+p-1 => top, bottom, left, right에 .25rem 만큼 padding
+p-3 => top, bottom, left, right에 1rem 만큼 padding
+p-5 => top, bottom, left, right에 3rem 만큼 padding
+
+px-3 => left, right에 1rem 만큼 padding
+py-3 => top, bottom에 1rem 만큼 padding
+
+
+mt = margin-top / pt = padding-top
+mb = margin-bottom / pb = padding-bottom
+ms = margin-left / ps = padding-left (RTL에서는 반대)
+me = margin-right / ps = padding-right (RTL에서는 반대)
+
+// 중앙 정렬
+<div class="mx-auto" style="width: 200px;">
+  Centered element
+</div>
+
+// border
+// 테두리 방향
+.border-top, end, bottom, start 
+ 
+// 테두리 색상
+.border-primary, white, ...
+ 
+// 테두리 두께
+.border-1 ~ 6
+ 
+// 테두리 둥근 모서리 형태
+.rounded-top, circle, pill, ...
+ 
+// 테두리 둥근 모서리 크기
+.rounded-0 ~ 3
+
+// background - bg
+// 배경색
+.bg-primary, white, ...
+ 
+// 배경 그라데이션
+.bg-gradient
+
+// display - d
+// xs크기 에서만 적용
+.d-{value}
+.d-inline-block
+.d-grid
+ 
+// 중단점 명시
+.d-{breakpoint}-{value}
+.d-lg-block
+ 
+/* value 값 */
+none
+inline
+inline-block
+block
+grid
+table
+table-cell
+table-row
+flex
+inline-flex
+
+// 반응형 요소 숨기기
+Screen size	            Class
+Hidden on all	        .d-none
+Hidden only on xs	    .d-none .d-sm-block
+Hidden only on sm	    .d-sm-none .d-md-block
+Hidden only on md	    .d-md-none .d-lg-block
+Hidden only on lg	    .d-lg-none .d-xl-block
+Hidden only on xl	    .d-xl-none .d-xxl-block
+Hidden only on xxl	    .d-xxl-none
+Visible on all	        .d-block
+Visible only on xs	    .d-block .d-sm-none
+Visible only on sm	    .d-none .d-sm-block .d-md-none
+Visible only on md	    .d-none .d-md-block .d-lg-none
+Visible only on lg	    .d-none .d-lg-block .d-xl-none
+Visible only on xl	    .d-none .d-xl-block .d-xxl-none
+Visible only on xxl	    .d-none .d-xxl-block
+
+//인쇄할 때 표시 여부
+ : 인쇄화면에서 인쇄버튼이 보이면 안되니까, 그런걸 숨길 때 사용
+
+.d-print-none, inline, grid, ...
+
+<div class="d-print-none">Screen Only (Hide on print only)</div>
+<div class="d-none d-print-block">Print Only (Hide on screen only)</div>
+<div class="d-none d-lg-block d-print-block">Hide up to large on screen, but always show on print</div>
+
+//float
+.float-start, end, none
+ 
+// 반응형
+.float-sm-start, ...
+
+//user-select
+ : 텍스트 복사 드래그
+
+.user-select-all, auto, none
+
+// pointer events - pe
+ : 특정 요소에서의 클릭 이벤트를 동작하지 않도록 제어
+
+pe-none, auto
+
+// overflow
+overflow-auto
+overflow-hidden
+overflow-visible
+overflow-scroll
+
+// 보이기/숨기기
+.visible
+.invisible
+
+// 그림자
+No shadow       shadow-none
+Small shadow    shadow-sm
+Regular shadow  shadow-
+Larger shadow   shadow-lg
+
+// position
+// position : 속성
+position-static
+position-relative
+position-absolute
+position-fixed>
+position-sticky
+
+// property :
+
+top     - top position
+start   - left position (in LTR)
+bottom  - bottom position
+end     - right position (in LTR)
+
+// position :
+
+0 - for 0 edge position
+50 - for 50% edge position
+100 - for 100% edge position
+
+// translate
+// 요소 중앙 배치
+.translate-middle
+ 
+// 요소를 가로 또는 세로 방향으로 중앙 배치
+.translate-middle-x
+.translate-middle-y

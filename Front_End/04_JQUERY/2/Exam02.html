@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <style>
+        td{
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        $(document)
+        .on('click', '#btnFill', function(){
+            // let a = 1;
+            // for (let i = 0; i < 4; i++) {
+            //     for (let j = 0; j < 4; j++) {
+            //         $('table tr:eq('+i+') td:eq('+j+')').text(a++);
+            //     }
+            // }
+            let a = 1;
+            // for (let i = 0; i < 4; i++) {
+            //     if ( (i%2) == 0) {
+            //         for (let j = 0; j < 4; j++) {
+            //             $('table tr:eq('+i+') td:eq('+j+')').text(a++);
+            //         }
+            //     } else {                    
+            //         for (let j = 3; j >= 0; j--) {
+            //             $('table tr:eq('+i+') td:eq('+j+')').text(a++);
+            //         }
+            //     }
+            // }
+            for (let i = 0; i < $('table tr').length; i++) {
+                if ( (i%2) == 0) {
+                    for (let j = 0; j < $('table tr:eq('+i+') td' ).length; j++) {
+                        $('table tr:eq('+i+') td:eq('+j+')').text(a++);
+                    }
+                } else {                    
+                    for (let j = 3; j >= 0; j--) {
+                        $('table tr:eq('+i+') td:eq('+j+')').text(a++);
+                    }
+                }
+            }
+            
+            // for (let i = 0; i < 16; i++) {
+            //     if (i < 4) {
+            //         $('table tr:eq(0) td:eq('+i+')').text(i+1);
+            //     }else
+            //     if (i < 7) {
+            //         $('table tr:eq('+ (i-3) +') td:eq(3)').text(i+1);
+            //     }else
+            //     if (i < 10) {
+            //         $('table tr:eq(3) td:eq('+(9-i)+')').text(i+1);
+            //     }else
+            //     if (i < 12) {
+            //         $('table tr:eq('+(12-i)+') td:eq(0)').text(i+1);
+            //     }else
+            //     if (i < 14) {
+            //         $('table tr:eq(1) td:eq('+(i-11)+')').text(i+1);
+            //     }else
+            //     if (i < 16) {
+            //         $('table tr:eq(2) td:eq('+(16-i)+')').text(i+1);
+            //     }
+            // }
+        })
+    </script>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <br><br>
+    <button id="btnFill">채우기</button>
+</body>
+</html>

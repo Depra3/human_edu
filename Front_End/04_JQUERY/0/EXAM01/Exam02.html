@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQUERY</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        // $(function)의 역할은 Java Script의 OnLoad와 같은 개념.
+        // 즉, 모든 문서가 다 일혀진 이후에 JQuery를 실행하라는 의미.
+        $(function(){
+            $(".human").html("hello~ human").css("background-color","yellow");
+        });
+    </script>
+</head>
+<body>
+    <div class="human"></div>
+    <div class="human"></div>
+    <div class="human"></div>
+
+</body>
+</html>

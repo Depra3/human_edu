@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        // javascript/java에서 index는 항상 0부터 시작
+        // $(document)
+        // .on('click','#btnGo',function(){
+        //     // $('table tr:eq(0) td:eq(1)').text('Two');// :의 앞뒤에 띄어쓰기 X
+        //     // $('table tr:eq(1) td:eq(2)').text('Six');
+        //     // $('table').append('<tr><td>7</td><td>8</td><td>9</td></tr>');
+        //     // $('table').prepend('<tr><td>7</td><td>8</td><td>9</td></tr>');
+        //     let n='A' ,m='B', o='C';
+        //     let str = '<tr><td>'+n+'</td><td>'+m+'</td><td>'+o+'</td></tr>';
+        //     $('table').prepend(str);
+        // });
+        $(document)
+        .on('click','#btnNew',function(){
+            // let str = '<tr><td>'+$('#name').val()+'</th><td>'+$('#mobile').val()+'</td><td>'+$('#region').val()+'</td></tr>'
+            // $('#tblData').prepend(str);
+            $('#tblData').before("<input type=button value='OK'>");
+        })
+        .on('click','#btnNew1',function(){
+            // let str = '<tr><td>'+$('#name').val()+'</th><td>'+$('#mobile').val()+'</td><td>'+$('#region').val()+'</td></tr>'
+            // $('#tblData').append(str);
+            $('#tblData').after("<input type=button value='NOT OK'>");
+        })
+    </script>
+</head>
+<body>
+    <!-- DOM(Document Object Model) => html tag의 Tree 형태의 계층구조 -->
+    <!-- <table border="1">
+        <tr>
+            <td>1</td><td>2</td><td>3</td>
+        </tr>
+        <tr>
+            <td>4</td><td>5</td><td>6</td>
+        </tr>
+    </table>
+    <button id="btnGo">Do</button> -->
+    <!-- root =>    branch          : 자손이 있음
+                    leaf, terminal  : 자손이 없음 
+                같은 레벨에 있는 것들은 sibling [ex) tr, td]
+            Child handling - prepend(): 해당 자손 맨 앞에 추가
+                              append(): 해당 자손 맨 뒤에 추가
+            sibling handling? before(): 대상 태그의 영역 밖 앞에 추가
+                               after(): 대상 태그의 영역 뒤 앞에 추가 -->
+    <table>
+        <tr>
+            <td>
+                <table  border="1" id="tblData">
+                    <thead>
+                        <tr><th>이름</th><th>모바일</th><th>지역</th></tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table><br><br>
+            </td>
+            <td>
+                <table>
+                    <tr><td> 이름 : <input type="text" id="name"></td></tr>
+                    <tr><td> 모바일 : <input type="text" id="mobile"></td></tr>
+                    <tr><td> 지역 : <input type="text" id="region"></td></tr>
+                    <tr><td><button id="btnNew">앞에 추가</button><button id="btnNew1">뒤에 추가</button></td></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        // .css()
+        // getter/setter
+        // .val() -> getter : 문자열로 가져옴 (JQuery는 문자열로 리턴함)
+        // .text()
+        // .html()
+        /*
+            문자열  + 숫자      : 연결연산 51
+            숫자    + 숫자      : 산술연산 6
+            문자열  + 문자열    : 연결연산 51
+            숫자    + 문자열    : 연결연산 51
+            // JAVA , Java Script 공통 - 숫자 연산에 문자열 하나 포함되면 모두 문자열로 변환하여 연산
+            // NaN == Not a Number : 숫자가 아님
+            // isNaN(a) 숫자가 아니면 true, 숫자면 false
+        */
+        $(document)
+        .on('click','#btnPlus',function(){
+            let n = $('#txtNum').val(); // 문자열로 리턴
+            if (isNaN(n)) {
+                $('#result').val("더하기 불가");
+            }else{
+                // let nP = parseInt(n);
+                // nP = nP + 1;
+                n = parseInt(n) + 1;
+                $('#result').val(n);
+            }
+        })
+    </script>
+</head>
+<body>
+    <input type="text" id="txtNum"><br><br><br>
+    <button id="btnPlus">+1</button><br><br><br>
+    <input type="text" id="result">
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            font-size: 40px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function clickPage(file){
+            fetch('./txt/'+ file).then(function(response){
+                response.text().then(function(text){
+                    document.querySelector('article').innerHTML=text
+                });
+            });
+        }
+    </script>
+</head>
+<body>
+    <ol>
+        <li>
+            <a onclick="clickPage('html')">
+            <!-- <a onclick="clickPage('./txt/html')">     -->
+                HTML 소개
+            </a>
+        </li>
+        <li>
+            <a onclick="clickPage('css')">
+                CSS 소개
+            </a>
+        </li>
+        <li>
+            <a onclick="clickPage('javascript')">
+                JAVASCRIPT 소개
+            </a>
+        </li>
+        <li>
+            <a onclick="clickPage('jquery')">
+                JQuery 소개
+            </a>
+        </li>
+    </ol>
+    <article>
+        
+    </article>
+</body>
+</html>

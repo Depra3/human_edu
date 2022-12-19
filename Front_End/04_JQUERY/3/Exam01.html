@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <style>
+        label{
+            background-color: aqua;
+            color: red;
+            width: 120px;
+        }
+    </style>
+    <script>
+        $(document)
+        .ready()    // 페이지가 시작하면 로딩
+        .on('click','#btnGo',function(){    //이벤트에 반응
+            let a = $('#selCountry').val();
+            a = a + ", " + $('#selCountry option:selected').text(); //선택된 text내용도 가져옴
+            $('#first').text(a);
+            let b = $('#txtPost').val();
+            $('#second').text(b);
+            $('#selCountry').append('<option value="FL">Finland</option>');
+            // input, textarea는 val()로 추가, select는 append()로 추가.
+            // $('#txtPost').val('Hello World!\nGood Moring Vietnam\nPlaza Singapura\nMarina Sands Hotel');
+        })
+    
+    </script>
+</head>
+<body>
+    
+    <select id="selCountry" size="10">
+        <option value="KR">Korea, Republic Of</option>
+        <option value="US">USA</option>
+        <option value="SG">Singapore</option>
+        <option value="DE">Germany</option>
+        <option value="UK">United Kingdom</option>
+    </select><br><br>
+    <textarea id="txtPost" cols="30" rows="5"></textarea><br><br>
+    <button id="btnGo">Get Data</button><br><br>
+    <label id="first"></label><br><br>
+    <label id="second"></label>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        let ar = [12, 7, 3, 1 , 9, 10, 5];
+
+        $(document)
+        .ready(function(){
+            display('#lbl1');
+        })
+        .on('click','#btnSort', function(){
+            let cnt = 0;
+            let temp;
+            // 정렬 알고리즘
+            for(cnt = 0; cnt < ar.length-1; cnt++) {
+                for (let i = cnt; i < ar.length; i++) {
+                    if (ar[cnt] > ar[i]) {
+                        temp = ar[cnt];
+                        ar[cnt] = ar[i];
+                        ar[i] = temp;
+                    }
+                }
+            }
+            // let a = 0;
+            
+            // while(true){
+            //     for (let i = 0; i < ar.length-1; i++) {
+            //         // console.log("i : "+i);
+            //         if (ar[i] > ar[i+1]) {
+            //             temp = ar[i];
+            //             ar[i] = ar[i+1];
+            //             ar[i+1] = temp;
+            //             a++;
+            //         }
+            //         console.log("a : "+a);
+            //     }
+            //     if (a == 0) {
+            //         break;
+            //     }else{
+            //         a == 0;
+            //     }
+            // }
+            
+
+
+            display('#lbl2');
+        })
+
+        function display(selector){
+            let str = '';
+            for (let i = 0; i < ar.length; i++) {
+                str += ' '+ ar[i];
+            }
+            $(selector).text(str);
+        }
+    </script>
+</head>
+<body>
+    <label id="lbl1"></label><br><br>
+    <button id="btnSort">정렬</button><br><br>
+    <label id="lbl2"></label>
+</body>
+</html>
