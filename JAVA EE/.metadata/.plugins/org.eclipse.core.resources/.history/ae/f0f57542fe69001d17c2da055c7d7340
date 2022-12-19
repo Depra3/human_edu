@@ -1,0 +1,9 @@
+package J221121;
+
+import java.util.ArrayList;
+
+public class Order {
+	ArrayList<String> alName;	// 메뉴이름
+	ArrayList<Integer> alQty; 	// 수량
+	ArrayList<Integer> alPrice;	// 합계 (단가 X 수량)
+}

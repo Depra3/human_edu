@@ -1,0 +1,11 @@
+server.port=8081
+# JSPì¤ì 
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+mybatis.mapper-locations=classpath:mybatis/mapper/**/**.xml
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521/orcl
+#localhost == 컴퓨터 IP 192.168.0.133
+spring.datasource.username=ora_user
+spring.datasource.password=human123
+server.servlet.jsp.init-parameters.development=true

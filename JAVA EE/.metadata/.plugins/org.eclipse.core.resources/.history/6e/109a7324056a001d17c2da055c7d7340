@@ -1,0 +1,88 @@
+package J221121;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Order extends Menu{
+	private ArrayList<String> alName;	// 메뉴이름
+	private ArrayList<Integer> alQty; 	// 수량
+	private ArrayList<Integer> alPrice;	// 합계 (단가 X 수량)
+	private String mobile;
+	
+	private Menu menu;
+	
+	Order(Menu m) {
+		// 초기화
+		this.menu = m;
+		this.alName = new ArrayList<>();
+		this.alQty = new ArrayList<>();
+		this.alPrice = new ArrayList<>();
+	}
+	void add(int num, int cnt, String mobileNum) {
+		// 메뉴번호 입력 (""이 아닌 동안 입력)
+		// 수량 입력
+		menu.display();
+		int menuNum = num - 1;
+		String Mname = menu.alName.get(menuNum);
+		// 단가 x 수량 => 합계 계산
+		int MPrice = menu.alPrice.get(menuNum);
+		int sum = MPrice*cnt;
+		
+
+		// alName/alQty/alPrice에 각각 추가
+		this.alName.add(Mname);
+		this.alQty.add(cnt);
+		this.alPrice.add(sum);
+		// 모바일 번호 입력, moblie에 저장
+		
+		mobile = mobileNum;
+	}
+	void display() {
+		// 주문내역을 출력(화면 표시)
+		System.out.println("---------------------------------------");
+		for (int i = 0; i < alName.size(); i++) {
+			String name = alName.get(i);
+			int cnt = alQty.get(i);
+			int sum = alPrice.get(i);
+			System.out.println((i+1)+ "-- 메뉴명 : " + name + ", 수량 : " + cnt + ", 합계 : " + sum);
+		}
+		System.out.println("---------------------------------------");
+	}
+	void delete() {
+		// 취소할 주문 번호를 입력받는다.(""이 아닌동안 반복)
+		// 주문 삭제.
+	}
+	void control() {
+		Scanner s1 = new Scanner(System.in); // 문자열 입력 전용
+		Scanner s2 = new Scanner(System.in); // 숫자 입력 전용
+		
+		while (true) {
+			System.out.print("메뉴 작업을 선택하시오. [c : 추가, r : 목록 표시, u : 수정, d : 삭제, '' : 프로그램 종료] : ");
+			String instr = s1.nextLine();
+			if(instr.equals("")) {	
+				break;
+			}else if (instr.equals("c")) {
+				int num, cnt; 
+				String mobileNum;
+				String str = s1.nextLine();
+				while (true) {
+					if (str.equals("")) {
+						break;
+					}
+					System.out.print("메뉴 번호 입력 : ");
+					num = s2.nextInt();
+					System.out.print("수량 입력 : ");
+					cnt = s2.nextInt();
+					System.out.print("핸드폰 번호 입력:");
+					mobileNum = s1.nextLine();
+					this.add(num, cnt, mobileNum);
+				}
+			}else if (instr.equals("r")) {
+				this.display();
+			}else if (instr.equals("d")) {
+				this.delete();
+			}
+		}
+	}
+}
+

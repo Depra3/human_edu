@@ -1,0 +1,15 @@
+package com.human.spring;
+
+import java.util.ArrayList;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface PostDAO {
+	ArrayList<PostDTO> pList();
+	
+	void boardWrite(String title,String content,String writer,String cDate);
+	ViewDTO boardView(int post_id);
+	void boardDel(int post_id);
+	void boardUp(int post_id, String title,String content,String writer,String uDate);
+}

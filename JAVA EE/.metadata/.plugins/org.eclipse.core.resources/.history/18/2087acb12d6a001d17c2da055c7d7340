@@ -1,0 +1,75 @@
+package J221121;
+
+import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+public class Sales {
+	ArrayList<String> alMobile;
+	ArrayList<String> alMenu;
+	ArrayList<Integer> alQty;
+	ArrayList<Integer> alPrice;
+	ArrayList<String> alTime;
+	Order order;
+	int a=0;
+	public Sales() { // 초기화
+		this.alMenu = new ArrayList<>();		// 메뉴 이름
+		this.alMobile = new ArrayList<>();	// 모바일 번호
+		this.alQty = new ArrayList<>();		// 주문 수량
+		this.alPrice = new ArrayList<>();	// 합계 액수
+		this.alTime = new ArrayList<>();		// 주문 시각
+		
+	}
+	void add(Order o) {
+		this.order = o;
+		for (int i = 0; i < order.getSize(); i++) {
+			this.alMenu.add(order.getAlName().get(i));
+			this.alPrice.add(order.getAlPrice().get(i));
+			this.alQty.add(order.getAlQty().get(i));
+			this.alMobile.add(order.getMobile());
+			
+			DateFormat dF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Date date = new Date();
+			String dateStr = dF.format(date);
+			this.alTime.add(dateStr);
+			a = a + 1;
+		}
+	}
+	void display() {
+		int sum = 0;
+		String mobile = null;
+		System.out.println("------------------------------------------------------------");
+		for (int i = 0; i < a; i++) {
+			String name = this.alMenu.get(i);
+			mobile = this.alMobile.get(i);
+			int cnt = this.alQty.get(i);
+			int price = this.alPrice.get(i);
+			
+			sum = sum + price;
+			System.out.println((i+1)+ " - 메뉴명 : " + name + ", 수량 : " + cnt 
+					+ "개, 합계 : " + price + "원" + ", 전화 번호 : " + mobile 
+					+ ", 주문 시각 : " + this.alTime.get(i));
+		}
+		System.out.println("총 합계 액수 : " + sum);
+		System.out.println("------------------------------------------------------------");
+	}
+	
+	void save() {
+		File file = new File("d:\\temp\\menu.txt");
+		try(Scanner sc = new Scanner(file, StandardCharsets.UTF_8)) {
+			while (sc.hasNextLine()) {
+				String line = sc.nextLine();
+				String[] token = line.split(","); // ["Americano","2500"]
+				this.alName.add(token[0]);
+				this.alPrice.add(Integer.parseInt(token[1]));
+//				System.out.println(line);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

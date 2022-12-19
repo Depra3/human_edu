@@ -1,0 +1,11 @@
+package com.human.spring;
+
+import java.util.ArrayList;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface PostDAO {
+//	ArrayList<E>
+	void boardWrite(String title,String content,String writer,String cDate);
+}

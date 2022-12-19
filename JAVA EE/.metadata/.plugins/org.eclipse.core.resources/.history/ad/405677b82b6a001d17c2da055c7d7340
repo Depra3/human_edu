@@ -1,0 +1,134 @@
+package J221121;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
+
+public class Order extends Menu{
+	ArrayList<String> alName;	// 메뉴이름
+	ArrayList<Integer> alQty; 	// 수량
+	ArrayList<Integer> alPrice;	// 합계 (단가 X 수량)
+	String mobile;
+	
+	Menu menu;
+	
+	Scanner s1;
+	Scanner s2;
+	
+	int sum;
+	
+	Order(Menu m) {
+		// 초기화
+		this.menu = m;
+		this.mobile = "";
+		this.alName = new ArrayList<>();
+		this.alQty = new ArrayList<>();
+		this.alPrice = new ArrayList<>();
+		s1 = new Scanner(System.in);
+		s2 = new Scanner(System.in);
+		
+	}
+	void add() {
+		int  cnt;
+		String mobileNum;
+		String chkstr = null;
+		while (true) {
+			this.menu.display();
+			// 메뉴번호 입력 (""이 아닌 동안 입력)
+			// 수량 입력
+			System.out.println("---------------------");
+			System.out.print("메뉴 번호 입력 ['' : 종료] : ");
+			chkstr = s1.nextLine();
+			if (chkstr.equals("")) {
+				break;
+			}
+			int num = Integer.parseInt(chkstr);
+			System.out.print("수량 입력 : ");
+			cnt = s2.nextInt();
+			System.out.println("---------------------");
+			
+			int menuNum = num - 1;
+			String Mname = this.menu.alName.get(menuNum);
+			// 단가 x 수량 => 합계 계산
+			int MPrice = this.menu.alPrice.get(menuNum);
+			sum = MPrice*cnt;
+
+			// alName/alQty/alPrice에 각각 추가
+			this.alName.add(Mname);
+			this.alQty.add(cnt);
+			this.alPrice.add(sum);
+			
+		}
+		// 모바일 번호 입력, moblie에 저장
+		System.out.print("모바일 번호 입력 : ");
+		mobileNum = s1.nextLine();
+		this.mobile = mobileNum;
+		
+		
+		
+		
+		// Sales 객체에 Order 객체의 내용을 복사
+		// alMobile = this.mobile
+		// alMenu = this.alName
+		// alQty = this.alQty
+		// alPrice = this.alPrice
+		// alTime = new Date();
+	}
+	void display() {
+		// 주문내역을 출력(화면 표시)
+		int sumP = 0;
+		System.out.println("------------------------------------------------------------");
+		for (int i = 0; i < this.alName.size(); i++) {
+			String name = this.alName.get(i);
+			int cnt = this.alQty.get(i);
+			int price = this.alPrice.get(i);
+			
+			sumP = sumP + price;
+			System.out.println((i+1)+ " - 메뉴명 : " + name + ", 수량 : " + cnt + 
+					"개, 합계 : " + price + "원");
+		}
+		System.out.println("총 합계 액수 : " + sumP + ", 전화 번호 : " + this.mobile);
+		System.out.println("------------------------------------------------------------");
+	}
+//	void delete(int index) {
+	void delete() {
+		// 취소할 주문 번호를 입력받는다.(""이 아닌동안 반복)
+		// 주문 삭제.
+		while (true) {
+			this.menu.display();
+			System.out.print("지울 주문 내역 번호 입력 ['' : 종료] : ");
+			String str = s1.nextLine();
+			if (str.equals("")) {
+				break;
+			}
+			int ind = Integer.parseInt(str) - 1;
+			this.alName.remove(ind);
+			this.alName.remove(ind);
+			this.alQty.remove(ind);
+		}
+//		index = index - 1;
+//		this.alName.remove(index);
+//		this.alName.remove(index);
+//		this.alQty.remove(index);
+	}
+	void control() {
+		while (true) {
+			System.out.print("메뉴 작업을 선택하시오. [c : 주문, r : 목록 표시, d : 주문 삭제, '' : 프로그램 종료] : ");
+			String instr = s1.nextLine();
+			if(instr.equals("")) {	
+				break;
+			}else if (instr.equals("c")) {
+				this.add();
+			}else if (instr.equals("r")) {
+				this.display();
+			}else if (instr.equals("d")) {
+//				this.display();
+//				System.out.print("삭제할 주문 번호 입력 : ");
+//				int index = s2.nextInt();
+//				this.delete(index);
+				this.delete();
+			}
+		}
+	}
+}
+

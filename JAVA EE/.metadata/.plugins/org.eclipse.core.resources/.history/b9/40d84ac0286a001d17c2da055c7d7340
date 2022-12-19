@@ -1,0 +1,52 @@
+package J221121;
+
+import java.util.ArrayList;
+
+public class Sales {
+	ArrayList<String> alMobile;
+	ArrayList<String> alMenu;
+	ArrayList<Integer> alQty;
+	ArrayList<Integer> alPrice;
+	ArrayList<String> alTime;
+	Order order;
+	Menu menu;
+	
+	public Sales(Menu m) { // 초기화
+		this.alMenu = new ArrayList<>();		// 메뉴 이름
+		this.alMobile = new ArrayList<>();	// 모바일 번호
+		this.alQty = new ArrayList<>();		// 주문 수량
+		this.alPrice = new ArrayList<>();	// 합계 액수
+		this.alTime = new ArrayList<>();		// 주문 시각
+		this.menu = m;
+		
+	}
+	void add(Order o) {
+		this.order = o;
+		for (int i = 0; i < order.alName.size(); i++) {
+			this.alMenu.add(order.alName.get(i));
+			this.alPrice.add(order.alPrice.get(i));
+			this.alPrice.add(order.alPrice.get(i));
+			this.alQty.add(order.alQty.get(i));
+		}
+		
+		
+	}
+	void display() {
+		int sum = 0;
+		String mobile = null;
+		System.out.println("------------------------------------------------------------");
+		for (int i = 0; i < order.alName.size(); i++) {
+			String name = this.alMenu.get(i);
+			mobile = this.alMobile.get(i);
+			int cnt = this.alQty.get(i);
+			int price = this.alPrice.get(i);
+			
+			sum = sum + price;
+			System.out.println((i+1)+ " - 메뉴명 : " + name + ", 수량 : " + cnt + 
+					"개, 합계 : " + price + "원" + ", 전화 번호 : " + mobile);
+			
+		}
+		System.out.println("총 합계 액수 : " + sum);
+		System.out.println("------------------------------------------------------------");
+	}
+}

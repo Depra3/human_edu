@@ -1,0 +1,8 @@
+package com.human.spring;
+
+import java.util.ArrayList;
+
+public interface PostDAO {
+//	ArrayList<E>
+	void boardWrite(String title,String content,String writer,String cDate);
+}

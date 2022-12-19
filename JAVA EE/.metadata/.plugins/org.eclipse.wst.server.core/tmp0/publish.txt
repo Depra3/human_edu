@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Tue Dec 06 17:38:20 KST 2022
+org.eclipse.jst.j2ee.server\:/binary\:C\:\\Users\\h\\.gradle\\caches\\modules-2\\files-2.1\\org.springframework\\spring-web\\6.0.2\\39dde8bfcc9074af0fcec924ca7465cb90eb25d4\\spring-web-6.0.2.jar=WEB-INF/lib/spring-web-6.0.2.jar
+org.eclipse.jst.j2ee.server\:/binary\:C\:\\Users\\h\\.gradle\\caches\\modules-2\\files-2.1\\org.apache.tomcat.embed\\tomcat-embed-jasper\\10.1.1\\821dc6a0394c324fdc6a3d242a09864e7ed9e443\\tomcat-embed-jasper-10.1.1.jar=WEB-INF/lib/tomcat-embed-jasper-10.1.1.jar

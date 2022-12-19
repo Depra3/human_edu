@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				 "http://mybatis.org/dtd//mybatis-3-mapper.dtd">
+
+<mapper namespace="com.human.spring.PostDAO">
+<insert id="boardWrite">
+	insert into posting values(seq_post_id.nextval,#{param1},#{param2},#{param3},#{param4},null)
+</insert>
+<!-- insert into posting values(seq_post_id.nextval,#{param1},#{param2},#{param3},to_char(sysdate,'YYYYMMDDHHMISS),to_char(sysdate,'YYYYMMDDHHMISS)) -->
+<select id="pList" resultType="com.human.spring.PostDTO">
+	select post_id,title,writer,created,updated from posting order by post_id
+</select>
+<select id="boardView" resultType="com.human.spring.PostDTO">
+<!-- 	select post_id,title,content,writer,created,updated from posting where post_id=#{param1} -->
+	select post_id,title,content,writer,
+			substr(created,1,4)||'-'||substr(created,5,2)||'-'||substr(created,7,2)||' '||substr(created,9,2)||':'||substr(created,11,2)||':'||substr(created,13,2),
+		   substr(updated,1,4)||'-'||substr(updated,5,2)||'-'||substr(updated,7,2)||' '||substr(updated,9,2)||':'||substr(updated,11,2)||':'||substr(updated,13,2) from posting where post_id=#{param1}
+</select>
+
+</mapper>

@@ -1,0 +1,56 @@
+package J221121;
+
+import java.util.ArrayList;
+
+public class Menu {
+	private ArrayList<String> alName;	// 메뉴명 목록
+	private ArrayList<Integer> alPrice;	// 메뉴가격 목록
+	
+	Menu(){
+		// alName, alPrice 초기화
+		alName = new ArrayList<String>();
+		alPrice = new ArrayList<Integer>();
+
+	}
+	void add(String name, int price) {
+		// alName, alPrice에 name, price 추가
+		alName.add(name);
+		alPrice.add(price);
+	}
+	void delete(int index) {
+		// alName, alPrice 양쪽에서 index번호를 가진 것을 제거
+		index = index - 1;
+		alName.remove(index);
+		alPrice.remove(index);
+	}
+	void update(int index, String name, int price) {
+		// alName, alPrice 양쪽에서 index번호의 이름과 가격을 수정
+		index = index - 1;
+		alName.set(index, name);
+		alPrice.set(index, price);
+	}
+	void display() {
+		//메뉴명과 가격을 표시
+		/*
+		 * Americano, 2500
+		 * Mocca, 3200
+		 * Espresso, 2700
+		 * Cappuccino, 3500
+		 * Latte, 3000
+		 */
+		if (alName.isEmpty()) {
+			System.out.println("---------------------------------------");
+			System.out.println("목록 없음");
+			System.out.println("---------------------------------------");
+			return;
+		}else {
+			for (int i = 0; i < alName.size(); i++) {
+				String name = alName.get(i);
+				int price = alPrice.get(i);
+				System.out.println((i+1)+ "-- 메뉴명 : " + name + ", 가격 : " + price);
+			}
+			System.out.println("---------------------------------------");
+		}
+	}
+	
+}

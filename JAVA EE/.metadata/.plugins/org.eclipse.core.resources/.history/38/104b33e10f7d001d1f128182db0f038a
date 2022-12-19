@@ -1,0 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+$(document)
+.on('click','#subUp',function(){
+	let str=$('#tblboard tr:eq(0) td:eq(1)').text();
+	console.log(str);
+	document.location='/update?post_id='+str+'&title='+$('#title').val()+'&content='+$('#content').val();
+})
+</script>
+<body>
+<form action="/update" method="post">
+<table id="tblboard" border="1">
+<%-- 	<tr><td>게시물 번호</td><td><input type="text" value="${post.post_id }" name=post_id id=post_id readonly></td></tr> --%>
+	<tr><td>게시물 번호</td><td><label id="lblPost_id">${post.post_id }</label></td></tr>
+	<tr><td>제목</td><td><input type="text" value="${post.title }" name="title" id="title"></td></tr>
+	<tr><td>내용</td><td><textarea name="content" id="content" rows="10" cols="80" style="resize:none">${post.content }</textarea></td></tr>
+	<tr><td>작성자</td>
+		<td><label id=lblWriter>${post.writer }</label></td></tr>
+	<tr><td>작성시각</td><td><label id="lblCd">${post.created }</label></td></tr>
+	<tr><td>수정시각</td><td><label id="lblUd">${post.updated }</label></td></tr>		
+	<tr><td align=left><input type="button" value="수정" name="subUp" id="subUp"></td>
+		<td align=right><a href='/'>목록보기</a></td></tr>
+</table>
+</form>
+</body>
+</html>

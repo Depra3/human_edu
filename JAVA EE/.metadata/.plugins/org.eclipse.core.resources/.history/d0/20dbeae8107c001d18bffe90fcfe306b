@@ -1,0 +1,5 @@
+package com.human.spring;
+
+public interface MemDAO {
+
+}

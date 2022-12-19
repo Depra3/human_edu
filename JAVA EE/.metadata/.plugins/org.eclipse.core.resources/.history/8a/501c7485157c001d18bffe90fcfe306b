@@ -1,0 +1,78 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<!-- <form action="/signup" id="frmsign"> -->
+	<table>
+		<tr><td>ID : </td>
+			<td><input type="text" name="loginid" id="loginid"></td>
+			<td><input type="button" id="btnDuplicate" value="중복 확인">
+				<input type="text" id="bDuplicate">
+			</td></tr>
+		<tr><td>PW : </td>
+			<td colspan="2"><input type="password" name="pw" id="pw"></td></tr>
+		<tr><td>PW 확인 : </td>
+			<td colspan="2"><input type="password" name="pwchk" id="pwchk"></td></tr>
+		<tr><td>실명 : </td>
+			<td colspan="2"><input type="text" name="name" id="name"></td></tr>
+		<tr><td>Mobile : </td>
+			<td colspan="2"><input type="text" name="mobile" id="mobile"></td></tr>
+		<tr><td colspan="3" align="center"><input type="button" value="회원가입" id="btnGo"></td></tr>
+		<tr>
+			<td><a href="/">홈으로</a></td>
+			<td>&nbsp;</td>
+			<td><a href="/login">로그인 하기</a></td>
+		</tr>
+	</table>
+<!-- </form> -->
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+// pw 확인 - Validation Check(데이터 유효성 검사)
+$(document)
+.ready(function(){
+	
+})
+.on('click','#btnDuplicate',function(){
+	if($('#loginid').val()=='') return false;
+	$.post('/checkDup',{loginid:$('#loginid').val()},function(data){
+		if(data=='1'){
+			alert('사용 가능한 아이디입니다.');
+			$('#bDuplicate').val('ok');
+		}else{
+			alert('이미 사용 중인 아이디입니다.');
+		}
+	},'text');
+	return false;
+}
+.on('submit','#frmid',function(){
+	if($('#pw').val()==$('#pwchk').val()){
+		return true;	
+	}else{
+		alert('비밀번호와 확인이 일치하지 않습니다.')
+		return false;
+	}
+})
+.on('click','#btnGo',function(){
+	if($('#pw').val()==$('#pwchk').val()){
+		if($('#loginid').val()==''||$('#pw').val()==''||$('#name').val()==''||$('#mobile').val()==''){
+			alert('빈 값이 존재합니다.')
+			return false;
+		}
+		$('#frmsign').submit();
+// 		return false;
+	}else{
+		alert('비밀번호와 확인이 일치하지 않습니다.')
+// 		return false;
+	}
+	return false;
+})
+</script>
+</html>

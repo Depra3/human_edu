@@ -1,0 +1,3 @@
+127.0.0.1 - - [06/Dec/2022:17:34:23 +0900] "GET / HTTP/1.1" 200 187
+0:0:0:0:0:0:0:1 - - [06/Dec/2022:17:34:23 +0900] "GET /Cafe/WEB-INF/classes/com/human/Cafe/MyController.java HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [06/Dec/2022:17:34:23 +0900] "GET /favicon.ico HTTP/1.1" 404 818

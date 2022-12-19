@@ -1,0 +1,174 @@
+package com.human.Study04;
+
+import java.util.ArrayList;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+@Controller
+public class MyController {
+	@Autowired
+	private empDAO emp;
+	
+	@RequestMapping("/")
+	public String home(Model m) {
+		ArrayList<EmpDTO> edto = emp.list();
+		m.addAttribute("worker",edto);
+//		for (int i = 0; i < edto.size(); i++) {
+//			System.out.println(edto.get(i).getEmp_name());
+//		}
+		return "home";
+	}
+	@RequestMapping("/department")
+	public String depart(Model m) {
+		ArrayList<DepartmentDTO> ddto = emp.listDepart();
+		m.addAttribute("dt",ddto);
+		return "department";
+	}
+	@RequestMapping("/ajaxtest")
+	public String doAjax() {
+		return "ajax";
+	}
+	@RequestMapping("/doPlus")
+	@ResponseBody // AJAX 이용
+	public String doPlus(HttpServletRequest req) {
+		int one = Integer.parseInt(req.getParameter("first"));
+		int two = Integer.parseInt(req.getParameter("second"));
+		int result = one + two;
+		return Integer.valueOf(result).toString(); // 문자열 변환 // function(data)에서 data로 받음
+	}
+	@RequestMapping("/emplist")
+	public String emplist() {
+		return "EmpList";
+	}
+	@RequestMapping("/getEmpList")
+	@ResponseBody
+	public String doGetEmpList() {
+		ArrayList<EmpDTO> edto = emp.list();
+		JSONArray ja = new JSONArray();
+//		JSON Object - { 'employee_id':100, 'emp_name':'Steven King', 'salary':24000, 'manager_name':''}
+//		JSONArray - JSON Object를 배열안에 넣음 
+		for (int i = 0; i < edto.size(); i++) {
+			JSONObject jo = new JSONObject();
+			jo.put("eid", edto.get(i).getEmployee_id());
+			jo.put("emp_name", edto.get(i).getEmp_name());
+			jo.put("salary", edto.get(i).getSalary());
+			jo.put("mname", edto.get(i).getManager_name());
+			ja.add(jo);
+		}
+		return ja.toString();
+	}
+//	@RequestMapping("/insertRT_form") // controlRoomType에 병합으로 인해 필요없음
+//	public String doAddRoomType() {
+//		return "insertRT_form";
+//	}
+//	@RequestMapping("/insertRT") // controlRoomType에 병합
+//	public String doInsertRT(HttpServletRequest req, Model m) {
+//		String typename = req.getParameter("typename");
+//		emp.insertRoomType(typename);
+//		
+//		return "redirect:/roomtype";
+//	}
+//	@RequestMapping("/insertRI_form")
+//	public String doAddRoomInfo() {
+//		return "insertRI_form";
+//	}
+//	@RequestMapping("/insertRI")
+//	public String doInsertRI(HttpServletRequest req, Model m) {
+//		String name = req.getParameter("name");
+//		String type = req.getParameter("type");
+//		String howmany = req.getParameter("howmany");
+//		String howmuch = req.getParameter("howmuch");
+//		System.out.println(name);
+//		System.out.println(type);
+//		System.out.println(howmany);
+//		System.out.println(howmuch);
+//		emp.insertRoomInfo(name, Integer.parseInt(type), Integer.parseInt(howmany), Integer.parseInt(howmuch));
+//		
+//		return "redirect:/insertRI_form";
+//	}
+	@RequestMapping("/roomtype")
+	public String getList(Model m) {
+		ArrayList<RoomtypeDTO> rtdto = emp.listRoomtype();
+		m.addAttribute("rt",rtdto);
+//		for (int i = 0; i < rtdto.size(); i++) {
+//			System.out.println(rtdto.get(i).getTypename());
+//		}
+		return "roomtype";
+	}
+	@RequestMapping("/controlRoomType")
+	public String doDeleteType(HttpServletRequest req) {
+		if (req.getParameter("optype").equals("delete")) {
+			int typenum = Integer.parseInt(req.getParameter("typenum"));
+			System.out.println(typenum);
+			emp.deleteRoomType(typenum);
+		} else if(req.getParameter("optype").equals("insert")) {
+			String typename = req.getParameter("typename");
+			emp.insertRoomType(typename);
+		} else if(req.getParameter("optype").equals("update")) {
+			String typename = req.getParameter("typename");
+			int typenum = Integer.parseInt(req.getParameter("typenum"));
+			emp.updateRoomType(typename, typenum);
+		}
+		return "redirect:/roomtype";
+	}
+	@RequestMapping("/roominfo")
+	public String doRoomInfo(Model m) {
+		// select ROOM INFO
+		ArrayList<RoomInfoDTO> ridto = emp.listRoominfo();
+		m.addAttribute("ri",ridto);
+		ArrayList<RoomtypeDTO> rtdto = emp.listRoomtype();
+		m.addAttribute("rt",rtdto);
+//		for (int i = 0; i < ridto.size(); i++) {
+//			System.out.println(ridto.get(i).getName());
+//		}
+		return "roominfo";
+	}
+	@RequestMapping("/controlRoomInfo")
+	public String doControlRoomInfo(HttpServletRequest req) {
+		// insert/update/delete ROOM INFO
+		int num=0;
+		String name = req.getParameter("iname");
+		int type = Integer.parseInt(req.getParameter("itype"));
+		int howmany = Integer.parseInt(req.getParameter("ihmany"));
+		int howmuch = Integer.parseInt(req.getParameter("ihmuch"));
+		if(req.getParameter("rInfo").equals("insert")) {
+			emp.insertRoomInfo(name, type, howmany, howmuch);
+		} else if(req.getParameter("rInfo").equals("update")) {
+			num = Integer.parseInt(req.getParameter("inum"));
+			emp.updateRoomInfo(num, name, type, howmany, howmuch);
+		} else if(req.getParameter("rInfo").equals("delete")) {
+			num = Integer.parseInt(req.getParameter("inum"));
+			emp.deleteRoomInfo(num);
+		}
+		return "redirect:/roominfo";
+	}
+	@RequestMapping("/xroomtype")
+	public String viewRoomType() {
+//		ArrayList<RoomtypeDTO> rtdto = emp.listRoomtype();
+//		m.addAttribute("rt",rtdto);
+//		for (int i = 0; i < rtdto.size(); i++) {
+//			System.out.println(rtdto.get(i).getTypename());
+//		}
+		return "ajax_roomtype";
+	}
+	@RequestMapping("/getRoomType")
+	public String doGetRoomType() {
+		ArrayList<RoomtypeDTO> rtdto = emp.listRoomtype();
+		JSONArray ja = new JSONArray();
+		for (int i = 0; i < rtdto.size(); i++) {
+			JSONObject jo = new JSONObject();
+			jo.put("typenum", rtdto.get(i).getTypenum());
+			jo.put("typename", rtdto.get(i).getTypename());
+			ja.add(jo);
+		}
+		return "";
+	}
+}

@@ -1,0 +1,10 @@
+package com.human.spring;
+
+public class PostDTO {
+	private int post_id;
+	private String title;
+	private String content;
+	private String writer;
+	private String created;
+	private String updated;
+}

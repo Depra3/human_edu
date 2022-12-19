@@ -1,0 +1,15 @@
+package com.human.Study01;
+
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+public class Person {	// Command 객체 변수명이 name과 같아야함. 
+	private String name;
+	private String loginid;
+	private String passcode;
+	private String mobile;
+}

@@ -1,0 +1,25 @@
+package J221121;
+
+import java.util.ArrayList;
+
+public class Sales {
+	ArrayList<String> alMobile;
+	ArrayList<String> alMenu;
+	ArrayList<Integer> alQty;
+	ArrayList<Integer> alPrice;
+	ArrayList<String> alTime;
+	
+	public Sales() { // 초기화
+		alMenu = new ArrayList<>();
+		alMobile = new ArrayList<>();
+		alQty = new ArrayList<>();
+		alPrice = new ArrayList<>();
+		alTime = new ArrayList<>();
+	}
+	void add() {
+		
+	}
+	void display() {
+		
+	}
+}
