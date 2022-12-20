@@ -49,10 +49,10 @@
             <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             __※ EX00/src/human0/List_Ex08 참조__
 
-- __FX01__ : JAVA FX 화면 구조, 화면에 이미지 넣기
+- __FX01__ : JAVA FX 화면 구조, 화면에 이미지 넣기 학습
             <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             __※ EX00/src/human0/List_Fx01 참조__
 
-- __FX02__ : JAVA FX 이벤트
+- __FX02__ : JAVA FX 이벤트 실습
             <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             __※ EX00/src/human0/List_Fx02 참조__
