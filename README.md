@@ -28,9 +28,9 @@
 - __JAVA Spring - JAVA EE__
     - __2022.12.07 ~ 2022.12.16__
     - 사용 툴 : <img src="https://img.shields.io/badge/Eclipse EE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
-    - MVC구조 학습
+    - `MVC`구조 학습
     - 회원가입 및 로그인 실습
-    - `DB`와의 연동 및 데이터 CRUD 실습
+    - `DB`와의 연동 및 데이터 `CRUD` 실습
     - `AJAX`를 이용하여 로그인/회원가입/게시판 만들기 실습
 
 - __R__

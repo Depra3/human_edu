@@ -1,4 +1,4 @@
-# JAVA - JAVA SE
+# JAVA
 - __2022.10.04 ~ 2022.11.03__
 - __사용 툴__ : <img src="https://img.shields.io/badge/Eclipse SE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
 
