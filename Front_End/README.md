@@ -11,7 +11,8 @@
             <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             __※ 01_HTML/List_HTML 참조__
 
-- __CSS__ : Style 태그, css파일 연동, 태그 순위, Selector 태그, BOX 모델, Style-position 태그, Container 태그, Item 태그, Layout 실습
+- __CSS__ : Style 태그, css파일 연동, 태그 순위, Selector 태그, BOX 모델, Style-position 태그, Container 태그, 
+            Item 태그, Layout 실습
             <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             __※ 02_CSS/List_CSS 참조__
 
