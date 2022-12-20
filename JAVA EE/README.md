@@ -18,5 +18,6 @@
 
 - __Study03__ : 회원가입 (Session) - 로그아웃 실습
 
-- __Study04__ : Oracle DB와 연결(인사명단/부서 테이블 출력), 객실 관리 시스템, AJAX 학습, AJAX를 이용한 객실 관리   
-                시스템 실습
+- __Study04__ : Oracle DB와 연결(인사명단/부서 테이블 출력), 객실 관리 시스템, AJAX 학습, 
+                <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                AJAX를 이용한 객실 관리 시스템 실습
