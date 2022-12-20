@@ -43,7 +43,7 @@ select * from employees;
 
 --create table worker as select * from employees;
 select * from worker;
---worker í…Œì´ë¸”ì—ì„œ managier_idê°€ nullì¸ ì‚¬ëŒì˜ ì›”ê¸‰(salary)ì„ 30000ë§Œìœ¼ë¡œ ë³€ê²½(update)
+--worker Å×ÀÌºí¿¡¼­ managier_id°¡ nullÀÎ »ç¶÷ÀÇ ¿ù±Ş(salary)À» 30000¸¸À¸·Î º¯°æ(update)
 update worker set salary=30000 where manager_id is null;
---manager_idê°€ 124ì¸ ì‚¬ëŒì˜ ì»¤ë¯¸ì…˜ í¼ì„¼í‹°ì§€ë¥¼ 0.25ë¡œ ë³€ê²½
+--manager_id°¡ 124ÀÎ »ç¶÷ÀÇ Ä¿¹Ì¼Ç ÆÛ¼¾Æ¼Áö¸¦ 0.25·Î º¯°æ
 update worker set commission_pct=0.25 where manager_id=124;
