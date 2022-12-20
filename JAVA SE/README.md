@@ -32,8 +32,17 @@
 - __EX05__ : 예외 발생(NullPointerException, NullPointerException, NumberFormatException, ClassCastException),
             <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             예외 처리(try ~ catch ~ finally, 다중 try, Multi catch, Throws Exception)
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             ※ EX00/human0/List_Ex05 참조
 
-- __EX06__ : Object 클래스, 문자 비교, toString(), clone(), finalize(), compare(), equals()-deepEquals(), 
-            hash()-hashCode(),
+- __EX06__ : Object 클래스, System 클래스, Class 클래스, String 클래스, Math 클래스, Date 클래스, Calendar 클래스,
             <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ※ EX00/human0/List_Ex06 참조
+
+- __EX07__ : 제네릭
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ※ EX00/human0/List_Ex07 참조
+
+- __EX08__ : 배열, ArrayList, LinkedList, Set, TreeSet, Map, TreeMap, Queue(FIFO), Stack(LIFO)
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ※ EX00/human0/List_Ex08 참조
