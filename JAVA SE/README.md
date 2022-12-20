@@ -1,6 +1,6 @@
 # JAVA
 - __2022.10.04 ~ 2022.11.03__
-- __사용 툴__ : <img src="https://img.shields.io/badge/Eclipse IDE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
+- __사용 툴__ : <img src="https://img.shields.io/badge/Eclipse SE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
 
 # LIST
 - __EX00 : 각 폴더 별 내용 요약 리스트__
