@@ -34,5 +34,5 @@
     - AJAX를 이용하여 게시판 만들기 실습
 
 - __R__
-    - __2022.12.19 ~__
+    - <b>2022.12.19 ~</b>
     - 사용 툴 : <img src="https://img.shields.io/badge/R-276DC3?style=flat&logo=R&logoColor=white"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/>
