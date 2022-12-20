@@ -32,11 +32,11 @@ constraint fk_typenum foreign key(type) references roomtype(typenum)
 --insert into roomtype values(2,'Deluxe Room',null);
 --insert into roomtype values(3,'Family Room',null);
 --select * from roomtype;
---insert into roominfo values(100, '¹éµÎ»ê', 1,6,1200);
+--insert into roominfo values(100, 'ë°±ë‘ì‚°', 1,6,1200);
 --select * from roominfo;
---insert into roominfo values(100, 'ÇÑ¶ó»ê', 4,6,1200);
---Á¦¾à Á¶°Ç 1~3±îÁö¹Û¿¡ ¸øµé¾î°¨ µû¶ó¼­ 4´Â ¾ÈµÊ.
---insert into roominfo values(100, 'ÇÑ¶ó»ê', 2,6,1200);
+--insert into roominfo values(100, 'í•œë¼ì‚°', 4,6,1200);
+--ì œì•½ ì¡°ê±´ 1~3ê¹Œì§€ë°–ì— ëª»ë“¤ì–´ê° ë”°ë¼ì„œ 4ëŠ” ì•ˆë¨.
+--insert into roominfo values(100, 'í•œë¼ì‚°', 2,6,1200);
 
 select * from worker;
 create view under_five as select * from worker where salary<5000;
@@ -44,10 +44,10 @@ select * from under_five;
 
 select * from worker where emp_name='Pat Fay';
 create index ndx_emp_name on worker(emp_name);
---select /* index ÀÎµ¦½º¸í */ from Å×ÀÌºí¸í
---select /* index ÀÎµ¦½º¸í */ from Å×ÀÌºí¸í where emp_name='~~'; 
---ÀÎµ¦½º È¿°ú¸¦ º¸±â À§ÇØ¼­´Â ¸¹Àº µ¥ÀÌÅÍ°¡ ÀÖ¾î¾ßÇÔ. ÀûÀº µ¥ÀÌÅÍ·Î´Â ¼ÓµµÂ÷°¡ Å©Áö ¾ÊÀ½.
---°°Àº Ä®·³À¸·Î ÀÎµ¦½º¸¦ ¸¸µé°í Ä®·³À» ±âÁØÀ¸·Î È£Ãâ½Ã »ç¿ëÇÏ±âµµÇÔ.
+--select /* index ì¸ë±ìŠ¤ëª… */ from í…Œì´ë¸”ëª…
+--select /* index ì¸ë±ìŠ¤ëª… */ from í…Œì´ë¸”ëª… where emp_name='~~'; 
+--ì¸ë±ìŠ¤ íš¨ê³¼ë¥¼ ë³´ê¸° ìœ„í•´ì„œëŠ” ë§ì€ ë°ì´í„°ê°€ ìˆì–´ì•¼í•¨. ì ì€ ë°ì´í„°ë¡œëŠ” ì†ë„ì°¨ê°€ í¬ì§€ ì•ŠìŒ.
+--ê°™ì€ ì¹¼ëŸ¼ìœ¼ë¡œ ì¸ë±ìŠ¤ë¥¼ ë§Œë“¤ê³  ì¹¼ëŸ¼ì„ ê¸°ì¤€ìœ¼ë¡œ í˜¸ì¶œì‹œ ì‚¬ìš©í•˜ê¸°ë„í•¨.
 
 select * from employees;
 create table worker as select * from employees;
@@ -61,14 +61,14 @@ select * from roomtype;
 insert into roomtype values(seq_id.nextval,'Corridor',null);
 
 select * from worker;
---¿¬°á ¿¬»êÀÚ.
+--ì—°ê²° ì—°ì‚°ì.
 select emp_name||','||salary from worker;
---°á°ú: pat, 2000
+--ê²°ê³¼: pat, 2000
 
---ÀÌ¸§:¸Å´ÏÀú»ç¹ø,¿ù±Ş
+--ì´ë¦„:ë§¤ë‹ˆì €ì‚¬ë²ˆ,ì›”ê¸‰
 select emp_name ||' : '|| employee_id ||', '||salary from worker;
 
---dual °¡Â¥Å×ÀÌºí, mysql¿¡¼± from dual ÇÊ¿ä¾øÀ½.
+--dual ê°€ì§œí…Œì´ë¸”, mysqlì—ì„  from dual í•„ìš”ì—†ìŒ.
 select 1+5 from dual;
 select 10/2 from dual;
 select 3*5 from dual;
@@ -82,10 +82,10 @@ select employee_id, salary,
 from worker;
 
 select emp_name, salary,
-    case when salary>=10000 then 'º»ºÎÀå±Ş'
-        when salary<10000 and salary>=6000 then 'ÆÀÀå±Ş'
-        when salary<6000 then 'ÆÀ¿ø±Ş'
-        --else 'ÆÀ¿ø±Ş'
+    case when salary>=10000 then 'ë³¸ë¶€ì¥ê¸‰'
+        when salary<10000 and salary>=6000 then 'íŒ€ì¥ê¸‰'
+        when salary<6000 then 'íŒ€ì›ê¸‰'
+        --else 'íŒ€ì›ê¸‰'
     end as salary_level
 from worker;
 
@@ -94,7 +94,7 @@ select emp_name, salary from worker where salary>=4000 and salary>=6000;
 
 select emp_name, salary from worker where salary in (3000,4000,5000,6000,7000);
 
--- % : 0°³ ÀÌ»óÀÇ ¹®ÀÚ, _ : 1°³ÀÇ ¹®ÀÚ
+-- % : 0ê°œ ì´ìƒì˜ ë¬¸ì, _ : 1ê°œì˜ ë¬¸ì
 select emp_name from worker where emp_name like 'J%';
 select emp_name from worker where emp_name like '%son';
 select emp_name from worker where emp_name like '% A%';
@@ -112,7 +112,7 @@ select initcap('good') from dual;
 select lower(emp_name) from worker;
 select upper(emp_name) from worker;
 select concat(concat(emp_name,','),salary) from worker;
---µÎ ¹®ÀÚ¿­ °áÇÕÀÌ¶ó Àß »ç¿ë X, ||À» ¸¹ÀÌ »ç¿ë
+--ë‘ ë¬¸ìì—´ ê²°í•©ì´ë¼ ì˜ ì‚¬ìš© X, ||ì„ ë§ì´ ì‚¬ìš©
 select substr('good morning',5) from dual;
 select '['||substr('good morning',1,4)||']' from dual;
 select substr('good morning',-3) from dual;
@@ -123,32 +123,32 @@ select emp_name from worker where emp_name like 'John%';
 select replace(emp_name,'John ', 'John-') from worker;
 select replace(emp_name,'John ', 'John-') from worker where emp_name like 'John%';
 select replace(emp_name,' ', '') from worker where emp_name like 'John%';
-select instr('³»°¡ ¸¸¾à ¿Ü·Î¿ï ¶§¸é, ³»°¡ ¸¸¾à ±«·Î¿ï ¶§¸é, ³»°¡ ¸¸¾à Áñ°Å¿ï ¶§¸é','¸¸¾à') from dual;
-select instr('³»°¡ ¸¸¾à ¿Ü·Î¿ï ¶§¸é, ³»°¡ ¸¸¾à ±«·Î¿ï ¶§¸é, ³»°¡ ¸¸¾à Áñ°Å¿ï ¶§¸é','¸¸¾à',5) from dual;
-select instr('³»°¡ ¸¸¾à ¿Ü·Î¿ï ¶§¸é, ³»°¡ ¸¸¾à ±«·Î¿ï ¶§¸é, ³»°¡ ¸¸¾à Áñ°Å¿ï ¶§¸é','¸¸¾à',5,2) from dual;
+select instr('ë‚´ê°€ ë§Œì•½ ì™¸ë¡œìš¸ ë•Œë©´, ë‚´ê°€ ë§Œì•½ ê´´ë¡œìš¸ ë•Œë©´, ë‚´ê°€ ë§Œì•½ ì¦ê±°ìš¸ ë•Œë©´','ë§Œì•½') from dual;
+select instr('ë‚´ê°€ ë§Œì•½ ì™¸ë¡œìš¸ ë•Œë©´, ë‚´ê°€ ë§Œì•½ ê´´ë¡œìš¸ ë•Œë©´, ë‚´ê°€ ë§Œì•½ ì¦ê±°ìš¸ ë•Œë©´','ë§Œì•½',5) from dual;
+select instr('ë‚´ê°€ ë§Œì•½ ì™¸ë¡œìš¸ ë•Œë©´, ë‚´ê°€ ë§Œì•½ ê´´ë¡œìš¸ ë•Œë©´, ë‚´ê°€ ë§Œì•½ ì¦ê±°ìš¸ ë•Œë©´','ë§Œì•½',5,2) from dual;
 select instr('John Wick','Wick') from dual; --6
 select instr('John Wick','Joe') from dual; --0
 select length('Good Morning Vietnam') from dual;
 select emp_name, length(emp_name) from worker;
 
 select emp_name from worker;
--- ÀÌ¸§ ¼º select name, family name
+-- ì´ë¦„ ì„± select name, family name
 select '['||substr(emp_name,1,instr(emp_name,' ')-1)||']', substr(emp_name,instr(emp_name,' ')) from worker;
--- °ø¹éÆ÷ÇÔÀÌ±â¿¡ -1ÇÏ¿© °ø¹é Á¦°Å
--- ÀÌ¸§(ÀÌ¸§, °¡Á·¸í)¿¡¼­ ÀÌ¸§¸¸ ÃßÃâÇØ¼­ Ãâ·Â by using instr/substr/length
+-- ê³µë°±í¬í•¨ì´ê¸°ì— -1í•˜ì—¬ ê³µë°± ì œê±°
+-- ì´ë¦„(ì´ë¦„, ê°€ì¡±ëª…)ì—ì„œ ì´ë¦„ë§Œ ì¶”ì¶œí•´ì„œ ì¶œë ¥ by using instr/substr/length
 select emp_name, substr(emp_name,instr(emp_name,' ')+1) from worker;
--- °ø¹éÆ÷ÇÔÀÌ±â¿¡ +1ÇÏ¿© °ø¹é Á¦°Å
+-- ê³µë°±í¬í•¨ì´ê¸°ì— +1í•˜ì—¬ ê³µë°± ì œê±°
 select replace(emp_name,' ','-') from worker;
 select to_char(salary,'99,999') from worker;
 select sysdate, systimestamp from dual;
 select to_char(sysdate,'yyyy-mm-dd HH24:MI:SS') from dual;
 select to_char(systimestamp,'yyyy-mm-dd HH24:MI:SS') from dual;
--- sysdate¸¦ ÀÌ¿ëÇØ¼­, 'pm x½Ã xºĞ xÃÊ'
---select to_char(systimestamp,'PM HH12'||'½Ã'||' MI'||'ºĞ'||' SS'||'ÃÊ') from dual; ¹®ÀÚ¿¬°á ½ÇÆĞ
---select to_char(systimestamp,'PM HH12½Ã MIºĞ SSÃÊ') from dual;        ±×³É ¾²¸é ¾ÈºÙÀ½
-select to_char(systimestamp,'PM HH12"½Ã" MI"ºĞ" SS"ÃÊ"') from dual;
-select to_char(sysdate,'PM HH12"½Ã" MI"ºĞ" SS"ÃÊ"') from dual;
-select to_char(sysdate,'PM HH')||'½Ã'||to_char(sysdate,'MI')||'ºĞ'||to_char(sysdate,'SS')||'ÃÊ' from dual;
+-- sysdateë¥¼ ì´ìš©í•´ì„œ, 'pm xì‹œ xë¶„ xì´ˆ'
+--select to_char(systimestamp,'PM HH12'||'ì‹œ'||' MI'||'ë¶„'||' SS'||'ì´ˆ') from dual; ë¬¸ìì—°ê²° ì‹¤íŒ¨
+--select to_char(systimestamp,'PM HH12ì‹œ MIë¶„ SSì´ˆ') from dual;        ê·¸ëƒ¥ ì“°ë©´ ì•ˆë¶™ìŒ
+select to_char(systimestamp,'PM HH12"ì‹œ" MI"ë¶„" SS"ì´ˆ"') from dual;
+select to_char(sysdate,'PM HH12"ì‹œ" MI"ë¶„" SS"ì´ˆ"') from dual;
+select to_char(sysdate,'PM HH')||'ì‹œ'||to_char(sysdate,'MI')||'ë¶„'||to_char(sysdate,'SS')||'ì´ˆ' from dual;
 
 select name,gender,school_name,grade_num,mobile,nvl(math_score,-1),nvl(english_score,-1),nvl(korean_score,-1) from student;
 select employee_id, to_char(start_date,'yyyy'),to_char(end_date,'yyyy'),
@@ -159,5 +159,5 @@ select prod_id,
     decode(channel_id, 3, 'Direact', 9, 'Direct', 5, 'Indirect',4,'Indirect','Others') decodes 
 from sales where rownum<10;
 select emp_name,salary, decode(salary,3000,'3k',4000,'4k',5000,'5k','etc') decodes from worker;
-select emp_name,salary, decode(salary,3000,'3Ãµ',4000,'4Ãµ',5000,'5Ãµ','etc') decodes from worker;
+select emp_name,salary, decode(salary,3000,'3ì²œ',4000,'4ì²œ',5000,'5ì²œ','etc') decodes from worker;
 select emp_name, salary, case when salary between 3000 and 3999 then '3k' else 'etc' end CWBAT from worker;
