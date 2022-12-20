@@ -13,7 +13,7 @@
 - __HTML, JAVA Script/CSS, JQuery - Front_End__
     - __2022.11.04 ~ 2022.11.28__
     - 사용 툴 : <img src="https://img.shields.io/badge/Visual Studio Code-5C2D91?style=flat&logo=Visual Studio Code&logoColor=white"/>
-    - HTML : a, input, button, select 등의 태그 실습
+    - HTML : `a`, `input`, `button`, `select` 등의 태그 실습
     - CSS : CSS 태그 실습
     - JAVA Script : 이벤트를 이용한 태그 설정 변환 및 데이터 관리 실습
     - JQuery : 이벤트를 이용한 테이터 관리 시스템 구축 실습
@@ -21,17 +21,17 @@
 - __Oracle__
     - __2022.11.29 ~ 2022.12.06__
     - 사용 툴 : <img src="https://img.shields.io/badge/Oracle-F80000?style=flat&logo=Oracle&logoColor=white"/>
-    - DML, DCL을 이용한 CRUD 실습
-    - Join, 서브 쿼리를 이용한 데이터 추출 실습
-    - PL/SQL을 이용한 데이터 추출 실습
+    - `DML`, `DCL`을 이용한 CRUD 실습
+    - `Join`, `SubQuery`를 이용한 데이터 추출 실습
+    - `PL/SQL`을 이용한 데이터 추출 실습
 
 - __JAVA Spring - JAVA EE__
     - __2022.12.07 ~ 2022.12.16__
     - 사용 툴 : <img src="https://img.shields.io/badge/Eclipse EE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
     - MVC구조 학습
     - 회원가입 및 로그인 실습
-    - DB와의 연동 및 데이터 CRUD 실습
-    - AJAX를 이용하여 로그인/회원가입/게시판 만들기 실습
+    - `DB`와의 연동 및 데이터 CRUD 실습
+    - `AJAX`를 이용하여 로그인/회원가입/게시판 만들기 실습
 
 - __R__
     - <b>2022.12.19 ~</b>
