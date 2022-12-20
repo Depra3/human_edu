@@ -23,11 +23,11 @@ from worker
 group by department_id;
 
 select * from worker;
---@commission_pctº° ÀÎ¿ø¼ö
+--@commission_pctë³„ ì¸ì›ìˆ˜
 select commission_pct pct,count(*) cnt,to_char(avg(salary),'99,999.99') avg_sal
 from worker
 where commission_pct is not null
---nullÀÌ ¾Æ´Ñ °Í¸¸
+--nullì´ ì•„ë‹Œ ê²ƒë§Œ
 group by commission_pct
 order by avg(salary);
 
@@ -38,7 +38,7 @@ select * from worker order by hire_date asc;
 
 select * from customers;
 
---@¼ºº°¿¡ µû¸¥ ¼ö
+--@ì„±ë³„ì— ë”°ë¥¸ ìˆ˜
 select cust_gender, count(*)
     from customers
     group by cust_gender;
@@ -62,7 +62,7 @@ having count(*)>1
 --order by count(*);
 order by cnt desc;
 
---@°áÈ¥ ¿©ºÎº° °í°´ ¼ö¸¦ ¾ËÆÄºª ¼øÀ¸·Î Á¤·Ä
+--@ê²°í˜¼ ì—¬ë¶€ë³„ ê³ ê° ìˆ˜ë¥¼ ì•ŒíŒŒë²³ ìˆœìœ¼ë¡œ ì •ë ¬
 select lower(cust_marital_status), count(*)
     from customers
     group by lower(cust_marital_status)
@@ -71,25 +71,25 @@ select lower(cust_marital_status), count(*)
 update customers
 set cust_marital_status='single'
 where cust_marital_status='single';
---¹öÀüÀÌ³ª ÇÁ·Î±×·¥¿¡ µû¶ó ´Ù¸§. ¼öÇàÇÏ°Å³ª ¼öÇàÇÏÁö ¾Ê°í ¼öÇàÇß´Ù°í ·Î±×¸¦ ¶ç¿ò.
+--ë²„ì „ì´ë‚˜ í”„ë¡œê·¸ë¨ì— ë”°ë¼ ë‹¤ë¦„. ìˆ˜í–‰í•˜ê±°ë‚˜ ìˆ˜í–‰í•˜ì§€ ì•Šê³  ìˆ˜í–‰í–ˆë‹¤ê³  ë¡œê·¸ë¥¼ ë„ì›€.
 
 select * from customers;
---@»ı³âº° °í°´¼ö ¿À¸§Â÷¼ø + ¼ºº°
+--@ìƒë…„ë³„ ê³ ê°ìˆ˜ ì˜¤ë¦„ì°¨ìˆœ + ì„±ë³„
 select cust_year_of_birth bitrh,cust_gender gender, count(*)
 from customers
 group by cust_year_of_birth, cust_gender
 order by cust_year_of_birth, cust_gender asc;
---order by¿¡¼­ cust_gender°¡ ±»ÀÌ ¾ø¾îµµ ¶È°°Àº °á°ú°¡ ³ª¿È.
+--order byì—ì„œ cust_genderê°€ êµ³ì´ ì—†ì–´ë„ ë˜‘ê°™ì€ ê²°ê³¼ê°€ ë‚˜ì˜´.
 
-select substr(emp_name,1,1) one from worker order by one; --ÈùÆ®
---@ÀÌ¸§ Ã¹ÀÚ°¡ °°Àº »ç¶÷ÀÌ ¸î¸íÀÎÁö Á¶È¸
+select substr(emp_name,1,1) one from worker order by one; --íŒíŠ¸
+--@ì´ë¦„ ì²«ìê°€ ê°™ì€ ì‚¬ëŒì´ ëª‡ëª…ì¸ì§€ ì¡°íšŒ
 select substr(emp_name,1,1) one,count(*)
 from worker
 group by substr(emp_name,1,1)
 order by one;
 
 select * from worker order by salary desc;
---@¿ù±Ş´ëº° ÀÎ¿ø¼ö
+--@ì›”ê¸‰ëŒ€ë³„ ì¸ì›ìˆ˜
 select floor(salary/1000)*1000 zone, count(*) cnt
 from worker
 group by floor(salary/1000)
@@ -99,53 +99,53 @@ order by zone;
 create table exp_goods_asia(
 country varchar(10),seq number, goods varchar2(80));
 desc exp_goods_asia;
-insert into exp_goods_asia values('ÇÑ±¹',1,'¿øÀ¯Á¦¿Ü ¼®À¯·ù');
-insert into exp_goods_asia values('ÇÑ±¹',2,'ÀÚµ¿Â÷');
-insert into exp_goods_asia values('ÇÑ±¹',3,'ÀüÀÚÁıÀûÈ¸·Î');
-insert into exp_goods_asia values('ÇÑ±¹',4,'¼±¹Ú');
-insert into exp_goods_asia values('ÇÑ±¹',5,'LCD');
-insert into exp_goods_asia values('ÇÑ±¹',6,'ÀÚµ¿Â÷ºÎÇ°');
-insert into exp_goods_asia values('ÇÑ±¹',7,'ÈŞ´ëÀüÈ­');
-insert into exp_goods_asia values('ÇÑ±¹',8,'È¯½ÄÅºÈ­¼ö¼Ò');
-insert into exp_goods_asia values('ÇÑ±¹',9,'¹«¼±¼Û½Å±â µğ½ºÇÃ·¹ÀÌ ºÎ¼ÓÇ°');
-insert into exp_goods_asia values('ÇÑ±¹',10,'Ã¶ ¶Ç´Â ºñÇÕ±İ°­');
-insert into exp_goods_asia values('ÀÏº»',1,'ÀÚµ¿Â÷');
-insert into exp_goods_asia values('ÀÏº»',2,'ÀÚµ¿Â÷ºÎÇ°');
-insert into exp_goods_asia values('ÀÏº»',3,'ÀüÀÚÁıÀûÈ¸·Î');
-insert into exp_goods_asia values('ÀÏº»',4,'¼±¹Ú');
-insert into exp_goods_asia values('ÀÏº»',5,'¹İµµÃ¼¿şÀÌÆÛ');
-insert into exp_goods_asia values('ÀÏº»',6,'È­¹°Â÷');
-insert into exp_goods_asia values('ÀÏº»',7,'¿øÀ¯Á¦¿Ü ¼®À¯·ù');
-insert into exp_goods_asia values('ÀÏº»',8,'°Ç¼³±â°è');
-insert into exp_goods_asia values('ÀÏº»',9,'´ÙÀÌ¿Àµå,Æ®·£Áö½ºÅÍ');
-insert into exp_goods_asia values('ÀÏº»',10,'±â°è·ù');
+insert into exp_goods_asia values('í•œêµ­',1,'ì›ìœ ì œì™¸ ì„ìœ ë¥˜');
+insert into exp_goods_asia values('í•œêµ­',2,'ìë™ì°¨');
+insert into exp_goods_asia values('í•œêµ­',3,'ì „ìì§‘ì íšŒë¡œ');
+insert into exp_goods_asia values('í•œêµ­',4,'ì„ ë°•');
+insert into exp_goods_asia values('í•œêµ­',5,'LCD');
+insert into exp_goods_asia values('í•œêµ­',6,'ìë™ì°¨ë¶€í’ˆ');
+insert into exp_goods_asia values('í•œêµ­',7,'íœ´ëŒ€ì „í™”');
+insert into exp_goods_asia values('í•œêµ­',8,'í™˜ì‹íƒ„í™”ìˆ˜ì†Œ');
+insert into exp_goods_asia values('í•œêµ­',9,'ë¬´ì„ ì†¡ì‹ ê¸° ë””ìŠ¤í”Œë ˆì´ ë¶€ì†í’ˆ');
+insert into exp_goods_asia values('í•œêµ­',10,'ì²  ë˜ëŠ” ë¹„í•©ê¸ˆê°•');
+insert into exp_goods_asia values('ì¼ë³¸',1,'ìë™ì°¨');
+insert into exp_goods_asia values('ì¼ë³¸',2,'ìë™ì°¨ë¶€í’ˆ');
+insert into exp_goods_asia values('ì¼ë³¸',3,'ì „ìì§‘ì íšŒë¡œ');
+insert into exp_goods_asia values('ì¼ë³¸',4,'ì„ ë°•');
+insert into exp_goods_asia values('ì¼ë³¸',5,'ë°˜ë„ì²´ì›¨ì´í¼');
+insert into exp_goods_asia values('ì¼ë³¸',6,'í™”ë¬¼ì°¨');
+insert into exp_goods_asia values('ì¼ë³¸',7,'ì›ìœ ì œì™¸ ì„ìœ ë¥˜');
+insert into exp_goods_asia values('ì¼ë³¸',8,'ê±´ì„¤ê¸°ê³„');
+insert into exp_goods_asia values('ì¼ë³¸',9,'ë‹¤ì´ì˜¤ë“œ,íŠ¸ëœì§€ìŠ¤í„°');
+insert into exp_goods_asia values('ì¼ë³¸',10,'ê¸°ê³„ë¥˜');
 select * from exp_goods_asia;
 select * from exp_goods_asia order by goods;
 
---±³ÁıÇÕ
-select goods from exp_goods_asia where country='ÇÑ±¹'
+--êµì§‘í•©
+select goods from exp_goods_asia where country='í•œêµ­'
 intersect
-select goods from exp_goods_asia where country='ÀÏº»';
+select goods from exp_goods_asia where country='ì¼ë³¸';
 
---ÇÕÁıÇÕ
-select goods from exp_goods_asia where country='ÇÑ±¹'
+--í•©ì§‘í•©
+select goods from exp_goods_asia where country='í•œêµ­'
 --union
 union all
-select goods from exp_goods_asia where country='ÀÏº»' order by goods;
+select goods from exp_goods_asia where country='ì¼ë³¸' order by goods;
 
---Â÷ÁıÇÕ
-select goods from exp_goods_asia where country='ÇÑ±¹'
+--ì°¨ì§‘í•©
+select goods from exp_goods_asia where country='í•œêµ­'
 minus
-select goods from exp_goods_asia where country='ÀÏº»';
+select goods from exp_goods_asia where country='ì¼ë³¸';
 
 --@(A U B) - (A n B)
-(select goods from exp_goods_asia where country='ÇÑ±¹'
+(select goods from exp_goods_asia where country='í•œêµ­'
 union
-select goods from exp_goods_asia where country='ÀÏº»')
+select goods from exp_goods_asia where country='ì¼ë³¸')
 minus
-(select goods from exp_goods_asia where country='ÇÑ±¹'
+(select goods from exp_goods_asia where country='í•œêµ­'
 intersect
-select goods from exp_goods_asia where country='ÀÏº»');
+select goods from exp_goods_asia where country='ì¼ë³¸');
 
 select * from worker order by salary desc;
 select * from departments;
@@ -160,11 +160,11 @@ where worker.department_id=departments.department_id;
 select a.employee_id,a.emp_name,b.department_name
 from worker a, departments b
 where a.department_id=b.department_id;
---@worker Å×ÀÌºíÀ» ±âÁØÀ¸·Î ÇØ¼­ Á¶ÀÎ -> »ç¿ø¸í(worker.emp_name), Á÷À§¸í(jobs.job_title) Ãâ·Â
+--@worker í…Œì´ë¸”ì„ ê¸°ì¤€ìœ¼ë¡œ í•´ì„œ ì¡°ì¸ -> ì‚¬ì›ëª…(worker.emp_name), ì§ìœ„ëª…(jobs.job_title) ì¶œë ¥
 select worker.emp_name, worker.job_id, jobs.job_title
 from worker, jobs
 where worker.job_id=jobs.job_id;
---alias name Àû¿ë
+--alias name ì ìš©
 select w.emp_name, w.job_id, j.job_title
 from worker w, jobs j
 where w.job_id=j.job_id;
@@ -173,10 +173,10 @@ select distinct prod_id from sales order by prod_id;
 
 select * from roomtype;
 select * from roominfo;
-insert into roominfo values(101,'Áö¸®»ê',2,7,1500);
-insert into roominfo values(102,'¼³¾Ç»ê',4,8,1800);
-insert into roominfo values(103,'ÇÑ¶ó»ê',3,5,1600);
---@roominfoÀÇ ¸ğµç ÄÃ·³À» Ç¥½Ã (typeÀº roomtypenameÀ¸·Î Ç¥½Ã)
+insert into roominfo values(101,'ì§€ë¦¬ì‚°',2,7,1500);
+insert into roominfo values(102,'ì„¤ì•…ì‚°',4,8,1800);
+insert into roominfo values(103,'í•œë¼ì‚°',3,5,1600);
+--@roominfoì˜ ëª¨ë“  ì»¬ëŸ¼ì„ í‘œì‹œ (typeì€ roomtypenameìœ¼ë¡œ í‘œì‹œ)
 select info.num, info.name, type.typename, info.howmany, info.howmuch
 from roominfo info,roomtype type
 where info.type=type.typenum
@@ -188,7 +188,7 @@ select * from channels;
 select * from customers;
 select * from employees;
 select * from departments;
---@salesÅ×ÀÌºíÀÇ prod_id¸¦ product_nameÀ¸·Î ¹Ù²Û´Ù(by Join with ProductsÅ×ÀÌºí)
+--@salesí…Œì´ë¸”ì˜ prod_idë¥¼ product_nameìœ¼ë¡œ ë°”ê¾¼ë‹¤(by Join with Productsí…Œì´ë¸”)
 --(prod_id)prod_name,cust_id,channel_id,employee_id
 select p.prod_name, s.cust_id, s.channel_id, s.employee_id
 --select count(*)
@@ -196,7 +196,7 @@ from sales s, products p
 where s.prod_id = p.prod_id;
 
 --select p.prod_name, c.cust_name, ch.channel_desc, s.employee_id
-select count(*) --È®ÀÎ¿ë- ±âÁ¸ÀÇ record¼öÀÇ º¯µ¿ÀÌ ¾ø¾î¾ßÇÔ.
+select count(*) --í™•ì¸ìš©- ê¸°ì¡´ì˜ recordìˆ˜ì˜ ë³€ë™ì´ ì—†ì–´ì•¼í•¨.
 from sales s, products p, customers c, channels ch
 where s.prod_id = p.prod_id and c.cust_id=s.cust_id and ch.channel_id=s.channel_id;
 
@@ -208,24 +208,24 @@ where s.prod_id = p.prod_id
   and s.channel_id = ch.channel_id 
   and s.employee_id = e.employee_id 
   and e.department_id = d.department_id;
---sales¿¡ 1ÀÌ ÀÖ°í employees¿¡´Â ¾ø¾î¼­ °³¼öÂ÷ÀÌ°¡ »ı±è. ¹«°á¼º¿¡ ¹®Á¦°¡ ÀÖÀ½
+--salesì— 1ì´ ìˆê³  employeesì—ëŠ” ì—†ì–´ì„œ ê°œìˆ˜ì°¨ì´ê°€ ìƒê¹€. ë¬´ê²°ì„±ì— ë¬¸ì œê°€ ìˆìŒ
 
 select count(*) from sales where employee_id not in(select employee_id from employees);
 
 --group by + join
---@»óÇ°´ç ¸ÅÃâ¾×
+--@ìƒí’ˆë‹¹ ë§¤ì¶œì•¡
 select b.prod_name, to_char(sum(a.amount_sold),'999,999,999,999.99')
---select b.prod_name, to_char(a.amount_sold,'999,999,999,999.99') -- sumÀº group by¿Í ¿¬°è
+--select b.prod_name, to_char(a.amount_sold,'999,999,999,999.99') -- sumì€ group byì™€ ì—°ê³„
 from sales a, products b
 where a.prod_id=b.prod_id
 group by b.prod_name
 order by b.prod_name;
---@»ç¹ø, ¸ÅÃâ¾×
+--@ì‚¬ë²ˆ, ë§¤ì¶œì•¡
 select employee_id, to_char(sum(amount_sold),'999,999,999,999.99')
 from sales
 group by employee_id;
 
---@(»ç¹ø)Á÷¿ø¸í, ¸ÅÃâ¾×
+--@(ì‚¬ë²ˆ)ì§ì›ëª…, ë§¤ì¶œì•¡
 select b.emp_name, to_char(sum(a.amount_sold),'999,999,999,999.99')
 from sales a, employees b
 where a.employee_id=b.employee_id

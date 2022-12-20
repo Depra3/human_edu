@@ -1,7 +1,7 @@
--- 8Àå
+-- 8ì¥
 -- Code block
 declare
-    -- º¯¼ö¸í  Å¸ÀÔ;
+    -- ë³€ìˆ˜ëª…  íƒ€ì…;
     vi_num number;
     vi_char char(20);
 
@@ -19,20 +19,20 @@ begin
     dbms_output.put_line(-vi_num);
     dbms_output.put_line(vi_char);
     dbms_output.put_line(2**5);
-    -- ¼ıÀÚ || ¹®ÀÚ¿­ => X
-    -- to_char(¼ıÀÚ) || ¹®ÀÚ¿­ => O
+    -- ìˆ«ì || ë¬¸ìì—´ => X
+    -- to_char(ìˆ«ì) || ë¬¸ìì—´ => O
     -- Toad, MySQL Workbench
---    select employee_id,emp_name from employees; ±×³É ¾²¸é ¿À·ù
+--    select employee_id,emp_name from employees; ê·¸ëƒ¥ ì“°ë©´ ì˜¤ë¥˜
     select employee_id, emp_name
         into v_employee_id, vs_emp_name
     from employees where employee_id=100;
-    dbms_output.put_line('»ç¹ø='||to_char(v_employee_id)||', ÀÌ¸§='||vs_emp_name);
+    dbms_output.put_line('ì‚¬ë²ˆ='||to_char(v_employee_id)||', ì´ë¦„='||vs_emp_name);
 end;
 /
 set serveroutput on;
 select employee_id,emp_name from employees;
 desc employees;
---@ºÎ¼­¾ÆÀÌµğ=80 -> ºÎ¼­¸í,ºÎ¼­Àå »ç¹ø
+--@ë¶€ì„œì•„ì´ë””=80 -> ë¶€ì„œëª…,ë¶€ì„œì¥ ì‚¬ë²ˆ
 select * from departments;
 declare
     v_dp_id departments.department_id%type;
@@ -42,7 +42,7 @@ begin
     select department_id, department_name,manager_id
         into v_dp_id,vs_dp_name,v_dp_mg_id
     from departments where department_id=80;
-    dbms_output.put_line('ºÎ¼­¾ÆÀÌµğ = '||to_char(v_dp_id)||', ºÎ¼­¸í = '||vs_dp_name||', ºÎ¼­Àå »ç¹ø = '||to_char(v_dp_mg_id));
+    dbms_output.put_line('ë¶€ì„œì•„ì´ë”” = '||to_char(v_dp_id)||', ë¶€ì„œëª… = '||vs_dp_name||', ë¶€ì„œì¥ ì‚¬ë²ˆ = '||to_char(v_dp_mg_id));
 end;
 /
 
@@ -56,11 +56,11 @@ declare
     m_name employees.emp_name%type;
 begin
     select a.department_name, b.emp_name manager_name
-        into name, m_name   --°á°ú°¡ ÇÑ ÁÙ¸¸ ³ª¿Í¾ß °¡´É, ¿©·¯°³´Â Ä¿¼­¸¦ ½á¾ßÇÔ
+        into name, m_name   --ê²°ê³¼ê°€ í•œ ì¤„ë§Œ ë‚˜ì™€ì•¼ ê°€ëŠ¥, ì—¬ëŸ¬ê°œëŠ” ì»¤ì„œë¥¼ ì¨ì•¼í•¨
     from departments a, employees b
     where a.department_id=80  
     and a.manager_id=b.employee_id;
-    dbms_output.put_line('ºÎ¼­¸í = '||name||', ºÎ¼­Àå »ç¹ø = '||m_name);
+    dbms_output.put_line('ë¶€ì„œëª… = '||name||', ë¶€ì„œì¥ ì‚¬ë²ˆ = '||m_name);
 end;
 /
 declare
@@ -68,16 +68,16 @@ declare
     m_id departments.manager_id%type;
     m_name employees.emp_name%type;
 begin
-    --Á¶ÀÎÀÌ ¾àÇÒ °æ¿ì ºĞ¸®ÇÏ¿© ½ÇÇàÇÏ´Â ¹æ¹ı
+    --ì¡°ì¸ì´ ì•½í•  ê²½ìš° ë¶„ë¦¬í•˜ì—¬ ì‹¤í–‰í•˜ëŠ” ë°©ë²•
     select department_name,manager_id
-        into name, m_id --ºÎ¼­¸í, ºÎ¼­Àå »ç¹ø
+        into name, m_id --ë¶€ì„œëª…, ë¶€ì„œì¥ ì‚¬ë²ˆ
     from departments 
     where department_id=80;
     
     select emp_name into m_name
     from employees
     where employee_id=m_id;
-    dbms_output.put_line('ºÎ¼­¸í = '||name||', ºÎ¼­Àå ÀÌ¸§ = '||m_name);
+    dbms_output.put_line('ë¶€ì„œëª… = '||name||', ë¶€ì„œì¥ ì´ë¦„ = '||m_name);
 end;
 /
 
@@ -85,8 +85,8 @@ declare
     vn_salary employees.salary%type;
     vn_did departments.department_id%type;
 begin
-    vn_did := round(dbms_random.value(10,120),-1); -- -1 ¼Ò¼öÁ¡ Ã¹Â°ÀÚ¸® / round ¹İ¿Ã¸²
-    select salary into vn_salary from employees where department_id=vn_did and rownum=1;  -- rownum(ÀÇ»çÄ®·³)À¸·Î Ã¹¹øÂ° µ¥ÀÌÅÍ °¡Á®¿È
+    vn_did := round(dbms_random.value(10,120),-1); -- -1 ì†Œìˆ˜ì  ì²«ì§¸ìë¦¬ / round ë°˜ì˜¬ë¦¼
+    select salary into vn_salary from employees where department_id=vn_did and rownum=1;  -- rownum(ì˜ì‚¬ì¹¼ëŸ¼)ìœ¼ë¡œ ì²«ë²ˆì§¸ ë°ì´í„° ê°€ì ¸ì˜´
     if vn_salary between 1 and 3000 then
         dbms_output.put_line(to_char(vn_salary)||' = low, '||to_char(vn_did));
     elsif vn_salary between 3001 and 6000 then
@@ -108,8 +108,8 @@ declare
     vn_salary employees.salary%type;
     vn_did departments.department_id%type;
 begin
-    vn_did := round(dbms_random.value(10,120),-1); -- -1 ¼Ò¼öÁ¡ Ã¹Â°ÀÚ¸® / round ¹İ¿Ã¸²
-    select salary into vn_salary from employees where department_id=vn_did and rownum=1;  -- rownum(ÀÇ»çÄ®·³)À¸·Î Ã¹¹øÂ° µ¥ÀÌÅÍ °¡Á®¿È
+    vn_did := round(dbms_random.value(10,120),-1); -- -1 ì†Œìˆ˜ì  ì²«ì§¸ìë¦¬ / round ë°˜ì˜¬ë¦¼
+    select salary into vn_salary from employees where department_id=vn_did and rownum=1;  -- rownum(ì˜ì‚¬ì¹¼ëŸ¼)ìœ¼ë¡œ ì²«ë²ˆì§¸ ë°ì´í„° ê°€ì ¸ì˜´
     if vn_salary between 1 and 3000 then
         dbms_output.put_line(to_char(vn_salary)||' = low, '||to_char(vn_did));
     elsif vn_salary between 3001 and 6000 then
@@ -122,13 +122,13 @@ begin
     end if;
 end;
 /
---@À§ ÄÚµå¸¦ case·Î
+--@ìœ„ ì½”ë“œë¥¼ caseë¡œ
 declare
     vn_salary employees.salary%type;
     vn_did departments.department_id%type;
 begin
-    vn_did := round(dbms_random.value(10,120),-1); -- -1 ¼Ò¼öÁ¡ Ã¹Â°ÀÚ¸® / round ¹İ¿Ã¸²
-    select salary into vn_salary from employees where department_id=vn_did and rownum=1;  -- rownum(ÀÇ»çÄ®·³)À¸·Î Ã¹¹øÂ° µ¥ÀÌÅÍ °¡Á®¿È
+    vn_did := round(dbms_random.value(10,120),-1); -- -1 ì†Œìˆ˜ì  ì²«ì§¸ìë¦¬ / round ë°˜ì˜¬ë¦¼
+    select salary into vn_salary from employees where department_id=vn_did and rownum=1;  -- rownum(ì˜ì‚¬ì¹¼ëŸ¼)ìœ¼ë¡œ ì²«ë²ˆì§¸ ë°ì´í„° ê°€ì ¸ì˜´
     case
     when vn_salary between 1 and 3000 then
         dbms_output.put_line(to_char(vn_salary)||' = low, '||to_char(vn_did));
@@ -147,7 +147,7 @@ begin
     while vn<10
     loop
         dbms_output.put_line(vn);
-        vn := vn + 1; -- ++°°Àº Áõ°¨ ¿¬»êÀÚ´Â ¾øÀ½
+        vn := vn + 1; -- ++ê°™ì€ ì¦ê° ì—°ì‚°ìëŠ” ì—†ìŒ
     end loop;
 end;
 /
@@ -174,7 +174,7 @@ declare
 begin
     loop
         dbms_output.put_line(vn);
-        vn := vn + 1; -- ++°°Àº Áõ°¨ ¿¬»êÀÚ´Â ¾øÀ½
+        vn := vn + 1; -- ++ê°™ì€ ì¦ê° ì—°ì‚°ìëŠ” ì—†ìŒ
         exit when vn=10;
     end loop;
 end;
@@ -184,12 +184,12 @@ declare
 begin
     loop
         dbms_output.put_line(vn);
-        vn := vn + 1; -- ++°°Àº Áõ°¨ ¿¬»êÀÚ´Â ¾øÀ½
+        vn := vn + 1; -- ++ê°™ì€ ì¦ê° ì—°ì‚°ìëŠ” ì—†ìŒ
         exit when vn=10;
     end loop;
 end;
 /
---@1~9 ±¸±¸´Ü
+--@1~9 êµ¬êµ¬ë‹¨
 declare
     vn1 number;
     vn2 number;
@@ -203,7 +203,7 @@ begin
     end loop;
 end;
 /
---@±¸±¸´Ü loop
+--@êµ¬êµ¬ë‹¨ loop
 declare
     vn1 number:=1;
     vn2 number:=1;
@@ -220,7 +220,7 @@ begin
     end loop;
 end;
 /
--- ÇÁ·Î½ÃÀú
+-- í”„ë¡œì‹œì €
 create or replace procedure department_info(d_id departments.department_id%type)
 is
     name departments.department_name%type;
@@ -228,20 +228,20 @@ is
     m_name employees.emp_name%type;
 begin
     select department_name,manager_id
-        into name, m_id --ºÎ¼­¸í, ºÎ¼­Àå »ç¹ø
+        into name, m_id --ë¶€ì„œëª…, ë¶€ì„œì¥ ì‚¬ë²ˆ
     from departments 
     where department_id=d_id;
     
     select emp_name into m_name
     from employees
     where employee_id=m_id;
-    dbms_output.put_line('ºÎ¼­¸í = '||name||', ºÎ¼­Àå »ç¹ø = '||m_name);
+    dbms_output.put_line('ë¶€ì„œëª… = '||name||', ë¶€ì„œì¥ ì‚¬ë²ˆ = '||m_name);
 end;
 /
 exec department_info(40);
 drop procedure depart;
 
---@ÇÁ·Î½ÃÀú 1 gugu(dan)
+--@í”„ë¡œì‹œì € 1 gugu(dan)
 create or replace procedure gugu(dan number)
 is
 --    vn number;
@@ -253,42 +253,42 @@ begin
 end;
 /
 exec gugu(2);
---@ÇÁ·Î½ÃÀú 2 ºÎ¼­³» ÀÎ¿ø¼ö
+--@í”„ë¡œì‹œì € 2 ë¶€ì„œë‚´ ì¸ì›ìˆ˜
 create or replace procedure howmany1(d_id departments.department_id%type)
 is
     cnt number:=0;
 begin
     select  count(*)
-        into  cnt --ºÎ¼­¸í, ºÎ¼­Àå »ç¹ø
+        into  cnt --ë¶€ì„œëª…, ë¶€ì„œì¥ ì‚¬ë²ˆ
     from  employees a
     where a.department_id=d_id;
-    dbms_output.put_line('ÀÎ¿ø¼ö = '||to_char(cnt));
+    dbms_output.put_line('ì¸ì›ìˆ˜ = '||to_char(cnt));
 end;
 /
 exec howmany1(50);
 
 select count(*) from employees where department_id=80;
---ºÎ¼­¸í + ÀÎ¿ø¼ö
---create or replace procedure howmany2(d_id departments.department_id%type:=80) - default°ª ¼³Á¤
+--ë¶€ì„œëª… + ì¸ì›ìˆ˜
+--create or replace procedure howmany2(d_id departments.department_id%type:=80) - defaultê°’ ì„¤ì •
 create or replace procedure howmany2(d_id departments.department_id%type)
 is
     cnt number;
     name departments.department_name%type;
 begin
     select b.department_name, count(*)
-        into  name,cnt --ºÎ¼­¸í, ºÎ¼­Àå »ç¹ø
+        into  name,cnt --ë¶€ì„œëª…, ë¶€ì„œì¥ ì‚¬ë²ˆ
     from  employees a, departments b
     where a.department_id=d_id
     and b.department_id=d_id
     group by b.department_name;
-    dbms_output.put_line('ºÎ¼­¸í = '||name||', ÀÎ¿ø¼ö = '||to_char(cnt));
+    dbms_output.put_line('ë¶€ì„œëª… = '||name||', ì¸ì›ìˆ˜ = '||to_char(cnt));
 end;
 /
 exec howmany2(80);
 drop procedure howmany;
 select * from employees;
 select * from departments order by parent_id;
---@ºÎ¼­ÄÚµå ÀÔ·Â - ±× ºÎ¼­ÀÇ ÇÏÀ§ºÎ¼­ ÀÎ¿ø¼ö
+--@ë¶€ì„œì½”ë“œ ì…ë ¥ - ê·¸ ë¶€ì„œì˜ í•˜ìœ„ë¶€ì„œ ì¸ì›ìˆ˜
 create or replace procedure howmany3(d_id departments.department_id%type)
 is
     cnt1 number;
@@ -304,7 +304,7 @@ begin
     from employees a,departments b
     where b.parent_id=d_id
     and b.department_id=a.department_id;
-    dbms_output.put_line('ÀÎ¿ø¼ö = '||to_char(cnt1)||' '||to_char(cnt2)||' '||to_char(cnt1+cnt2));
+    dbms_output.put_line('ì¸ì›ìˆ˜ = '||to_char(cnt1)||' '||to_char(cnt2)||' '||to_char(cnt1+cnt2));
 end;
 /
 exec howmany3(30);
@@ -332,8 +332,8 @@ begin
     or a.department_id in(select department_id
                                from departments
                               where parent_id = d_id);
---    dbms_output.put_line('ÀÎ¿ø¼ö = '||to_char(cnt1)||' '||to_char(cnt2)||' '||to_char(cnt1+cnt2));
-    dbms_output.put_line('ÀÎ¿ø¼ö = '||to_char(cnt1));
+--    dbms_output.put_line('ì¸ì›ìˆ˜ = '||to_char(cnt1)||' '||to_char(cnt2)||' '||to_char(cnt1+cnt2));
+    dbms_output.put_line('ì¸ì›ìˆ˜ = '||to_char(cnt1));
 end;
 /
 exec howmany4(10);
@@ -347,7 +347,7 @@ select count(*) from employees
 where department_id in(select department_id from departments where parent_id=10)
 or department_id=10;
 
---ÇÔ¼ö function
+--í•¨ìˆ˜ function
 create or replace function plus(a number, b number)
 return number
 is
@@ -364,8 +364,8 @@ from employees a, departments b
 where a.department_id(+)=b.department_id
 group by b.department_name
 order by b.department_name;
---joinÀÌ ¾ÈµÇ´Â °ÍÀº ¾È³ª¿È
---Left Outer JoinÀ¸·Î ³ª¿À°Ô ÇÒ ¼ö ÀÖÀ½(Left, Right Âü°í)
+--joinì´ ì•ˆë˜ëŠ” ê²ƒì€ ì•ˆë‚˜ì˜´
+--Left Outer Joinìœ¼ë¡œ ë‚˜ì˜¤ê²Œ í•  ìˆ˜ ìˆìŒ(Left, Right ì°¸ê³ )
 
 create or replace function tot_sal(d_id departments.department_id%type)
 return employees.salary%type
@@ -379,10 +379,10 @@ end;
 select department_name, tot_sal(department_id)
 from departments
 order by department_name;
---ÀüºÎ Ãâ·Â
+--ì „ë¶€ ì¶œë ¥
 select * from departments;
 select * from employees;
---@ºÎ¼­ÄÚµå ÀÔ·Â , ºÎ¼­¸í / ºÎ¼­ÀåÀÌ¸§ / ºÎ¼­ ÀÎ¿ø¼ö
+--@ë¶€ì„œì½”ë“œ ì…ë ¥ , ë¶€ì„œëª… / ë¶€ì„œì¥ì´ë¦„ / ë¶€ì„œ ì¸ì›ìˆ˜
 create or replace function getDname(d_id departments.department_id%type)
 return departments.department_name%type
 is

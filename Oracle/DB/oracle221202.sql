@@ -1,6 +1,6 @@
 select * from worker;
 select * from employees;
---»ç¹ø, ÀÌ¸§, ¸Å´ÏÀú ÀÌ¸§
+--ì‚¬ë²ˆ, ì´ë¦„, ë§¤ë‹ˆì € ì´ë¦„
 select a.employee_id, a.emp_name, b.emp_name manager_name
   from employees a, employees b
  where a.manager_id = b.employee_id
@@ -8,13 +8,13 @@ select a.employee_id, a.emp_name, b.emp_name manager_name
  
  select * from departments;
  
---@ºÎ¼­ÄÚµå, ºÎ¼­¸í, »óÀ§ºÎ¼­¸í(departments)
+--@ë¶€ì„œì½”ë“œ, ë¶€ì„œëª…, ìƒìœ„ë¶€ì„œëª…(departments)
 select a.department_id, a.department_name, b.department_name parent_name
 from departments a, departments b
 where a.parent_id = b.department_id 
 order by a.department_id;
 
---@»ç¹ø, ÀÌ¸§, ¸Å´ÏÀú ÀÌ¸§, ºÎ¼­¸í - ¼¿ÇÁÁ¶ÀÎ + µ¿µîÁ¶ÀÎ
+--@ì‚¬ë²ˆ, ì´ë¦„, ë§¤ë‹ˆì € ì´ë¦„, ë¶€ì„œëª… - ì…€í”„ì¡°ì¸ + ë™ë“±ì¡°ì¸
 select a.employee_id, a.emp_name, b.emp_name manager_name,d.department_name
 from employees a, employees b, departments d
 where a.manager_id = b.employee_id
@@ -22,16 +22,16 @@ and a.department_id=d.department_id
 order by a.employee_id;
  
 select a.employee_id, a.emp_name,a.salary, b.department_name
-from employees a, departments b            --Ä«Å¸½Ã¾È °ö 1
-where a.department_id=b.department_id      --µ¿µî Á¶°Ç   2
-and a.salary>6000                          --ºñ±³ ¿¬»ê   3
+from employees a, departments b            --ì¹´íƒ€ì‹œì•ˆ ê³± 1
+where a.department_id=b.department_id      --ë™ë“± ì¡°ê±´   2
+and a.salary>6000                          --ë¹„êµ ì—°ì‚°   3
 order by a.salary;
--- ¡è == ¡é
+-- â†‘ == â†“
 select a.employee_id, a.emp_name, a.salary, b.department_name
-from (select * from employees where salary>6000) a, departments b --¼­ºê Äõ¸®
+from (select * from employees where salary>6000) a, departments b --ì„œë¸Œ ì¿¼ë¦¬
 where a.department_id=b.department_id
 order by a.salary;
--- ¡è == ¡é(±×·¸°Ô ÁÁÁö ¾ÊÀ½)
+-- â†‘ == â†“(ê·¸ë ‡ê²Œ ì¢‹ì§€ ì•ŠìŒ)
 select a.employee_id, a.emp_name, a.salary, b.department_name
 from employees a, departments b
 where a.department_id=b.department_id
@@ -42,37 +42,37 @@ select * from worker;
 select * from employees;
 select * from departments;
 
---@»ç¹ø, ÀÌ¸§, ¸Å´ÏÀúÀÌ¸§, ºÎ¼­¸í, ºÎ¼­Àå¸í
-select a.employee_id »ç¹ø, a.emp_name ÀÌ¸§, b.emp_name ¸Å´ÏÀú_ÀÌ¸§, d.department_name ºÎ¼­¸í, c.emp_name ºÎ¼­Àå¸í
+--@ì‚¬ë²ˆ, ì´ë¦„, ë§¤ë‹ˆì €ì´ë¦„, ë¶€ì„œëª…, ë¶€ì„œì¥ëª…
+select a.employee_id ì‚¬ë²ˆ, a.emp_name ì´ë¦„, b.emp_name ë§¤ë‹ˆì €_ì´ë¦„, d.department_name ë¶€ì„œëª…, c.emp_name ë¶€ì„œì¥ëª…
   from employees a, employees b, employees c, departments d
  where a.manager_id = b.employee_id         -- 1
    and a.department_id = d.department_id    -- 2
    and d.manager_id = c.employee_id         -- 3
 --   and d.manager_id = b.employee_id
 --   and d.manager_id = a.employee_id
--- °°Àº Å×ÀÌºíÀÌ¶ó ÇÏ´õ¶óµµ ¿¬°áÇÏ¸é °¡Áö°í ÀÖ´Â µ¥ÀÌÅÍ°¡ ±âÁ¸ÀÇ Å×ÀÌºí°ú ´Ş¶ó Á¦´ë·Î µÈ °á°ú°¡ ³ª¿ÀÁö ¾ÊÀ½.
--- »õ·Î¿î Å×ÀÌºí·Î ¿¬°áÇØ¾ß Á¦´ë·Î µÈ °á°ú°¡ ³ª¿È.
--- 1·Î ÀÎÇØ a¿Í b°¡ °¡Áö°í ÀÖ´Â µ¥ÀÌÅÍ°¡ ±âÁ¸ÀÇ Å×ÀÌºí°ú ´Ù¸§, ¶§¹®¿¡ 3¿¡¼­ °°Àº »õ·Î¿î Å×ÀÌºíÀ» ÀÌ¿ëÇÏ¿© ¿¬°á
- order by ÀÌ¸§;
+-- ê°™ì€ í…Œì´ë¸”ì´ë¼ í•˜ë”ë¼ë„ ì—°ê²°í•˜ë©´ ê°€ì§€ê³  ìˆëŠ” ë°ì´í„°ê°€ ê¸°ì¡´ì˜ í…Œì´ë¸”ê³¼ ë‹¬ë¼ ì œëŒ€ë¡œ ëœ ê²°ê³¼ê°€ ë‚˜ì˜¤ì§€ ì•ŠìŒ.
+-- ìƒˆë¡œìš´ í…Œì´ë¸”ë¡œ ì—°ê²°í•´ì•¼ ì œëŒ€ë¡œ ëœ ê²°ê³¼ê°€ ë‚˜ì˜´.
+-- 1ë¡œ ì¸í•´ aì™€ bê°€ ê°€ì§€ê³  ìˆëŠ” ë°ì´í„°ê°€ ê¸°ì¡´ì˜ í…Œì´ë¸”ê³¼ ë‹¤ë¦„, ë•Œë¬¸ì— 3ì—ì„œ ê°™ì€ ìƒˆë¡œìš´ í…Œì´ë¸”ì„ ì´ìš©í•˜ì—¬ ì—°ê²°
+ order by ì´ë¦„;
 select * from employees;
 select * from departments;
 
---ºÎ¼­¸í, ÀÎ¿ø¼ö
+--ë¶€ì„œëª…, ì¸ì›ìˆ˜
 select b.department_name, count(*)
  from employees a, departments b
  where a.department_id=b.department_id
  group by b.department_name
  order by b.department_name;
  
---@ºÎ¼­Àå, ÀÎ¿ø¼ö
+--@ë¶€ì„œì¥, ì¸ì›ìˆ˜
 select c.department_name, b.emp_name, count(*)
  from employees a,employees b,departments c
- where a.department_id=c.department_id      -- ºÎ¼­ ¿¬°á
-  and c.manager_id=b.employee_id            -- »ç¿ø ¹øÈ£ ¿¬°á
- group by c.department_name,b.emp_name      -- ¡Ø
+ where a.department_id=c.department_id      -- ë¶€ì„œ ì—°ê²°
+  and c.manager_id=b.employee_id            -- ì‚¬ì› ë²ˆí˜¸ ì—°ê²°
+ group by c.department_name,b.emp_name      -- â€»
  order by c.department_name,b.emp_name;
  
---@ºÎ¼­¸í, ÀÎ¿ø¼ö, ¿ù±Ş ÃÑ¾×
+--@ë¶€ì„œëª…, ì¸ì›ìˆ˜, ì›”ê¸‰ ì´ì•¡
 select b.department_name, count(*), sum(a.salary)
  from employees a, departments b
  where a.department_id=b.department_id
@@ -87,25 +87,25 @@ select a.department_id, a.department_name, b.department_id parent_name
 from departments a, departments b
 where a.parent_id = b.department_id(+);
 
---ANSIÁ¶ÀÎ
---±âÁ¸
+--ANSIì¡°ì¸
+--ê¸°ì¡´
 select a.employee_id, a.emp_name,a.salary, b.department_name
 from employees a, departments b
 where a.department_id=b.department_id
 and a.salary>6000
 order by a.salary;
---ANSIÁ¶ÀÎ(³»ºÎ)
+--ANSIì¡°ì¸(ë‚´ë¶€)
 select a.employee_id, a.emp_name,a.salary, b.department_name
 from employees a inner join departments b
-on a.department_id=b.department_id      --joinÁ¶°Ç
+on a.department_id=b.department_id      --joinì¡°ê±´
 where a.salary>6000     --filtering
 order by a.salary;
 
---±âÁ¸(oracle)
+--ê¸°ì¡´(oracle)
 select a.department_id, a.department_name, b.department_id parent_name
 from departments a, departments b
 where a.parent_id = b.department_id(+);
---ANSIÁ¶ÀÎ(¿ÜºÎ) only in MySQL
+--ANSIì¡°ì¸(ì™¸ë¶€) only in MySQL
 select a.department_id, a.department_name, b.department_id parent_name
 from departments a left outer join departments b
 on a.parent_id = b.department_id;
@@ -114,7 +114,7 @@ on a.parent_id = b.department_id;
 --from departments a full outer join departments b
 --on a.parent_id = b.department_id;
 
-create view v_six as -- Á¶°ÇÀÌ ¸¹°í ÄÚµå°¡ ±æ¾îÁö´Âµ¥ ÀÚÁÖ »ç¿ëµÇ´Â ÄÚµåÀÌ¸é View¸¦ ÀÌ¿ëÇÏ¿© ½±°Ô ºÒ·¯ ¿Ã ¼ö ÀÖÀ½
+create view v_six as -- ì¡°ê±´ì´ ë§ê³  ì½”ë“œê°€ ê¸¸ì–´ì§€ëŠ”ë° ìì£¼ ì‚¬ìš©ë˜ëŠ” ì½”ë“œì´ë©´ Viewë¥¼ ì´ìš©í•˜ì—¬ ì‰½ê²Œ ë¶ˆëŸ¬ ì˜¬ ìˆ˜ ìˆìŒ
 select a.employee_id, a.emp_name,a.salary, b.department_name
 from employees a, departments b
 where a.department_id=b.department_id(+)
@@ -126,38 +126,38 @@ drop view v_six;
 --create view v_six as select * from employees where salary>6000;
 --select a.employee_id, a.emp_name, a.salary, b.department_name
 --from employees a, departments b
---where a.department_id=b.department_id(+); --view¸¦ µû·Î »ı¼ºÇØ¼­ Á¶ÀÎÇØµµ º¸°í½ÍÀº µ¥ÀÌÅÍ¸¦ º¼ ¼ö ÀÖÀ½. ¹ÌèÇ
+--where a.department_id=b.department_id(+); --viewë¥¼ ë”°ë¡œ ìƒì„±í•´ì„œ ì¡°ì¸í•´ë„ ë³´ê³ ì‹¶ì€ ë°ì´í„°ë¥¼ ë³¼ ìˆ˜ ìˆìŒ. ë¯¸å®Œ
 
 select avg(salary) from employees;
 select emp_name, salary from employees where salary>(select avg(salary) from employees)
 order by salary;
--- subquery¿¡´Â order by »ç¿ë ÇÒ ¼ö ¾ø´Ù.
+-- subqueryì—ëŠ” order by ì‚¬ìš© í•  ìˆ˜ ì—†ë‹¤.
 
 select a.emp_name, b.department_name, c.emp_name captain
 from employees a, departments b, employees c
 where a.department_id=b.department_id(+)
-and b.department_name like '%ºÎ'
+and b.department_name like '%ë¶€'
 and b.manager_id = c.employee_id;
 
---@Á÷¿ø¸í, ºÎ¼­¸í, ºÎ¼­Àå¸í by subquery **
+--@ì§ì›ëª…, ë¶€ì„œëª…, ë¶€ì„œì¥ëª… by subquery **
 select c.emp_name, c.department_name, d.emp_name captain
 from (select a.manager_id cp_id, b.department_name,a.emp_name 
         from employees a, departments b 
-        where a.department_id=b.department_id and b.department_name like '%ºÎ') c, employees d
+        where a.department_id=b.department_id and b.department_name like '%ë¶€') c, employees d
 where c.cp_id = d.employee_id(+);
---ºÎÀûÇÕÇÑ ¿­ ÀÌ¸§-> °°Àº Ä®·³¸í Á¸Àç µû¶ó¼­ ´Ù¸¥ ÇÏ³ª´Â º°¸íÀ» ÁöÁ¤ÇØÁà¾ß ÇÔ.
+--ë¶€ì í•©í•œ ì—´ ì´ë¦„-> ê°™ì€ ì¹¼ëŸ¼ëª… ì¡´ì¬ ë”°ë¼ì„œ ë‹¤ë¥¸ í•˜ë‚˜ëŠ” ë³„ëª…ì„ ì§€ì •í•´ì¤˜ì•¼ í•¨.
 -- from 2
 select a.emp_name, d.department_name, d.emp_name captain
 from employees a,(select b.department_id dp_id, c.emp_name, b.department_name
                     from departments b, employees c
-                   where b.department_name like '%ºÎ'
+                   where b.department_name like '%ë¶€'
                      and b.manager_id = c.employee_id) d
 where a.department_id(+)=d.dp_id;
 -- from 3
 select a.emp_name, d.department_name, d.emp_name captain
 from employees a,(select b.department_id dp_id, c.emp_name, b.department_name
                     from departments b, employees c
-                   where b.department_name like '%ºÎ'
+                   where b.department_name like '%ë¶€'
                      and b.manager_id = c.employee_id(+)) d
 where a.department_id=d.dp_id;
 -- from 4
@@ -165,7 +165,7 @@ select a.emp_name, b.department_name, c.emp_name captain
   from employees a, 
         (select department_id, department_name, manager_id captain_id
           from departments
-         where department_name like '%ºÎ') b,
+         where department_name like '%ë¶€') b,
         employees c
  where a.department_id=b.department_id
   and b.captain_id=c.employee_id(+);
@@ -174,11 +174,11 @@ select a.emp_name, b.department_name, c.emp_name captain
  from employees a, departments b, employees c
  where a.department_id in (select department_id
                             from departments
-                            where department_name like '%ºÎ')
+                            where department_name like '%ë¶€')
 and a.department_id=b.department_id(+)
 and b.manager_id=c.employee_id(+);
 
---create table book( --booking ¿¹¾àÇÏ´Ù(±¸¾îÃ¼)
+--create table book( --booking ì˜ˆì•½í•˜ë‹¤(êµ¬ì–´ì²´)
 book_num number primary key,
 num number references roomtype(typenum),
 start_dt varchar2(30),
