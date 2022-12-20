@@ -17,4 +17,14 @@
         <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         ※ EX00/human0/List_Ex02 참조
 
+- EX03 : 상속 (extends, 생성자, 이중 상속, super, 메서드 오버라이딩, protected, 다형성, 강제적타입변환(Casting)),
+        <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        연습문제 실습, 추상 클래스(다형성, 타입변환, 계층, 템플리메서드, 프레임 워크 개념)
+        <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        ※ EX00/human0/List_Ex03 참조
+
+- EX04 : 인터페이스(다형성, 타입변환, 추상 클래스 이용, 강제 타입 변환, 상속(다중 상속), 오버라이딩), 
+         추상/인터페이스 종합예제
+         <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         ※ EX00/human0/List_Ex04 참조
     
