@@ -12,3 +12,7 @@
 - __CSS__ : Style 태그, css파일 연동, 태그 순위, Selector 태그, BOX 모델, Style-position 태그, Container 태그, Item 태그, Layout 실습
             <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             __※ 02_CSS/List_CSS 참조__
+
+- __JAVA_SCRIPT__ : 변수 선언, 배열, JSON으로 변환, 주소 비교(===, !==), For - in, 함수 선언, 이벤트, DOM 모델
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            __※ 03_JAVA_SCRIPT/JS_List 참조__
