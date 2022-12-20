@@ -13,8 +13,10 @@
 - __22.12.01__ : count, sum, avg, max, variance, stddev, Group by, 정렬 (Order by - asc/desc), intersect, 
                 union, minus, JOIN(내부(+셀프)) 실습
 
-- __22.12.02__ : JOIN(내부/외부), View 생성, SubQuery 실습
+- __22.12.02__ : JOIN(내부/외부), View 생성, SubQuery 실습, ERD 그리기
 
 - __22.12.05__ : Code Block(into, loop ~ (when) ~ end loop, for) + JOIN, round, 프로시저, 함수 실습
 
 - __22.12.06__ : 과제 실습(SubQurey, JOIN(내부/외부), IF ~ Else ~ End IF, For)
+
+- __DB.txt__ : DataBase 학습 요약 노트
