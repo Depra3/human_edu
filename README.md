@@ -36,4 +36,4 @@
 - __R__
     - <b>2022.12.19 ~</b>
     - 사용 툴 : <img src="https://img.shields.io/badge/R-276DC3?style=flat&logo=R&logoColor=white"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/>
-    - R의 강점 및 맛보기 실습
+    - R의 강점 학습 및 맛보기 실습
