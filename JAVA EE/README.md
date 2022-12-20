@@ -3,6 +3,7 @@
 - __사용 툴__ : <img src="https://img.shields.io/badge/Eclipse EE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
 
 # LIST
+- __JAVA Spring 준비__ : Eclipse EE, JDK, Eclips Marketplace에서 Spring Tools 설치
 
 - __ServletExam01__ : 웹서블릿 개념 학습
 

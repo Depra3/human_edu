@@ -10,7 +10,8 @@
                 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 lower, upper, concat, substr, replace,instr, length, sysdate, to_char, nvl, nullif, decode 실습
 
-- __22.12.01__ : count, sum, avg, max, variance, stddev, Group by, 정렬 (Order by - asc/desc), intersect, union, minus, JOIN(내부(+셀프)) 실습
+- __22.12.01__ : count, sum, avg, max, variance, stddev, Group by, 정렬 (Order by - asc/desc), intersect, 
+                union, minus, JOIN(내부(+셀프)) 실습
 
 - __22.12.02__ : JOIN(내부/외부), View 생성, SubQuery 실습
 

@@ -3,6 +3,8 @@
 - __사용 툴__ : <img src="https://img.shields.io/badge/Visual Studio Code-5C2D91?style=flat&logo=Visual Studio Code&logoColor=white"/>
 
 # LIST
+- __Front End 준비__ : Visual Studio Code 설치
+
 - __HTML__ : 태그 [ a, ul(li), ol(li), dl(dt,dd), Table(colspan/rowspan), Input, Textarea(placeholder), 
             Select, ComboBox, Radio Button,  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             Form, Method(Get/Post), Img, Video, Audio, Div, 영역 구분(header, nav, main, footer) ] 실습

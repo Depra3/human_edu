@@ -3,6 +3,8 @@
 - __사용 툴__ : <img src="https://img.shields.io/badge/Eclipse SE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
 
 # LIST
+- __JAVA 준비__ : Eclips SE, JDK 설치
+
 - __EX00 : 각 폴더 별 내용 요약 리스트__
 
 - __EX01__ : 변수 선언, 데이터 타입, 타입별 출력, 연산자(증감, 관계, 논리, 조건), IF ~ else문(다중 IF ~ else문),
