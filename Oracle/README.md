@@ -14,4 +14,6 @@
 
 - __22.12.02__ : JOIN(내부/외부), View 생성, SubQuery 실습
 
-- __22.12.05__ : Code Block(into)
+- __22.12.05__ : Code Block(into, loop ~(when)~ end loop, for) + JOIN, round, 프로시저, 함수 실습
+
+- __22.12.06__ : 과제 실습(SubQurey, JOIN(내부/외부), IF~Else~End IF, For)

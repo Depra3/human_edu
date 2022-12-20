@@ -1,6 +1,6 @@
 select * from departments;
 select * from employees where department_id>110;
---@ºÎ¼­ÄÚµå ÀÔ·Â , ºÎ¼­¸í / ºÎ¼­ÀåÀÌ¸§ / ºÎ¼­ ÀÎ¿ø¼ö
+--@ë¶€ì„œì½”ë“œ ì…ë ¥ , ë¶€ì„œëª… / ë¶€ì„œì¥ì´ë¦„ / ë¶€ì„œ ì¸ì›ìˆ˜
 create or replace function getDname(d_id departments.department_id%type)
 return departments.department_name%type
 is
@@ -32,7 +32,7 @@ begin
         from departments
         where department_id=d_id;
         if m_id is null then
-            Mname:='¾øÀ½';
+            Mname:='ì—†ìŒ';
         else
             select emp_name into Mname
             from employees
@@ -64,7 +64,7 @@ from departments;
 declare
     vs_emp_name employees.emp_name%type;
 begin
-    select emp_name into vs_emp_name    -- ¿ÀÁ÷ ÇÏ³ªÀÇ ·¹ÄÚµå°¡ Ã£¾ÆÁ³À» ¶§¸¸ »ç¿ë.
+    select emp_name into vs_emp_name    -- ì˜¤ì§ í•˜ë‚˜ì˜ ë ˆì½”ë“œê°€ ì°¾ì•„ì¡Œì„ ë•Œë§Œ ì‚¬ìš©.
     from employees
     where employee_id=124;
     dbms_output.put_line(vs_emp_name);
@@ -75,16 +75,16 @@ declare
     vs_emp_name employees.emp_name%type;
     cursor c1(vn number)
     is
-        select emp_name from employees where employee_id>vn; -- ¼±¾ğ
+        select emp_name from employees where employee_id>vn; -- ì„ ì–¸
 begin
-    open c1(200); -- ¿­±â(½ÇÇà)
+    open c1(200); -- ì—´ê¸°(ì‹¤í–‰)
     loop
-        fetch c1 into vs_emp_name; -- »ç¿ë
-        exit when c1%notfound; -- Ã£Áö ¸øÇÏ¸é loop ³ª°¡±â
+        fetch c1 into vs_emp_name; -- ì‚¬ìš©
+        exit when c1%notfound; -- ì°¾ì§€ ëª»í•˜ë©´ loop ë‚˜ê°€ê¸°
         
         dbms_output.put_line(vs_emp_name);
     end loop;
-    close c1; -- ´İ±â -- ¸Ş¸ğ¸® °ø°£ »ç¶óÁü
+    close c1; -- ë‹«ê¸° -- ë©”ëª¨ë¦¬ ê³µê°„ ì‚¬ë¼ì§
 end;
 /
 select emp_name from employees where employee_id>200;
@@ -93,16 +93,16 @@ declare
     vn_emp_id employees.employee_id%type;
     cursor c1(vn number)
     is
-        select employee_id, emp_name from employees where employee_id>vn; -- ¼±¾ğ
+        select employee_id, emp_name from employees where employee_id>vn; -- ì„ ì–¸
 begin
-    open c1(200); -- ¿­±â(½ÇÇà)
+    open c1(200); -- ì—´ê¸°(ì‹¤í–‰)
     loop
-        fetch c1 into vn_emp_id, vs_emp_name; -- »ç¿ë
-        exit when c1%notfound; -- Ã£Áö ¸øÇÏ¸é loop ³ª°¡±â
+        fetch c1 into vn_emp_id, vs_emp_name; -- ì‚¬ìš©
+        exit when c1%notfound; -- ì°¾ì§€ ëª»í•˜ë©´ loop ë‚˜ê°€ê¸°
         
         dbms_output.put_line(to_char(vn_emp_id)||', '||vs_emp_name);
     end loop;
-    close c1; -- ´İ±â -- ¸Ş¸ğ¸® °ø°£ »ç¶óÁü
+    close c1; -- ë‹«ê¸° -- ë©”ëª¨ë¦¬ ê³µê°„ ì‚¬ë¼ì§
 end;
 /
 -- version 2
@@ -139,7 +139,7 @@ begin
 end;
 /
 
---@¸ğµç Á÷¿ø °¢°¢ÀÇ »ç¹ø, ÀÌ¸§, ¸Å´ÏÀú ÀÌ¸§, ¼Ò¼Ó ºÎ¼­¸í Ãâ·Â Ä¿¼­
+--@ëª¨ë“  ì§ì› ê°ê°ì˜ ì‚¬ë²ˆ, ì´ë¦„, ë§¤ë‹ˆì € ì´ë¦„, ì†Œì† ë¶€ì„œëª… ì¶œë ¥ ì»¤ì„œ
 --1
 declare
 begin
@@ -148,7 +148,7 @@ begin
                 where a.manager_id=b.employee_id
                 and a.department_id=c.department_id(+)
                 union
-                select a.employee_id, a.emp_name, '»çÀå',c.department_name
+                select a.employee_id, a.emp_name, 'ì‚¬ì¥',c.department_name
                 from employees a, employees b, departments c
                 where a.department_id=c.department_id
                 and a.manager_id is null)
@@ -167,7 +167,7 @@ begin
                 where a.manager_id=b.employee_id(+) order by a.employee_id)
     loop
         if rec.d_id is null then
-            dp_name:='¾øÀ½';
+            dp_name:='ì—†ìŒ';
             continue;
         else
             select department_name
@@ -186,7 +186,7 @@ select a.employee_id, a.emp_name, b.emp_name m_name, a.department_id d_id
 for rec in (select manager_id from employees)
     loop
         if rec.manager_id is null then
-            vs_name:='¾øÀ½';
+            vs_name:='ì—†ìŒ';
         else        
             select  emp_name
             into vs_name
