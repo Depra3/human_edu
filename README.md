@@ -27,7 +27,7 @@
 
 - __Spring(__
     - 2022.12.07 ~ 2022.12.16
-    - 사용 툴 : <img src="https://img.shields.io/badge/Eclipse IDE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
+    - 사용 툴 : <img src="https://img.shields.io/badge/Eclipse EE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
     - MVC구조 학습
     - 회원가입 및 로그인 실습
     - DB와의 연동 및 데이터 CRUD 실습
