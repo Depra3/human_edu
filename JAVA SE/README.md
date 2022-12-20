@@ -1,6 +1,6 @@
 # JAVA
-- <b>2022.10.04 ~ 2022.11.03</b>
-- 사용 툴 : <img src="https://img.shields.io/badge/Eclipse IDE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
+- __2022.10.04 ~ 2022.11.03__
+- __사용 툴__ : <img src="https://img.shields.io/badge/Eclipse IDE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
 
 # LIST
 - __EX00 : 각 폴더 별 내용 요약 리스트__
@@ -36,7 +36,7 @@
             <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             __※ EX00/human0/List_Ex05 참조__
 
-- __EX06__ : Object 클래스, System 클래스, Class 클래스, String 클래스, Math 클래스, Date 클래스, Calendar 클래스,
+- __EX06__ : Object 클래스, System 클래스, Class 클래스, String 클래스, Math 클래스, Date 클래스, Calendar 클래스
             <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             __※ EX00/human0/List_Ex06 참조__
 
@@ -47,3 +47,11 @@
 - __EX08__ : 배열, ArrayList, LinkedList, Set, TreeSet, Map, TreeMap, Queue(FIFO), Stack(LIFO)
             <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             __※ EX00/human0/List_Ex08 참조__
+
+- __FX01__ : JAVA FX 화면 구조, 화면에 이미지 넣기
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            __※ EX00/human0/List_Fx01 참조__
+
+- __FX02__ : JAVA FX 이벤트
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            __※ EX00/human0/List_Fx02 참조__
