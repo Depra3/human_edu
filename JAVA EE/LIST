@@ -26,6 +26,7 @@ Study04     명단 / 부서 테이블 출력      EmpList.jsp/department.jsp
             객실 관리 시스템 1           roomtype.jsp/roominfo.jsp/insertRT_form.jsp/insertRI_form.jsp
             AJAX                        ajax.jsp
             객실 관리 시스템 2           ajax_roomtype.jsp/ajax_roominfo.jsp
+            (DB연결)
 
 Study05     로그인 / 회원가입 (DB연결)   home.jsp/login.jsp/loginok.jsp/signin.jsp/userinfo.jsp
 
