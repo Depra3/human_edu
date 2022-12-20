@@ -5,9 +5,11 @@
 # LIST
 - __Front End 준비__ : Visual Studio Code 설치
 
-- __HTML__ : `태그` [ a, ul(li), ol(li), dl(dt,dd), Table(colspan/rowspan), Input, Textarea(placeholder), 
-            Select, ComboBox, Radio Button,  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Form, Method(Get/Post), Img, Video, Audio, Div, 영역 구분(header, nav, main, footer) ] 실습
+- __HTML__ : 태그 `a`, `ul(li)`, `ol(li)`, `dl(dt,dd)`, `Table(colspan/rowspan)`, `Input`, 
+            `Textarea(placeholder)`, `Select`, `ComboBox`, `Radio Button`,  
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            `Form`, `Method(Get/Post)`, `Img`, `Video`, `Audio`, `Div`, 
+            `영역 구분(header, nav, main, footer)` 실습
             <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             __※ 01_HTML/List_HTML 참조__
 

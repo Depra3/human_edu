@@ -14,7 +14,7 @@
     - __2022.11.04 ~ 2022.11.28__
     - 사용 툴 : <img src="https://img.shields.io/badge/Visual Studio Code-5C2D91?style=flat&logo=Visual Studio Code&logoColor=white"/>
     - HTML : `a`, `input`, `button`, `select` 등의 태그 실습
-    - CSS : CSS 태그 실습
+    - CSS : `CSS` 태그 실습
     - JAVA Script : 이벤트를 이용한 태그 설정 변환 및 데이터 관리 실습
     - JQuery : 이벤트를 이용한 테이터 관리 시스템 구축 실습
     

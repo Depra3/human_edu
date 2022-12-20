@@ -7,12 +7,13 @@
                 `insert`/`delete`/`update`/`select(+Where)`, `Rollback`, `Commit` 실습
 
 - __22.11.30__ : Table 생성 및 복사, 문자열 연결 연산자, `Case (when 비교 then 비교 else) end as 테이블 명`, 
-                `like`, `ceil`, `floor`, `power`, `sqrt`, `initcap`, 
+                `like`, `ceil`, `floor`, `power`, `sqrt`,
                 <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                `lower`, `upper`, `concat`, `substr`, `replace`, `instr`, `length`, `sysdate`, `to_char`, `nvl`, `nullif`, `decode` 실습
+                 `initcap`, `lower`, `upper`, `concat`, `substr`, `replace`, `instr`, `length`, `sysdate`, `to_char`, `nvl`, `nullif`, `decode` 실습
 
 - __22.12.01__ : `count`, `sum`, `avg`, `max`, `variance`, `stddev`, `Group by`, 정렬 (`Order by - asc/desc`), 
-                `intersect`, `union`, `minus`, `JOIN`(내부(+셀프)) 실습
+                `intersect`, `union`, `minus`,
+                <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `JOIN`(내부(+셀프)) 실습
 
 - __22.12.02__ : `JOIN`(내부/외부), `View` 생성, `SubQuery`실습, `ERD` 그리기
 
