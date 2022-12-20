@@ -4,13 +4,13 @@
 - __과정 기간 : 2022-10-04 ~ 2023-04-12__
 
 # 내용
-- __JAVA__
+- __JAVA - JAVA SE__
     - __2022.10.04 ~ 2022.11.03__
     - 사용 툴 : <img src="https://img.shields.io/badge/Eclipse SE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
     - 자바를 코딩하기 위한 기본 개념, 객체, 상속, 인터페이스, 예외 처리 등 실습
     - 객체(추상 클래스, 인터페이스)를 이용한 데이터 처리 실습
 
-- __HTML, JAVA Script/CSS, JQuery__
+- __HTML, JAVA Script/CSS, JQuery - Front_End__
     - __2022.11.04 ~ 2022.11.28__
     - 사용 툴 : <img src="https://img.shields.io/badge/Visual Studio Code-5C2D91?style=flat&logo=Visual Studio Code&logoColor=white"/>
     - HTML : a, input, button, select 등의 태그 실습
@@ -25,7 +25,7 @@
     - Join, 서브 쿼리를 이용한 데이터 추출 실습
     - PL/SQL을 이용한 데이터 추출 실습
 
-- __JAVA Spring__
+- __JAVA Spring - JAVA EE__
     - __2022.12.07 ~ 2022.12.16__
     - 사용 툴 : <img src="https://img.shields.io/badge/Eclipse EE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
     - MVC구조 학습
