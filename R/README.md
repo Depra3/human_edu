@@ -6,4 +6,4 @@
 
 - __R 시작 준비__ : R, R-Studio, R-Tools 설치
 
-- __R_EX01__ : R의 강점 설명, Library 설치 방법, R 맛보기
+- __R_EX01__ : R의 강점 설명, Library 설치 방법, R 맛보기 실습
