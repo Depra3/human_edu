@@ -85,3 +85,9 @@ library(readxl)
 iris3 = read_xlsx(path='iris.xlsx')
 head(iris3)
 ```
+
+getwd() - 현재 경로 확인
+원하는 폴더에 위치 => 톱니바퀴 => Set As Working Directory - 원하는 위치로 경로 설정
+rename("데이터 셋", 바꿀 변수명1 = 기존 변수명1, ...., 바꿀 변수명n = 기존 변수명n
+데이터셋 %>% filter(A == 'a' & B >= 10) - A가 'a'면서 B가 10이상
+데이터셋 %>% group by(A) %>% summarise(SUM_C=sum(C)) - 데이터 셋의 A변수 값 별로 C를 더해 SUM_C변수로 도출
