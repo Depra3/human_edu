@@ -1,0 +1,103 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    toc: yes
+    df_print: paged
+  html_notebook:
+    toc: yes
+    toc_float: yes  
+  # html_notebook:
+  #   toc: yes
+  #   toc_float: yes
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+목차 만들기
+# 제목 1
+
+## 시각화
+```
+plot(cars)
+```
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+<!-- - 이미지 파일 -->
+<!-- ![](경로.png) -->
+
+# 자료형
+- R의 기본 데이터 타입을 확인
+
+## 문자형
+- 문자형 데이터
+
+```{r}
+ID = c("A","B","C")
+ID
+```
+
+## 숫자형
+- 숫자형 데이터
+```{r}
+ID = c(1,2,3)
+ID
+```
+
+# 시각화
+- ggplot2 라이브러리를 활용해서 시각화를 해보자!
+```{r}
+library(ggplot2)
+# markdown에서 codeblock안에 있는  install.packages는 주석처리해야함
+# install.packages("readxl")
+# install.packages("writexl")
+data = iris 
+#iris의 위치는 불러오려는 데이터
+ggplot(data, aes(x=Sepal.Length, y=Sepal.Width)) + 
+  geom_point()
+#대소문자 구별, 결과 정상적으로 나오는지 확인하고 Knit 실행
+```
+
+# 파일 내보내기 & 불러오기
+- iris 데이터를 엑셀파일, csv파일로 내보내기
+
+## csv 파일로 내보내기
+- csv 파일로 내보내기를 합시다!
+```{r}
+write.csv(data, file="iris.csv")
+```
+
+## 엑셀 파일로 내보내기
+- 엑셀파일로 내보내기를 합시다!
+```{r}
+library(writexl)
+write_xlsx(iris, path="iris.xlsx")
+```
+
+## csv 파일 불러오기
+- csv 파일을 불러와주세요.
+```{r}
+iris2 = read.csv(file='iris.csv')
+str(iris2)
+#str은 파일의 구조 확인
+```
+
+## 엑셀 파일 불러오기
+- 엑셀 파일을 불러옵시다.
+```{r}
+library(readxl)
+iris3 = read_xlsx(path='iris.xlsx')
+head(iris3)
+```
+
