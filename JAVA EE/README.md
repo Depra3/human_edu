@@ -1,7 +1,7 @@
 # JAVA Spring
-- __Eclipse EE ver : 2022-09(4.25.0) / JDK ver : 17.0.4.1__
 - __2022.12.07 ~ 2022.12.16__
 - __사용 툴__ : <img src="https://img.shields.io/badge/Eclipse EE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
+- __Eclipse EE ver : 2022-09(4.25.0) / JDK ver : 17.0.4.1__
 
 # LIST
 - __JAVA Spring 준비__ : `Eclipse EE`, `JDK`, `Eclips Marketplace`에서 `Spring Tools` 설치

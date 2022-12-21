@@ -1,7 +1,7 @@
 # HTML, JAVA Script/CSS, JQuery - Front_End 
-- __Visual Studio Code ver : 1.74.1__
 - __2022.11.04 ~ 2022.11.28__
 - __사용 툴__ : <img src="https://img.shields.io/badge/Visual Studio Code-5C2D91?style=flat&logo=Visual Studio Code&logoColor=white"/>
+- __Visual Studio Code ver : 1.74.1__
 
 # LIST
 - __Front End 준비__ : `Visual Studio Code` 설치
