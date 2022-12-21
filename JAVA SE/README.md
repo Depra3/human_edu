@@ -1,4 +1,5 @@
-# JAVA
+# JAVA 
+- __Eclipse SE ver : 2022-09(4.25.0) / JDK ver : 17.0.4.1__
 - __2022.10.04 ~ 2022.11.03__
 - __사용 툴__ : <img src="https://img.shields.io/badge/Eclipse SE-2C2255?style=flat&logo=Eclipse IDE&logoColor=white"/>
 

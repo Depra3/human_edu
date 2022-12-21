@@ -1,4 +1,4 @@
-# R
+# R(4.1.3)
 - <b>2022.12.19 ~</b>
 - __사용 툴__ : <img src="https://img.shields.io/badge/R-276DC3?style=flat&logo=R&logoColor=white"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/>
 
