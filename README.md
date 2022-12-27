@@ -41,4 +41,4 @@
 - __Python__
     - <b>2022.12.26 ~ </b>
     - 사용 툴 : <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=Python&logoColor=white"/>
-    - 기초 문법 학습
+    - 기초 문법 , `함수`, `Decorator`, `DocString`, `Class(+ 상속)` 학습
