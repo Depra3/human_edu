@@ -40,5 +40,5 @@
 
 - __Python__
     - <b>2022.12.26 ~ </b>
-    - 사용 툴 : <img src="https://img.shields.io/badge/Python-276DC3?style=flat&logo=Python&logoColor=white"/>
+    - 사용 툴 : <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=Python&logoColor=white"/>
     - 기초 문법 학습

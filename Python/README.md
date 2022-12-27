@@ -1,6 +1,6 @@
 # Python
 - <b>2022.12.26 ~ </b>
-- 사용 툴 : <img src="https://img.shields.io/badge/Python-276DC3?style=flat&logo=Python&logoColor=white"/>
+- 사용 툴 : <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=Python&logoColor=white"/>
 - __Python ver : 3.11.1__
 
 # LIST
