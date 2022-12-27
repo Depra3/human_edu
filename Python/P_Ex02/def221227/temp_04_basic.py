@@ -2,7 +2,7 @@
 # context manager 작성
 import contextlib
 import sqlite3
-from contextlib import asyncontextmanager
+from contextlib import asynccontextmanager
 # context 매니저 패턴
 # open / close
 # Lock / Release
@@ -25,7 +25,7 @@ def db_connect(url):
     db.close()
 
 #비동기화 처리
-@asyncontextmanager
+@asynccontextmanager
 def db_connect(url):
 
     db = sqlite3.db_connect(url)
