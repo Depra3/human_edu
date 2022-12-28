@@ -10,3 +10,5 @@
 - __P_Ex01__ : 기초 문법(`조건문`, `반복문`) 학습
 
 - __P_Ex02__ : `함수`, `Decorator`, `DocString`, `Class(+ 상속)` 학습
+
+- __P_Ex03__ : `NumPy`, `Pandas` 학습
