@@ -12,3 +12,7 @@
 - __P_Ex02__ : `함수`, `Decorator`, `DocString`, `Class(+ 상속)` 학습
 
 - __P_Ex03__ : `NumPy`, `Pandas` 학습
+
+- __P_Ex04__ : `정적 시각화` 학습
+
+- __P_Ex05__ : `동적 시각화` 학습
