@@ -36,7 +36,7 @@
 - __R__
     - __2022.12.19 ~ 2022.12.23__
     - 사용 툴 : <img src="https://img.shields.io/badge/R-276DC3?style=flat&logo=R&logoColor=white"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=GitHub&logoColor=white"/>
-    - R의 강점, `시각화`, `자료형`, 파일 불러오기 및 내보내기 학습
+    - R의 강점, `시각화`, `자료형`, `파일 불러오기 및 내보내기` 학습
 
 - __Python__
     - <b>2022.12.26 ~ </b>
